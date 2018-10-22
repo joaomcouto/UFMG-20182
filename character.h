@@ -1,7 +1,7 @@
 #ifndef PDS2_CHARACTER_H
 #define PDS2_CHARACTER_H
 
-#include "string"
+#include <string>
 
 class Character{
 private: 
@@ -10,7 +10,7 @@ private:
  int _hp;
  int _mp;
  std::string _type;
- int _hability;
+ int _skill;
 
 public:
  Character();
@@ -21,5 +21,5 @@ public:
  int getHP();
  int getMP();
  std::string getType();
-}
+};
 #endif
