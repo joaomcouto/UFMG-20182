@@ -13,7 +13,8 @@ class Character{
  	int _skill; //Value that will be incremented in some feature
 
  public:
-	Character(std::string name, int level, int hp, int mp, std::string type, int skill);
+	Character(std::string name, int level, int hp, int mp, std::string type,
+ int skill);
  	~Character();
 
 	std::string getName();

@@ -1,7 +1,9 @@
 #include "character.h"
 #include <string>
 
-Character::Character(std::string name, int level, int hp, int mp, std::string     type, int skill) : _name(name), _level(level), _hp(hp), _mp(mp), _type(type), _skill(skill) {};
+Character::Character(std::string name, int level, int hp, int mp,
+std::string type, int skill) : _name(name), _level(level), _hp(hp), _mp(mp), 
+_type(type), _skill(skill) {};
 
 Character::~Character(){}
 

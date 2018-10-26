@@ -10,7 +10,8 @@ class Wizard : public Character{
 	std::string _wand;
 	std::string _patronum;
  public:
-  Wizard(std::string name, int level, int hp, int mp,     std::string type, int skill, std::string house, std::string wand, std::string patronum);
+  Wizard(std::string name, int level, int hp, int mp, std::string type, 
+int skill, std::string house, std::string wand, std::string patronum);
 	~Wizard();
 
 	std::string getHouse();
