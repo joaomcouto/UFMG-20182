@@ -6,22 +6,26 @@
 class Character{
  protected: 
 	std::string _name;
+	std::string _type;
  	int _level;
  	int _hp;
  	int _mp;
- 	std::string _type;
- 	int _skill; //Value that will be incremented in some feature
+ 	int _strenght ; 
+ 	int _constituion ;
+ 	int _dexterity ;
+ 	
 
  public:
-	Character(std::string name, int level, int hp, int mp, std::string type,
- int skill);
+	Character(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex);
  	~Character();
 
 	std::string getName();
 	int getLevel();
 	int getHP();
 	int getMP();
-	int getSkill();
+	int getStrenght();
+	int getConstitution();
+	int getDexterity();
  	std::string getType();
 };
 #endif
