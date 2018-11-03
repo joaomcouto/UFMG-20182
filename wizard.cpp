@@ -1,10 +1,8 @@
 #include "character.h"
 #include "wizard.h"
 
-Wizard::Wizard(std::string name, int level, int hp, int mp, std::string type,
- int skill, std::string house, std::string wand, std::string patronum) :
- Character(name, level, hp, mp, type, skill), _house(house), _wand(wand), 
- _patronum(patronum) {};
+Wizard::Wizard(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum) :
+ Character(name, type, level, hp, mp, str, cons, dex), _house(house), _wand(wand), _patronum(patronum) {};
 
 Wizard::~Wizard(){}
 
@@ -18,4 +16,16 @@ std::string Wizard::getWand(){
 
 std::string Wizard::getPatronum(){
 	return this->_patronum;
+}
+
+void Wizard::incrementSkill(int selection) {
+	if selection == 1 this->_hp+=10;
+
+	if selection == 2 this->_mp+=10;
+
+	if selection == 3 this->_strenght+=1;
+
+	if selection == 4 this->_constitution+=1;
+
+	if selection == 5 this->_dexterity+=1;
 }
