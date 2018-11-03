@@ -9,13 +9,14 @@ class Wizard : public Character{
 	std::string _house;
 	std::string _wand;
 	std::string _patronum;
+	int _skillPoints ;
  public:
-  Wizard(std::string name, int level, int hp, int mp, std::string type, 
-int skill, std::string house, std::string wand, std::string patronum);
+  	Wizard(std::string name, std::string type, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum);
 	~Wizard();
 
 	std::string getHouse();
 	std::string getWand();
 	std::string getPatronum();
+	void incrementSkill(int selection) ;
 };
 #endif
