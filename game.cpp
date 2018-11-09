@@ -44,7 +44,15 @@ std::string choice_of_wand(){
 
 }
 std::string choice_of_house(){
-
+	std::vector<std::string> houses;
+	houses.push_back("Grifinoria");
+	houses.push_back("Sonserina");
+	houses.push_back("Corvinal");
+	houses.push_back("Lufa-Lufa");
+	int number_house = rand() % houses.size();
+	std::string house = houses[number_house];
+	std::cout << "Sua casa e: " << house << std::endl;
+	return house;
 }
 void initialize_player(std::string wand, std::string house){
 
