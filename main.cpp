@@ -1,8 +1,12 @@
 #include <iostream>	
+#include <time.h>
 #include "inventory.h"
-
+#include "game.h"
 
 int main (){
+	srand (time(NULL));
+	choice_of_wand();
+	choice_of_house();
 	Inventory *inventory = new Inventory();
 	std::vector<Objeto*> object = inventory->instantiate_object();
 	std::vector<Feiticos*> spell = inventory->instantiate_spell();
