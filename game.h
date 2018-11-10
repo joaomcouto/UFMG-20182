@@ -10,10 +10,11 @@
 #include <string>
 #include <vector>
 
-void texts1();
+std::string texts1();
 std::string choice_of_wand();
 std::string choice_of_house();
-void initialize_player(std::string wand, std::string house);
+std::string choice_of_patronum();
+void initialize_player();
 void texts2();
 
 
