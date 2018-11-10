@@ -1,18 +1,20 @@
 #include "game.h"
 #include <iostream>
 
-void texts1(){
+std::string texts1(){
 	std::string name;
 	std::cout << "Escreva o seu nome bruxo: " << std::endl;
 	std::cin >> name;
 	std::cout << std::endl;
 	std::cout << "Escola de Magia e Bruxaria de Hogwarts" << std::endl;
 	std::cout << "  Diretor: Alvo Dumbledore" << std::endl;
-	std::cout << "Prezado " << name << std::endl;
+	std::cout << "Prezado " << name << ", " << std::endl;
 	std::cout << "Temos o prazer de informar que voce tem uma vaga na Escola de Magia e Bruxaria de Hogwats." << std::endl;
 	std::cout << "Primeiramente voce precisa adquirir seus livros e equipamentos necessarios." << std::endl;
 	std::cout << "Atenciosamente," << std::endl;
 	std::cout << "Minerva McGonagall" << std::endl;
+	std::cout << std::endl;
+	return name;
 }
 std::string choice_of_wand(){
 	std::cout << "Bem-vindo a Olivaras, e aqui que voce ira adquirir sua primeira varinha." << std::endl;
@@ -38,12 +40,14 @@ std::string choice_of_wand(){
 	cores.push_back(" Chifre de Serpente Chifruda");
 	int number_wood =  rand() % woods.size();
 	int number_core =  rand() % cores.size();
-	std::string wand = woods[number_wood] + cores[number_core];
-	std::cout << "Sua varinha é: " << wand << std::endl;
+	std::string wand = woods[number_wood] + " e" + cores[number_core];
+	std::cout << "Sua varinha e: " << wand << std::endl;
+	std::cout << std::endl;
 	return wand;
 
-}
+} 
 std::string choice_of_house(){
+	std::cout << "Bem-vindo a Hogwats. O chapeu seletor ira decidir a sua casa" << std::endl;
 	std::vector<std::string> houses;
 	houses.push_back("Grifinoria");
 	houses.push_back("Sonserina");
@@ -52,9 +56,21 @@ std::string choice_of_house(){
 	int number_house = rand() % houses.size();
 	std::string house = houses[number_house];
 	std::cout << "Sua casa e: " << house << std::endl;
+	std::cout << std::endl;
 	return house;
-}
-void initialize_player(std::string wand, std::string house){
 
 }
-void texts2();
+
+std::string choice_of_patronum(){
+
+}
+
+void initialize_player(){
+	std::string name = texts1();
+	std::string wand = choice_of_wand();
+	std::string house = choice_of_house();
+	//Wizard *player = new Wizard();
+
+}
+void texts2(){
+
