@@ -11,7 +11,7 @@ class Character{
  	int _hp;
  	int _mp;
  	int _strenght ; 
- 	int _constituion ;
+ 	int _constitution ;
  	int _dexterity ;
  	
 

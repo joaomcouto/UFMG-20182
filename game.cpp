@@ -60,10 +60,10 @@ std::string choice_of_house(){
 	return house;
 
 }
-
+/*
 std::string choice_of_patronum(){
-
-}
+	//this method was commented bc it ins't working yet
+}*/
 
 void initialize_player(){
 	std::string name = texts1();
@@ -72,5 +72,4 @@ void initialize_player(){
 	//Wizard *player = new Wizard();
 
 }
-void texts2(){
-
+void texts2(){}

@@ -19,13 +19,21 @@ std::string Wizard::getPatronum(){
 }
 
 void Wizard::incrementSkill(int selection) {
-	if selection == 1 this->_hp+=10;
-
-	if selection == 2 this->_mp+=10;
-
-	if selection == 3 this->_strenght+=1;
-
-	if selection == 4 this->_constitution+=1;
-
-	if selection == 5 this->_dexterity+=1;
+	switch(selection){
+		case 1:
+			this->_hp+=10;
+			break;
+		case 2:
+			this->_mp+=10;
+			break;
+		case 3:
+			this->_strenght+=1;
+			break;
+		case 4:
+			this->_constitution+=1;
+			break;
+		case 5:
+			this->_dexterity+=1;
+			break;
+	}
 }
