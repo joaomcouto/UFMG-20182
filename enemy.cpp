@@ -13,6 +13,7 @@ void Enemy::decrementSkill(int i){
 		break;
 		case 2:
 		this->_mp -=10;
+		break;	
 	}
 }
 
