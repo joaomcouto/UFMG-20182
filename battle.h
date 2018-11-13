@@ -1,4 +1,5 @@
 #include "character.h"
+#include "wizard.h"
 
 class Battle {
 protected:
@@ -9,7 +10,7 @@ protected:
     Character * enemy ; 
 
 public:
-    Battle(Character * player , Character * enemy) ;
+    Battle(Wizard * player , Character * enemy) ;
     void round() ; 
 
 

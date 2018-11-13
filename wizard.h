@@ -2,7 +2,9 @@
 #define PDS2_WIZARD_H
 
 #include "character.h"
+#include "spells.h"
 #include <string>
+#include <vector>
 
 class Wizard : public Character{
  protected:
@@ -13,7 +15,7 @@ class Wizard : public Character{
  public:
   	Wizard(std::string name, std::string type, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum);
 	~Wizard();
-
+	std::vector<Spell *> spellVector ;
 	std::string getHouse();
 	std::string getWand();
 	std::string getPatronum();
