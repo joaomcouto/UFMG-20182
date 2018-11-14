@@ -9,19 +9,7 @@ Inventory::~Inventory(){
 
 }
 
-<<<<<<< HEAD
-=======
-std::vector<Spell*> Inventory::instantiate_spell(){
-    std::vector<Spell*> spell;
 
-    Spell *Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
-    Spell *ExpectroPatronum = new Spell("Expectro Patronum", 3, 50, 20, 20, 30, 40);
-
-    spell.push_back(Expelliarmus);
-    spell.push_back(ExpectroPatronum);
-
-    return spell;
-}
 
 void Inventory::print_spells(std::vector<Spell*> spell){
     const int spell_size = spell.size();
@@ -33,7 +21,6 @@ void Inventory::print_spells(std::vector<Spell*> spell){
     std::cout <<std::endl;
 }
 
->>>>>>> 2a5f382c570d7a30be838e6e15554ad781921212
 std::vector<Objeto*> Inventory::instantiate_object(){
     std::vector<Objeto*> object;
 
