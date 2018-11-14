@@ -10,17 +10,6 @@ Inventory::~Inventory(){
 }
 
 
-
-void Inventory::print_spells(std::vector<Spell*> spell){
-    const int spell_size = spell.size();
-
-    std::cout << "Spell:" << std::endl;
-
-    for (int i = 0; i < spell_size; i++)
-        std::cout << "[" << i << "] " << spell[i]->get_name() << std::endl;
-    std::cout <<std::endl;
-}
-
 std::vector<Objeto*> Inventory::instantiate_object(){
     std::vector<Objeto*> object;
 
