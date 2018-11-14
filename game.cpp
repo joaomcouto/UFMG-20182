@@ -64,16 +64,16 @@ std::string choice_of_house(){
 
 std::string choice_of_patronum(){
 	std::vector<std::string> patronuns;
-	patronum.push_back("Rato");
-	patronum.push_back("Fenix");
-	patronum.push_back("Raposa");
-	patronum.push_back("Lontra");
-	patronum.push_back("Veado");
-	patronum.push_back("Lebre");
-	patronum.push_back("Javali");
-	patronum.push_back("Gato");
-	patronum.push_back("Lobo");
-	patronum.push_back("Cavalo");
+	patronuns.push_back("Rato");
+	patronuns.push_back("Fenix");
+	patronuns.push_back("Raposa");
+	patronuns.push_back("Lontra");
+	patronuns.push_back("Veado");
+	patronuns.push_back("Lebre");
+	patronuns.push_back("Javali");
+	patronuns.push_back("Gato");
+	patronuns.push_back("Lobo");
+	patronuns.push_back("Cavalo");
 	int number_patronum = rand() % patronuns.size();
 	std::string patronum = patronuns[number_patronum];
 	std::cout << "Cada bruxo possui um patronum, o seu patronum e um(a): " << patronum << std::endl;
