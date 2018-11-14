@@ -2,7 +2,7 @@
 #include <string>
 
 Character::Character(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex) : 
-_name(name),_type(type), _level(level), _hp(hp), _mp(mp),  _strenght(str), _constitution(cons), _dexterity(dex) {};
+_baseStats{level, hp, mp, str, cons, dex}, _name(name),_type(type) {} 
 
 Character::~Character(){}
 
@@ -11,28 +11,28 @@ std::string Character::getName(){
 }
 
 int Character::getLevel(){
-	return this->_level;
+	return this->_baseStats.level;
 }
 
 int Character::getHP(){
-	return this->_hp;
+	return this->_baseStats.hp;
 }
 
 int Character::getMP(){
-	return this->_mp;
+	return this->_baseStats.mp;
 }
 
 
 int Character::getStrenght(){
-	return this->_strenght ; 
+	return this->_baseStats.strenght ; 
 }
 
 int Character::getConstitution(){
-	return this->_constitution ;
+	return this->_baseStats.constitution ;
 }
 
 int Character::getDexterity(){
-	return this->_dexterity ;
+	return this->_baseStats.dexterity ;
 }
 
 std::string Character::getType(){

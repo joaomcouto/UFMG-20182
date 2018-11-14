@@ -3,18 +3,20 @@
 
 #include <string>
 
+typedef struct {
+	int level;
+ 	int hp;
+ 	int mp;
+ 	int strenght ; 
+ 	int constitution ;
+ 	int dexterity ;
+} Stats ;
+
 class Character{
  protected: 
 	std::string _name;
 	std::string _type;
- 	int _level;
- 	int _hp;
- 	int _mp;
- 	int _strenght ; 
- 	int _constitution ;
- 	int _dexterity ;
- 	
-
+	Stats _baseStats ; 
  public:
 	Character(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex);
  	~Character();
