@@ -60,9 +60,9 @@ std::string choice_of_house(){
 	return house;
 
 }
-/*
+
+
 std::string choice_of_patronum(){
-<<<<<<< HEAD
 	std::vector<std::string> patronuns;
 	patronum.push_back("Rato");
 	patronum.push_back("Fenix");
@@ -80,10 +80,6 @@ std::string choice_of_patronum(){
 	std::cout << std::endl;
 	return patronum;
 }
-=======
-	//this method was commented bc it ins't working yet
-}*/
->>>>>>> 0b54eb3fbddfb38d53ba919df4954fd5b474e9a3
 
 void initialize_player(){
 	std::string name = texts1();
