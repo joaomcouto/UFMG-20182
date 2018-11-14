@@ -1,7 +1,7 @@
 #include "game.h"
 #include <iostream>
 #include "spells.h"
-
+#include <vector>
 
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
