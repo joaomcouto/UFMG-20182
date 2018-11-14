@@ -1,5 +1,19 @@
 #include "game.h"
 #include <iostream>
+#include "spells.h"
+
+
+std::vector<Spell *> instantiate_spell(){
+    std::vector<Spell *> spell;
+
+    Spell * Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
+    Spell *ExpectroPatronum = new Spell("Expectro Patronum", 3, 50, 20, 20, 30, 40);
+
+    spell.push_back(Expelliarmus);
+    spell.push_back(ExpectroPatronum);
+
+    return spell;
+}
 
 std::string texts1(){
 	std::string name;
@@ -64,28 +78,28 @@ std::string choice_of_house(){
 
 std::string choice_of_patronum(){
 	std::vector<std::string> patronuns;
-	patronum.push_back("Rato");
-	patronum.push_back("Fenix");
-	patronum.push_back("Raposa");
-	patronum.push_back("Lontra");
-	patronum.push_back("Veado");
-	patronum.push_back("Lebre");
-	patronum.push_back("Javali");
-	patronum.push_back("Gato");
-	patronum.push_back("Lobo");
-	patronum.push_back("Cavalo");
+	patronuns.push_back("Rato");
+	patronuns.push_back("Fenix");
+	patronuns.push_back("Raposa");
+	patronuns.push_back("Lontra");
+	patronuns.push_back("Veado");
+	patronuns.push_back("Lebre");
+	patronuns.push_back("Javali");
+	patronuns.push_back("Gato");
+	patronuns.push_back("Lobo");
+	patronuns.push_back("Cavalo");
 	int number_patronum = rand() % patronuns.size();
-	std::string patronum = patronuns[number_patronum];
-	std::cout << "Cada bruxo possui um patronum, o seu patronum e um(a): " << patronum << std::endl;
+	std::string patronuns = patronuns[number_patronum];
+	std::cout << "Cada bruxo possui um patronuns, o seu patronuns e um(a): " << patronuns << std::endl;
 	std::cout << std::endl;
-	return patronum;
+	return patronuns;
 }
 
 void initialize_player(){
 	std::string name = texts1();
 	std::string wand = choice_of_wand();
 	std::string house = choice_of_house();
-	std::string patronum = choice_of_patronum();
-	//Wizard *player = new Wizard(name,1, 100, 100, 100, 100, 100, house, wand, patronum);
+	std::string patronuns = choice_of_patronum();
+	//Wizard *player = new Wizard(name,1, 100, 100, 100, 100, 100, house, wand, patronuns);
 }
 void texts2(){}

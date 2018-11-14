@@ -9,28 +9,6 @@ Inventory::~Inventory(){
 
 }
 
-std::vector<Feiticos*> Inventory::instantiate_spell(){
-    std::vector<Feiticos*> spell;
-
-    Feiticos *Expelliarmus = new Feiticos("Expelliarmus", 1, 30, 40, 50, 20, 10);
-    Feiticos *ExpectroPatronum = new Feiticos("Expectro Patronum", 3, 50, 20, 20, 30, 40);
-
-    spell.push_back(Expelliarmus);
-    spell.push_back(ExpectroPatronum);
-
-    return spell;
-}
-
-void Inventory::print_spells(std::vector<Feiticos*> spell){
-    const int spell_size = spell.size();
-
-    std::cout << "Feiticos:" << std::endl;
-
-    for (int i = 0; i < spell_size; i++)
-        std::cout << "[" << i << "] " << spell[i]->get_name() << std::endl;
-    std::cout <<std::endl;
-}
-
 std::vector<Objeto*> Inventory::instantiate_object(){
     std::vector<Objeto*> object;
 

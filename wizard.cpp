@@ -36,19 +36,19 @@ void printPlayerPotions() {;}
 void Wizard::incrementSkill(int selection) {
 	switch(selection){
 		case 1:
-			this->_hp+=10;
+			this->_baseStats.hp+=10;
 			break;
 		case 2:
-			this->_mp+=10;
+			this->_baseStats.mp+=10;
 			break;
 		case 3:
-			this->_strenght+=1;
+			this->_baseStats.strenght+=1;
 			break;
 		case 4:
-			this->_constitution+=1;
+			this->_baseStats.constitution+=1;
 			break;
 		case 5:
-			this->_dexterity+=1;
+			this->_baseStats.dexterity+=1;
 			break;
 	}
 }

@@ -3,7 +3,7 @@
 
 //#include "character.h"
 //#include "wizard.h"
-//#include "spells.h"
+#include "spells.h"
 //#include "objects.h"
 //#include "inventory.h"
 
@@ -16,6 +16,6 @@ std::string choice_of_house();
 std::string choice_of_patronum();
 void initialize_player();
 void texts2();
-
+std::vector<Spell *> instantiate_spell()
 
 #endif
