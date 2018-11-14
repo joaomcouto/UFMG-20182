@@ -20,31 +20,32 @@ Battle::Battle(Wizard * player , Character * enemy){
 void Battle::round(){
     if (this->_playerturn == 1){
         //selecao inter-menus
-        while(1){ //necessario pois jogador pode decidir voltar para o menu de menus
+        while(1){ //Deemed necessary, player might return to menu selection menu
             int menuIndex ; 
             int actionIndex;
             int selectionIndex ; 
             std::cout << "Mostrar:" << std::endl << "[1] Feitiços" << std::endl << "[2] Poções" << std::endl ; 
             std::cin >> menuIndex ; 
             if (menuIndex == 1 ){ 
-                //printa opcoes de feiticos e opcao de voltar pro menu de menus, caso o jogador escolha um feitico, chamar action() com aquele feitico e acabar o round
-                int i ;
-                i = 0 ;
-                for ( Spell spell : _player->spellVector){
-
+                //Print out spell options as well as option to return to menu. If a spell is selected, call the move function with it and terminate de round
+                int i = 0 ;
+                std::cout << "[" << i << "] "<<  "Voltar" << std::endl ;
+                i++ ;
+                for ( Spell* spell : _player->getSpellVector()){
+                    std::cout << "[" << i << "] "<< spell->get_name() << std::endl;
+                    i++ ;
                 }
-
-            
                 std::cin >> selectionIndex ; 
-
+                if (selectionIndex > 0 && selectionIndex < _player->getSpellVector().size()) move(_player->getSpellVector()[selectionIndex-1]) ; //Move() implementation is still undone
             }
             if (menuIndex == 2 ){ //idem pra pocoes
+
             }
         }
 
 
     } else {
-        //escolhe uma ação aleatoria, chama funcao Action para esta acao, modifica stats de um dos Character de acordo com _playerturn
+        //Generate/select a random action given the enemy's level stat, call the Move() function with that action and modify the target character's stats according to _playerturn
     }
 
 }

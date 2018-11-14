@@ -18,6 +18,10 @@ std::string Wizard::getPatronum(){
 	return this->_patronum;
 }
 
+std::vector<Spell *> Wizard::getSpellVector(){
+	return this->_spellVector ;
+}
+
 void Wizard::incrementSkill(int selection) {
 	switch(selection){
 		case 1:

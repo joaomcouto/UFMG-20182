@@ -1,6 +1,7 @@
 #include "spells.h"
 
-Feiticos::Feiticos(std::string name, int level, int hp, int mp, int strenght, int constituion, int dexterity){
+
+Spell::Spell(std::string name, int level, int hp, int mp, int strenght, int constituion, int dexterity){
 	this->_name = name;
 	this->_level = level;
 	this->hp_dmg = hp;
@@ -10,30 +11,30 @@ Feiticos::Feiticos(std::string name, int level, int hp, int mp, int strenght, in
 	this->dexterity_dmg = dexterity;
 }
 
-Feiticos::~Feiticos(){
+Spell::~Spell(){
 
 }
 
-std::string Feiticos::get_name(){
+std::string Spell::get_name(){
 	return this->_name;
 }
 
-int Feiticos::get_hp_dmg(){
+int Spell::get_hp_dmg(){
 	return this->hp_dmg;
 }
 
-int Feiticos::get_mp_dmg(){
+int Spell::get_mp_dmg(){
 	return this->mp_dmg;
 }
 
-int Feiticos::get_strenght_dmg(){
+int Spell::get_strenght_dmg(){
 	return this->strenght_dmg;
 }
 
-int Feiticos::get_constituion_dmg(){
+int Spell::get_constituion_dmg(){
 	return this->constituion_dmg;
 }
 
-int Feiticos::get_dexterity_dmg(){
+int Spell::get_dexterity_dmg(){
 	return this->dexterity_dmg;
 }

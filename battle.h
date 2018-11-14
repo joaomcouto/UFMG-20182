@@ -6,8 +6,8 @@ protected:
     int _round ; 
     bool _ended ; 
     bool _playerturn ; 
-    Character * player ; 
-    Character * enemy ; 
+    Wizard * _player ; 
+    Character * _enemy ; 
 
 public:
     Battle(Wizard * player , Character * enemy) ;

@@ -12,13 +12,14 @@ class Wizard : public Character{
 	std::string _wand;
 	std::string _patronum;
 	int _skillPoints ;
+	std::vector<Spell *>_spellVector ;
  public:
   	Wizard(std::string name, std::string type, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum);
 	~Wizard();
-	std::vector<Spell *> spellVector ;
 	std::string getHouse();
 	std::string getWand();
 	std::string getPatronum();
+	std::vector<Spell *> getSpellVector();
 	void incrementSkill(int selection) ;
 };
 #endif
