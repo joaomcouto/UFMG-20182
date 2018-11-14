@@ -16,6 +16,8 @@ class Wizard : public Character{
  public:
   	Wizard(std::string name, std::string type, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum);
 	~Wizard();
+	void printPlayerSpells() ;
+	void printPlayerPotions();
 	std::string getHouse();
 	std::string getWand();
 	std::string getPatronum();

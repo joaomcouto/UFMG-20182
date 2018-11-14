@@ -19,28 +19,40 @@ Battle::Battle(Wizard * player , Character * enemy){
 
 void Battle::round(){
     if (this->_playerturn == 1){
-        //selecao inter-menus
+        int menuIndex ; 
+        int actionIndex;
+        int selectionIndex ; 
         while(1){ //Deemed necessary, player might return to menu selection menu
-            int menuIndex ; 
-            int actionIndex;
-            int selectionIndex ; 
-            std::cout << "Mostrar:" << std::endl << "[1] Feitiços" << std::endl << "[2] Poções" << std::endl ; 
-            std::cin >> menuIndex ; 
-            if (menuIndex == 1 ){ 
-                //Print out spell options as well as option to return to menu. If a spell is selected, call the move function with it and terminate de round
-                int i = 0 ;
-                std::cout << "[" << i << "] "<<  "Voltar" << std::endl ;
-                i++ ;
-                for ( Spell* spell : _player->getSpellVector()){
-                    std::cout << "[" << i << "] "<< spell->get_name() << std::endl;
-                    i++ ;
+            try { 
+                std::cout << "Escolha:" << std::endl << "[1] Feitiços" << std::endl << "[2] Poções" << std::endl ; 
+                std::cin >> menuIndex ; 
+                if (menuIndex == 1 ){ 
+                    //Print out spell options as well as option to return to menu. If a spell is selected, call the move function with it and terminate de round
+                    while(1){ //Done
+                        try {
+                            std::cout << "[0] "<<  "Voltar" << std::endl ;
+                            _player->printPlayerSpells() ;
+                             std::cin >> selectionIndex ; 
+                            if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
+                                move(_player->getSpellVector()[selectionIndex-1]) ; 
+                                return ;
+                            } else if (selectionIndex == 0 ) {
+                                break ;
+                            } else throw std::invalid_argument("Seleção de feitiço invalida, ") ;
+                        } catch (std::invalid_argument &t){
+                            std::cout << t.what() << std::endl;
+                        }
+                    }
+                } else if (menuIndex == 2 ){ 
+                        //idem pra pocoes
+                } else { 
+                    throw std::invalid_argument("Seleção de menu invalida") ; 
                 }
-                std::cin >> selectionIndex ; 
-                if (selectionIndex > 0 && selectionIndex < _player->getSpellVector().size()) move(_player->getSpellVector()[selectionIndex-1]) ; //Move() implementation is still undone
+                    
+            } catch(std::invalid_argument &t) {
+                std::cout << t.what() << std::endl;
             }
-            if (menuIndex == 2 ){ //idem pra pocoes
 
-            }
         }
 
 
