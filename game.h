@@ -16,6 +16,6 @@ std::string choice_of_house();
 std::string choice_of_patronum();
 void initialize_player();
 void texts2();
-std::vector<Spell *> instantiate_spell()
+std::vector<Spell *> instantiate_spell();
 
 #endif
