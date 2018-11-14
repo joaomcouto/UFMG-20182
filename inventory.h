@@ -8,8 +8,8 @@
 
 class Inventory{
 	public:
-		std::vector<Feiticos*> instantiate_spell();
-		void print_spells(std::vector<Feiticos*> spell);
+		std::vector<Spell*> instantiate_spell();
+		void print_spells(std::vector<Spell*> spell);
 		std::vector<Objeto*> instantiate_object();
 		void print_object(std::vector<Objeto*> object);
 		void set_object(std::vector<Objeto*> object, int i);

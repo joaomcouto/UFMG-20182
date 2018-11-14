@@ -45,7 +45,7 @@ std::string choice_of_wand(){
 	std::cout << std::endl;
 	return wand;
 
-} 
+}
 std::string choice_of_house(){
 	std::cout << "Bem-vindo a Hogwats. O chapeu seletor ira decidir a sua casa" << std::endl;
 	std::vector<std::string> houses;
