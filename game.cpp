@@ -61,7 +61,6 @@ std::string choice_of_house(){
 
 }
 
-
 std::string choice_of_patronum(){
 	std::vector<std::string> patronuns;
 	patronuns.push_back("Rato");
