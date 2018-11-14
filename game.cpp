@@ -60,16 +60,32 @@ std::string choice_of_house(){
 	return house;
 
 }
-/*
+
+
 std::string choice_of_patronum(){
-	//this method was commented bc it ins't working yet
-}*/
+	std::vector<std::string> patronuns;
+	patronum.push_back("Rato");
+	patronum.push_back("Fenix");
+	patronum.push_back("Raposa");
+	patronum.push_back("Lontra");
+	patronum.push_back("Veado");
+	patronum.push_back("Lebre");
+	patronum.push_back("Javali");
+	patronum.push_back("Gato");
+	patronum.push_back("Lobo");
+	patronum.push_back("Cavalo");
+	int number_patronum = rand() % patronuns.size();
+	std::string patronum = patronuns[number_patronum];
+	std::cout << "Cada bruxo possui um patronum, o seu patronum e um(a): " << patronum << std::endl;
+	std::cout << std::endl;
+	return patronum;
+}
 
 void initialize_player(){
 	std::string name = texts1();
 	std::string wand = choice_of_wand();
 	std::string house = choice_of_house();
-	//Wizard *player = new Wizard();
-
+	std::string patronum = choice_of_patronum();
+	//Wizard *player = new Wizard(name,1, 100, 100, 100, 100, 100, house, wand, patronum);
 }
 void texts2(){}

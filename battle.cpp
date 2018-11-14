@@ -38,7 +38,7 @@ void Battle::round(){
                                 return ;
                             } else if (selectionIndex == 0 ) {
                                 break ;
-                            } else throw std::invalid_argument("Seleção de feitiço invalida, ") ;
+                            } else throw std::invalid_argument("Seleção de feitiço invalida ") ;
                         } catch (std::invalid_argument &t){
                             std::cout << t.what() << std::endl;
                         }
