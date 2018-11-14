@@ -1,6 +1,7 @@
 #include "game.h"
 #include <iostream>
 #include "spells.h"
+#include <vector>
 
 
 std::vector<Spell *> instantiate_spell(){
@@ -88,10 +89,10 @@ std::string choice_of_patronum(){
 	patronuns.push_back("Lobo");
 	patronuns.push_back("Cavalo");
 	int number_patronum = rand() % patronuns.size();
-	std::string patronuns = patronuns[number_patronum];
-	std::cout << "Cada bruxo possui um patronuns, o seu patronuns e um(a): " << patronuns << std::endl;
+	std::string patronum = patronuns[number_patronum];
+	std::cout << "Cada bruxo possui um patronuns, o seu patronuns e um(a): " << patronum << std::endl;
 	std::cout << std::endl;
-	return patronuns;
+	return patronum;
 }
 
 void initialize_player(){
