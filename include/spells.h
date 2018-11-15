@@ -17,6 +17,7 @@ public:
 	Spell(std::string name, int level, int hp, int mp, int strenght, int constituion, int dexterity);
 	virtual ~Spell();
 	std::string get_name();
+	int get_level();
 	int get_hp_dmg();
 	int get_mp_dmg();
 	int get_strenght_dmg();

@@ -15,6 +15,10 @@ Spell::~Spell(){
 
 }
 
+int Spell::get_level(){
+	return this->_level;
+}
+
 std::string Spell::get_name(){
 	return this->_name;
 }
