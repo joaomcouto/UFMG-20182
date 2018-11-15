@@ -6,15 +6,18 @@
 class Object {
 protected:
 	std::string _name;
-	std::string _efect;
-	int _quant;
+	int level;
+	int efect_hp;
+ 	int efect_mp;
+ 	int efect_strenght ; 
+ 	int efect_constitution ;
+ 	int efect_dexterity ;
 
 public:
-	Object(std::string name, std::string efect, int quant);
+	Object(std::string name, int _level, int _hp, int _mp,  int _strenght, int _constituion, int _dexterity);
 	virtual ~Object();
 	std::string get_name();
-	int get_quant();
-	void set_quant();
+	int get_level();
 };
 
 #endif
