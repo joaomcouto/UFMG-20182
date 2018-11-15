@@ -3,13 +3,37 @@
 #include <iostream>
 #include <string>
 
-Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Object *> _potions, std::vector<Object *> _artifacts):
+Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts):
 	Character(name, level, hp, mp, str, cons, dex, _spells), _house(house), _wand(wand), _patronum(patronum){
 	this->_potionsVector = instantiate_potions(_potions);
 	this->_artifactsVector = instantiate_artifacts(_artifacts);
 }
 
 Wizard::~Wizard(){}
+
+std::vector<Potions *> Wizard::instantiate_potions(std::vector<Potions *> _potions){
+	const int potions_size = _potions.size();
+
+	std::vector<Potions *> Potion;
+
+    for (int i = 0; i < potions_size; i++){
+		if(_potions[i]->get_level() == 1){
+			Potion.push_back(_potions[i]);
+	}
+	return Potion;
+}
+
+std::vector<Artifacts *> Wizard::instantiate_artifacts(std::vector<Artifacts *> _artifacts){
+	const int artifacts_size = _artifacts.size();
+
+	std::vector<Artifacts *> Artifact;
+
+    for (int i = 0; i < artifacts_size; i++){
+		if(_artifacts[i]->get_level() == 1){
+			Artifact.push_back(_artifacts[i]);
+	}
+	return Artifact;
+}
 
 std::string Wizard::getHouse(){
 	return this->_house;
@@ -33,15 +57,6 @@ std::vector<Potions *> Wizard::getPotionsVector(){
 
 std::vector<Artifacts *> Wizard::getArtifactsVector(){
 	return this->_artifactsVector;
-}
-
-
-std::vector<Object *> instantiate_potions(std::vector<Object *> _potions){
-
-}
-
-std::vector<Artifacts *> instantiate_artifacts(std::vector<Object *> _artifacts){
-
 }
 
 void Wizard::printPlayerSpells() { 

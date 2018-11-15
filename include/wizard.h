@@ -18,17 +18,12 @@ class Wizard : public Character{
 	std::vector<Artifacts *> _artifactsVector;
 
  public:
-  	Wizard(std::string name, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Object *> _potions, std::vector<Object *> _artifacts);
+  	Wizard(std::string name, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts);
 	~Wizard();
 
-	std::vector<Potions *> instantiate_potions(std::vector<Object *> _potions);
-	std::vector<Artifacts *> instantiate_artifacts(std::vector<Object *> _artifacts);
+	std::vector<Potions *> instantiate_potions(std::vector<Potions *> _potions);
+	std::vector<Artifacts *> instantiate_artifacts(std::vector<Artifacts *> _artifacts);
 
-	void printPlayerSpells();
-	void printPlayerPotions();
-	void printPlayerArtifacts();
-
-	void set_quantPotions(std::vector<Object*> potion, int i);
 	std::string getHouse();
 	std::string getWand();
 	std::string getPatronum();
@@ -36,6 +31,11 @@ class Wizard : public Character{
 	std::vector<Potions *> getPotionsVector();
 	std::vector<Artifacts *> getArtifactsVector();
 
+	void printPlayerSpells();
+	void printPlayerPotions();
+	void printPlayerArtifacts();
+
+	void set_quantPotions(std::vector<Object*> potion, int i);
 	void incrementSkill(int selection);
 };
 #endif
