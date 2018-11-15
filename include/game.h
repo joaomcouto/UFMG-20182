@@ -17,6 +17,6 @@ std::string choice_of_patronum();
 void initialize_player();
 void texts2();
 std::vector<Spell *> instantiate_spell();
-std::vector<Object*> instantiate_artifacts();
-std::vector<Object*> instantiate_potions();
+std::vector<Artifacts *> instantiate_artifacts();
+std::vector<Potions *> instantiate_potions();
 #endif

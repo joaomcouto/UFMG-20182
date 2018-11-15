@@ -18,12 +18,12 @@ std::vector<Spell *> instantiate_spell(){
     return spell;
 }
 
-std::vector<Object*> instantiate_artifacts(){
-	std::vector<Object*> object;
+std::vector<Artifacts *> instantiate_artifacts(){
+	std::vector<Artifacts *> object;
 
-    Object *ViraTempo = new Artifacts("Vira-Tempo", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
-	Object *Capa = new Artifacts("Capa da Invisibilidade", 3, 0, 0, 0, 10, 0, 1, true ,"sumir");
-	Object *VarinhaDasVarinhas = new Artifacts("Varinha das Varinhas", 4, 0, 0, 10, 0, 10, 2, true, "dano");
+    Artifacts *ViraTempo = new Artifacts("Vira-Tempo", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
+	Artifacts *Capa = new Artifacts("Capa da Invisibilidade", 3, 0, 0, 0, 10, 0, 1, true ,"sumir");
+	Artifacts *VarinhaDasVarinhas = new Artifacts("Varinha das Varinhas", 4, 0, 0, 10, 0, 10, 2, true, "dano");
 
     object.push_back(ViraTempo);
     object.push_back(Capa);
@@ -32,12 +32,12 @@ std::vector<Object*> instantiate_artifacts(){
     return object;
 }
 
-std::vector<Object*> instantiate_potions(){
-	std::vector<Object*> object;
+std::vector<Potions *> instantiate_potions(){
+	std::vector<Potions *> object;
 
-    Object *Revigora = new Potions("Pocao Revigorante", 1, 10, 0, 0, 0, 0, 3);
-	Object *AntidotoAranha = new Potions("Antidoto contra veneno de aranha", 1, 10, 0, 0, 0, 0, 1);
-	Object *AntidotoSerpente = new Potions("Antido contra veneno de serpente", 2, 10, 0, 0, 0, 0, 1);
+    Potions *Revigora = new Potions("Pocao Revigorante", 1, 10, 0, 0, 0, 0, 3);
+	Potions *AntidotoAranha = new Potions("Antidoto contra veneno de aranha", 1, 10, 0, 0, 0, 0, 1);
+	Potions *AntidotoSerpente = new Potions("Antido contra veneno de serpente", 2, 10, 0, 0, 0, 0, 1);
 
     object.push_back(Revigora);
 	object.push_back(AntidotoAranha);
