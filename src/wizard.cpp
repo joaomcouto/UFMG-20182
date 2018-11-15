@@ -27,6 +27,14 @@ std::vector<Spell *> Wizard::getSpellVector(){
 	return this->_spellVector ;
 }
 
+std::vector<Potions *> Wizard::getPotionsVector(){
+	return this->_potionsVector;
+}
+
+std::vector<Artifacts *> Wizard::getArtifactsVector(){
+	return this->_artifactsVector;
+}
+
 
 std::vector<Object *> instantiate_potions(std::vector<Object *> _potions){
 

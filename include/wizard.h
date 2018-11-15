@@ -16,7 +16,7 @@ class Wizard : public Character{
 	int _skillPoints ;
 	std::vector<Potions *> _potionsVector;
 	std::vector<Artifacts *> _artifactsVector;
-	
+
  public:
   	Wizard(std::string name, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Object *> _potions, std::vector<Object *> _artifacts);
 	~Wizard();
@@ -27,11 +27,15 @@ class Wizard : public Character{
 	void printPlayerSpells();
 	void printPlayerPotions();
 	void printPlayerArtifacts();
+
 	void set_quantPotions(std::vector<Object*> potion, int i);
 	std::string getHouse();
 	std::string getWand();
 	std::string getPatronum();
-	std::vector<Spell *> getSpellVector();
+	std::vector<Spell *> getSpellVector();  
+	std::vector<Potions *> getPotionsVector();
+	std::vector<Artifacts *> getArtifactsVector();
+
 	void incrementSkill(int selection);
 };
 #endif
