@@ -16,6 +16,20 @@ std::vector<Spell *> instantiate_spell(){
     return spell;
 }
 
+std::vector<Object*> instantiate_artifacts(){
+	std::vector<Object*> object;
+
+    Object *ViraTempo = new Artifacts("Vira-Tempo", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
+	Object *Capa = new Artifacts("Capa da Invisibilidade", 3, 0, 0, 0, 10, 0, 1, true ,"sumir");
+	Object *VarinhaDasVarinhas = new Artifacts("Varinha das Varinhas", 4, 0, 0, 10, 0, 10, 2, true, "dano");
+
+    object.push_back(ViraTempo);
+    object.push_back(Capa);
+	object.push_back(VarinhaDasVarinhas);
+
+    return object;
+}
+
 std::string texts1(){
 	std::string name;
 	std::cout << "Please, enter your wizard/witch's name " << std::endl;

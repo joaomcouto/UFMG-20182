@@ -6,7 +6,7 @@
 class Potions : public Object{
 protected:
     int _quant;
-private:
+public:
     Potions(std::string name, int _level, int _hp, int _mp,  int _strenght, int _constituion, int _dexterity, int quant);
     virtual ~Potions();
     int get_quant();
