@@ -8,6 +8,8 @@ int main (){
 	std::vector<Potions *> potion = instantiate_potions();
 	std::vector<Artifacts *> artifact = instantiate_artifacts();
 	Wizard *player = initialize_player(spell, potion, artifact);
+	player->printPlayerPotions();
+	player->printPlayerSpells();
 	
 	return 0;
 }

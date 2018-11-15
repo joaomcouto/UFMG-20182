@@ -49,24 +49,27 @@ int Character::getDexterity(){
 }
 
 void Character::setLevel(){
-	 _baseStats->level++;
+	 _baseStats.level++;
 }
 
 void Character::setHP(int i){
-	 _baseStats->HP += i;
+	 _baseStats.hp += i;
 }
 
 void Character::setMP(int i){
-	 _baseStats->MP += i;
+	 _baseStats.mp += i;
 }
+
 void Character::setStrenght(int i){
-	 _baseStats->strenght += i;
+	 _baseStats.strenght += i;
 }
+
 void Character::setConstitution(int i){
-	 _baseStats->constitution += i;
+	 _baseStats.constitution += i;
 }
+
 void Character::setDexterity(int i){
-	 _baseStats->dexterity += i;
+	 _baseStats.dexterity += i;
 }
 
 

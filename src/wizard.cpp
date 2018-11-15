@@ -17,7 +17,7 @@ std::vector<Potions *> Wizard::instantiate_potions(std::vector<Potions *> _potio
 	std::vector<Potions *> Potion;
 
     for (int i = 0; i < potions_size; i++){
-		if(_potions[i]->get_level() == 1){
+		if(_potions[i]->get_level() == 1)
 			Potion.push_back(_potions[i]);
 	}
 	return Potion;
@@ -29,7 +29,7 @@ std::vector<Artifacts *> Wizard::instantiate_artifacts(std::vector<Artifacts *> 
 	std::vector<Artifacts *> Artifact;
 
     for (int i = 0; i < artifacts_size; i++){
-		if(_artifacts[i]->get_level() == 1){
+		if(_artifacts[i]->get_level() == 1)
 			Artifact.push_back(_artifacts[i]);
 	}
 	return Artifact;
@@ -88,7 +88,7 @@ void Wizard::printPlayerArtifacts(){
     std::cout <<std::endl;
 }
 
-void set_quantPotions(std::vector<Potion *> potion, int i, int quant){
+void set_quantPotions(std::vector<Potions *> potion, int i, int quant){
 	potion[i]->set_quant(quant);
 }
 void Wizard::incrementSkill(int selection) {
