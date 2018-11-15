@@ -8,6 +8,15 @@ Character::Character(std::string name, int level, int hp, int mp, int str, int c
 Character::~Character(){}
 
 std::vector<Spell *> Character::instantiate_spells(std::vector<Spell *> _spells){
+	const int spells_size = _spells.size();
+
+	std::vector<Spell *> Spells;
+
+    for (int i = 0; i < spells_size; i++){
+		if(_spells[i]->get_level() == 1){
+			Spells.push_back(_spells[i]);
+	}
+	return Spells;
 
 }
 
@@ -27,7 +36,6 @@ int Character::getMP(){
 	return this->_baseStats.mp;
 }
 
-
 int Character::getStrenght(){
 	return this->_baseStats.strenght ; 
 }
@@ -38,6 +46,27 @@ int Character::getConstitution(){
 
 int Character::getDexterity(){
 	return this->_baseStats.dexterity ;
+}
+
+void Character::setLevel(){
+	 _baseStats->level++;
+}
+
+void Character::setHP(int i){
+	 _baseStats->HP += i;
+}
+
+void Character::setMP(int i){
+	 _baseStats->MP += i;
+}
+void Character::setStrenght(int i){
+	 _baseStats->strenght += i;
+}
+void Character::setConstitution(int i){
+	 _baseStats->constitution += i;
+}
+void Character::setDexterity(int i){
+	 _baseStats->dexterity += i;
 }
 
 

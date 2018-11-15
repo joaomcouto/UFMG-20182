@@ -9,9 +9,9 @@ typedef struct {
 	int level;
  	int hp;
  	int mp;
- 	int strenght ; 
- 	int constitution ;
- 	int dexterity ;
+ 	int strenght; 
+ 	int constitution;
+ 	int dexterity;
 } Stats ;
 
 class Character{
@@ -22,9 +22,10 @@ class Character{
 
  public:
 	Character(std::string name,int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells);
- 	~Character();
+ 	virtual ~Character();
 
 	std::vector<Spell *> instantiate_spells(std::vector<Spell *> _spells);
+
 	std::string getName();
 	int getLevel();
 	int getHP();
@@ -32,6 +33,12 @@ class Character{
 	int getStrenght();
 	int getConstitution();
 	int getDexterity();
- 	std::string getType();
+	
+	void setLevel();
+	void setHP(int i);
+	void setMP(int i);
+	void setStrenght(int i);
+	void setConstitution(int i);
+	void setDexterity(int i);
 };
 #endif
