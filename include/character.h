@@ -2,24 +2,29 @@
 #define PDS2_CHARACTER_H
 
 #include <string>
+#include <vector>
+#include "spells.h"
 
 typedef struct {
 	int level;
  	int hp;
  	int mp;
- 	int strenght ; 
- 	int constitution ;
- 	int dexterity ;
+ 	int strenght; 
+ 	int constitution;
+ 	int dexterity;
 } Stats ;
 
 class Character{
  protected: 
 	std::string _name;
-	std::string _type;
 	Stats _baseStats ; 
+	std::vector<Spell *> _spellVector ;
+
  public:
-	Character(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex);
- 	~Character();
+	Character(std::string name,int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells);
+ 	virtual ~Character();
+
+	std::vector<Spell *> instantiate_spells(std::vector<Spell *> _spells);
 
 	std::string getName();
 	int getLevel();
@@ -28,6 +33,12 @@ class Character{
 	int getStrenght();
 	int getConstitution();
 	int getDexterity();
- 	std::string getType();
+	
+	void setLevel();
+	void setHP(int i);
+	void setMP(int i);
+	void setStrenght(int i);
+	void setConstitution(int i);
+	void setDexterity(int i);
 };
 #endif

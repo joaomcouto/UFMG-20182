@@ -1,20 +1,15 @@
 #include <iostream>	
 #include <time.h>
-#include "inventory.h"
 #include "game.h"
 
 int main (){
 	srand (time(NULL));
-	choice_of_wand();
-	choice_of_house();
-	Inventory *inventory = new Inventory();
-	std::vector<Objeto*> object = inventory->instantiate_object();
-	//std::vector<Spell*> spell = inventory->instantiate_spell();
-	inventory->print_object(object);
-	inventory->set_object(object, 1);
-//	inventory->print_spells(spell);
-
-	for (auto Objeto : object)
-		delete Objeto;
-	delete inventory;
+	std::vector<Spell *> spell = instantiate_spell();
+	std::vector<Potions *> potion = instantiate_potions();
+	std::vector<Artifacts *> artifact = instantiate_artifacts();
+	Wizard *player = initialize_player(spell, potion, artifact);
+	player->printPlayerPotions();
+	player->printPlayerSpells();
+	
+	return 0;
 }

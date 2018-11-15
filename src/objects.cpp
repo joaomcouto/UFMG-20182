@@ -1,22 +1,23 @@
 #include "objects.h"
 
-Objeto::Objeto(std::string name, std::string efect, int quant){
+Object::Object(std::string name, int _level, int _hp, int _mp,  int _strenght, int _constituion, int _dexterity){
 	this->_name = name;
-	this->_efect = efect;
-	this->_quant = quant;
+	this->level = _level;
+	this->efect_hp = _hp;
+ 	this->efect_mp = _mp;
+ 	this->efect_strenght = _strenght; 
+ 	this->efect_constitution = _constituion;
+ 	this->efect_dexterity = _dexterity;
 }
 
-Objeto::~Objeto(){
+Object::~Object(){
 
 }
-std::string Objeto::get_name(){
+std::string Object::get_name(){
 	return this->_name;
 
 }
-int Objeto::get_quant(){
-	return this->_quant;
-}
 
-void Objeto::set_quant(){
-	this->_quant--;
+int Object::get_level(){
+	return this->level;
 }
