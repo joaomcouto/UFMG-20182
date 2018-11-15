@@ -4,7 +4,10 @@
 #include <string>
 
 Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Object *> _potions, std::vector<Object *> _artifacts):
-	Character(name, level, hp, mp, str, cons, dex, _spells), _house(house), _wand(wand), _patronum(patronum), _potionsVector(instantiate_potion(_potions)), _artifactsVector(instantiate_artifacts(_artifacts)) {}
+	Character(name, level, hp, mp, str, cons, dex, _spells), _house(house), _wand(wand), _patronum(patronum){
+	this->_potionsVector = instantiate_potions(_potions);
+	this->_artifactsVector = instantiate_artifacts(_artifacts);
+}
 
 Wizard::~Wizard(){}
 

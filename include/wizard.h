@@ -14,10 +14,11 @@ class Wizard : public Character{
 	std::string _wand;
 	std::string _patronum;
 	int _skillPoints ;
-	std::vector<Object *> _potionsVector;
-	std::vector<Object *> _artifactsVector;
+	std::vector<Potions *> _potionsVector;
+	std::vector<Artifacts *> _artifactsVector;
+	
  public:
-  	Wizard(std::string name, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Object *> _potions, std::vector<Object *> _artifacts);
+  	Wizard(std::string name, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Object *> _potions, std::vector<Object *> _artifacts);
 	~Wizard();
 
 	std::vector<Potions *> instantiate_potions(std::vector<Object *> _potions);
