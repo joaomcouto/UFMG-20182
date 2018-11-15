@@ -1,17 +1,17 @@
-#ifndef OBJETO_H
-#define OBJETO_H
+#ifndef OBJECT_H
+#define OBJECT_H
 
 #include <string>
 
-class Objeto {
+class Object {
 protected:
 	std::string _name;
 	std::string _efect;
 	int _quant;
 
 public:
-	Objeto(std::string name, std::string efect, int quant);
-	virtual ~Objeto();
+	Object(std::string name, std::string efect, int quant);
+	virtual ~Object();
 	std::string get_name();
 	int get_quant();
 	void set_quant();

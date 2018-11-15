@@ -1,5 +1,5 @@
-#ifndef FEITICOS_H
-#define FEITICOS_H
+#ifndef SPELLS_H
+#define SPELLS_H
 
 #include <string>
 
