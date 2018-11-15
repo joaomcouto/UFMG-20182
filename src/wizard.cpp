@@ -3,8 +3,8 @@
 #include <iostream>
 #include <string>
 
-Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum) :
- Character(name, level, hp, mp, str, cons, dex), _house(house), _wand(wand), _patronum(patronum) {};
+Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Object *> _potions, std::vector<Object *> _artifacts):
+	Character(name, level, hp, mp, str, cons, dex, _spells), _house(house), _wand(wand), _patronum(patronum), _potionsVector(instantiate_potion(_potions)), _artifactsVector(instantiate_artifacts(_artifacts)) {}
 
 Wizard::~Wizard(){}
 
@@ -24,6 +24,15 @@ std::vector<Spell *> Wizard::getSpellVector(){
 	return this->_spellVector ;
 }
 
+
+std::vector<Object *> instantiate_potions(std::vector<Object *> _potions){
+
+}
+
+std::vector<Artifacts *> instantiate_artifacts(std::vector<Object *> _artifacts){
+
+}
+
 void Wizard::printPlayerSpells() { 
 	int i = 1 ;
 	for ( Spell* spell : this->_spellVector){
@@ -31,8 +40,32 @@ void Wizard::printPlayerSpells() {
     	i++ ;
     }
 } 
-void printPlayerPotions() {;}
+void Wizard::printPlayerPotions() {
+	const int object_size = this-> _potionsVector.size();
 
+    std::cout << "Potions:" << std::endl;
+
+    for (int i = 0; i < object_size; i++)
+	   std::cout << "[" << i << "] " <<  _potionsVector[i]->get_name() << " " << _potionsVector[i]->get_quant() << std::endl;
+
+    std::cout <<std::endl;
+}
+
+void Wizard::printPlayerArtifacts(){
+	const int object_size = this-> _artifactsVector.size();
+
+    std::cout << "Artifacts:" << std::endl;
+
+    for (int i = 0; i < object_size; i++)
+	   std::cout << "[" << i << "] " <<  _artifactsVector[i]->get_name() << " " << _artifactsVector[i]->get_exist() << std::endl;
+
+    std::cout <<std::endl;
+}
+
+void set_quantPotions(std::vector<Object*> potion, int i){
+
+
+}
 void Wizard::incrementSkill(int selection) {
 	switch(selection){
 		case 1:
