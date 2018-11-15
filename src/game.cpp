@@ -1,10 +1,5 @@
 #include "game.h"
 #include <iostream>
-#include "spells.h"
-#include "potions.h"
-#include "artifacts.h"
-#include <vector>
-
 
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
@@ -155,11 +150,14 @@ std::string choice_of_patronum(){
 	return patronum;
 }
 
-void initialize_player(){
+Wizard* initialize_player(std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts){
 	std::string name = texts1();
 	std::string wand = choice_of_wand();
 	std::string house = choice_of_house();
-	std::string patronuns = choice_of_patronum();
-	//Wizard *player = new Wizard(name,1, 100, 100, 100, 100, 100, house, wand, patronuns);
+	std::string patronum = choice_of_patronum();
+	Wizard *player = new Wizard(name, 1, 100, 0, 1, 1, 1, house, wand, patronum, _spells, _potions, _artifacts);
+
+	return player;
 }
+
 void texts2(){}
