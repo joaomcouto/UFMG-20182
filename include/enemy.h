@@ -8,9 +8,9 @@ class Enemy : public Character{
 protected:
   std::string _type ;
 public:
-   Enemy(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex);
+  Enemy(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells);
  	~Enemy();
-   void decrementSkill(int i);	
+  void decrementSkill(int i);	
    
  
 };
