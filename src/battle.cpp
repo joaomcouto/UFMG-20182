@@ -44,7 +44,9 @@ void Battle::round(){
                         }
                     }
                 } else if (menuIndex == 2 ){ 
-                        //idem pra pocoes
+                    while (1){
+                        std::cout << "[0] "<<  "Back to main menu" << std::endl ;
+                    }
                 } else { 
                     throw std::invalid_argument("Invalid menu index, try again") ; 
                 }
