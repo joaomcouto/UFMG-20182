@@ -3,6 +3,7 @@
 #include "spells.h"
 #include <vector>
 
+
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
 
@@ -17,30 +18,30 @@ std::vector<Spell *> instantiate_spell(){
 
 std::string texts1(){
 	std::string name;
-	std::cout << "Escreva o seu nome bruxo: " << std::endl;
+	std::cout << "Please, enter your wizard/witch's name " << std::endl;
 	std::cin >> name;
 	std::cout << std::endl;
-	std::cout << "Escola de Magia e Bruxaria de Hogwarts" << std::endl;
-	std::cout << "  Diretor: Alvo Dumbledore" << std::endl;
-	std::cout << "Prezado " << name << ", " << std::endl;
-	std::cout << "Temos o prazer de informar que voce tem uma vaga na Escola de Magia e Bruxaria de Hogwats." << std::endl;
-	std::cout << "Primeiramente voce precisa adquirir seus livros e equipamentos necessarios." << std::endl;
-	std::cout << "Atenciosamente," << std::endl;
+	std::cout << "Hogwarts School of Witchcraft and Wizardry" << std::endl;
+	std::cout << "  Headmaster: Albus Dumbledore" << std::endl;
+	std::cout << "Dear" << name << ", " << std::endl;
+	std::cout << "It is with great pleasure that we're hereby informing that you've been officialy admitted in the great Hogwarts School of Witchcraft and Wizardry." << std::endl;
+	std::cout << "First things first, you must acquire the necessary books and equipments." << std::endl;
+	std::cout << "Yours sincerely, " << std::endl;
 	std::cout << "Minerva McGonagall" << std::endl;
 	std::cout << std::endl;
 	return name;
 }
 std::string choice_of_wand(){
-	std::cout << "Bem-vindo a Olivaras, e aqui que voce ira adquirir sua primeira varinha." << std::endl;
+	std::cout << "Welcome to Olivanders, here, you shall acquire your very first wand." << std::endl;
 	std::vector<std::string> woods;
-	woods.push_back("Azevinho");
-	woods.push_back("Salgueiro");
-	woods.push_back("Videira");
-	woods.push_back("Nogueira");
-	woods.push_back("Olmo");
-	woods.push_back("Cerejeira");
-	woods.push_back("Colubrina");
-	woods.push_back("Jacaranda");
+	woods.push_back("Holly wood");
+	woods.push_back("Willow tree wood");
+	woods.push_back("Vine tree wood");
+	woods.push_back("Walnut wood");
+	woods.push_back("Olmo wood");
+	woods.push_back("Cherry tree wood");
+	woods.push_back("Colubrina wood");
+	woods.push_back("Jacaranda wood");
 	woods.push_back("Espinho-Negro");
 	woods.push_back("Freixo");
 	std::vector<std::string> cores;
@@ -54,22 +55,22 @@ std::string choice_of_wand(){
 	cores.push_back(" Chifre de Serpente Chifruda");
 	int number_wood =  rand() % woods.size();
 	int number_core =  rand() % cores.size();
-	std::string wand = woods[number_wood] + " e" + cores[number_core];
-	std::cout << "Sua varinha e: " << wand << std::endl;
+	std::string wand = woods[number_wood] + " and " + cores[number_core];
+	std::cout << "Your wand is made out of  " << wand << std::endl;
 	std::cout << std::endl;
 	return wand;
 
 }
 std::string choice_of_house(){
-	std::cout << "Bem-vindo a Hogwats. O chapeu seletor ira decidir a sua casa" << std::endl;
+	std::cout << "Welcome to Hogwarts. The sorting hat shall decide what house is best suited for you" << std::endl;
 	std::vector<std::string> houses;
-	houses.push_back("Grifinoria");
-	houses.push_back("Sonserina");
-	houses.push_back("Corvinal");
-	houses.push_back("Lufa-Lufa");
+	houses.push_back("Gryffindor");
+	houses.push_back("Slytherin");
+	houses.push_back("Ravenclaw");
+	houses.push_back("Hufflepuff");
 	int number_house = rand() % houses.size();
 	std::string house = houses[number_house];
-	std::cout << "Sua casa e: " << house << std::endl;
+	std::cout << "Your house is: " << house << std::endl;
 	std::cout << std::endl;
 	return house;
 
@@ -77,19 +78,19 @@ std::string choice_of_house(){
 
 std::string choice_of_patronum(){
 	std::vector<std::string> patronuns;
-	patronuns.push_back("Rato");
-	patronuns.push_back("Fenix");
-	patronuns.push_back("Raposa");
-	patronuns.push_back("Lontra");
-	patronuns.push_back("Veado");
-	patronuns.push_back("Lebre");
-	patronuns.push_back("Javali");
-	patronuns.push_back("Gato");
-	patronuns.push_back("Lobo");
-	patronuns.push_back("Cavalo");
+	patronuns.push_back("Rat");
+	patronuns.push_back("Phoenix");
+	patronuns.push_back("Fox");
+	patronuns.push_back("Otter");
+	patronuns.push_back("Deer");
+	patronuns.push_back("Hate");
+	patronuns.push_back("Boar");
+	patronuns.push_back("Cat");
+	patronuns.push_back("Wolf");
+	patronuns.push_back("Horse");
 	int number_patronum = rand() % patronuns.size();
 	std::string patronum = patronuns[number_patronum];
-	std::cout << "Cada bruxo possui um patronuns, o seu patronuns e um(a): " << patronum << std::endl;
+	std::cout << "Every witch and wizard has their very own patronus, yours shall take the form of a: " << patronum << std::endl;
 	std::cout << std::endl;
 	return patronum;
 }

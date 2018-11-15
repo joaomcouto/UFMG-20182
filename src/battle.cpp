@@ -24,21 +24,21 @@ void Battle::round(){
         int selectionIndex ; 
         while(1){ //Deemed necessary, player might return to menu selection menu
             try { 
-                std::cout << "Escolha:" << std::endl << "[1] Feitiços" << std::endl << "[2] Poções" << std::endl ; 
+                std::cout << "Make a choice:" << std::endl << "[1] Spells" << std::endl << "[2] Inventory" << std::endl ; 
                 std::cin >> menuIndex ; 
                 if (menuIndex == 1 ){ 
                     //Print out spell options as well as option to return to menu. If a spell is selected, call the move function with it and terminate de round
                     while(1){ //Done
                         try {
-                            std::cout << "[0] "<<  "Voltar" << std::endl ;
+                            std::cout << "[0] "<<  "Back to main menu" << std::endl ;
                             _player->printPlayerSpells() ;
                              std::cin >> selectionIndex ; 
                             if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
-           /*Fix it!!*/      // move(_player->getSpellVector()[selectionIndex-1]) ; 
+                                move(_player->getSpellVector()[selectionIndex-1]) ; 
                                 return ;
                             } else if (selectionIndex == 0 ) {
                                 break ;
-                            } else throw std::invalid_argument("Seleção de feitiço invalida ") ;
+                            } else throw std::invalid_argument("Invalid spell index, try again ") ;
                         } catch (std::invalid_argument &t){
                             std::cout << t.what() << std::endl;
                         }
@@ -46,7 +46,7 @@ void Battle::round(){
                 } else if (menuIndex == 2 ){ 
                         //idem pra pocoes
                 } else { 
-                    throw std::invalid_argument("Seleção de menu invalida") ; 
+                    throw std::invalid_argument("Invalid menu index, try again") ; 
                 }
                     
             } catch(std::invalid_argument &t) {
