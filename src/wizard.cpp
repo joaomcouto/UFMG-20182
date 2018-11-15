@@ -88,9 +88,8 @@ void Wizard::printPlayerArtifacts(){
     std::cout <<std::endl;
 }
 
-void set_quantPotions(std::vector<Object*> potion, int i){
-
-
+void set_quantPotions(std::vector<Potion *> potion, int i, int quant){
+	potion[i]->set_quant(quant);
 }
 void Wizard::incrementSkill(int selection) {
 	switch(selection){

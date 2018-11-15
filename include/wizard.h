@@ -35,7 +35,7 @@ class Wizard : public Character{
 	void printPlayerPotions();
 	void printPlayerArtifacts();
 
-	void set_quantPotions(std::vector<Object*> potion, int i);
+	void set_quantPotions(std::vector<Potions *> potion, int i, int quant);
 	void incrementSkill(int selection);
 };
 #endif
