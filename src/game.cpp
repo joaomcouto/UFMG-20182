@@ -1,6 +1,8 @@
 #include "game.h"
 #include <iostream>
 #include "spells.h"
+#include "potions.h"
+#include "artifacts.h"
 #include <vector>
 
 
@@ -26,6 +28,20 @@ std::vector<Object*> instantiate_artifacts(){
     object.push_back(ViraTempo);
     object.push_back(Capa);
 	object.push_back(VarinhaDasVarinhas);
+
+    return object;
+}
+
+std::vector<Object*> instantiate_potions(){
+	std::vector<Object*> object;
+
+    Object *Revigora = new Potions("Pocao Revigorante", 1, 10, 0, 0, 0, 0, 3);
+	Object *AntidotoAranha = new Potions("Antidoto contra veneno de aranha", 1, 10, 0, 0, 0, 0, 1);
+	Object *AntidotoSerpente = new Potions("Antido contra veneno de serpente", 2, 10, 0, 0, 0, 0, 1);
+
+    object.push_back(Revigora);
+	object.push_back(AntidotoAranha);
+	object.push_back(AntidotoSerpente);
 
     return object;
 }
