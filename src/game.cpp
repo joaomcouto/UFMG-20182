@@ -83,7 +83,7 @@ std::string choice_of_patronum(){
 	patronuns.push_back("Fox");
 	patronuns.push_back("Otter");
 	patronuns.push_back("Deer");
-	patronuns.push_back("Hate");
+	patronuns.push_back("Hare");
 	patronuns.push_back("Boar");
 	patronuns.push_back("Cat");
 	patronuns.push_back("Wolf");
