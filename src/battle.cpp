@@ -6,11 +6,11 @@
 #include <string>
 
 Battle::Battle(Wizard * player , Character * enemy){
-    this->_round = 1 ;
-    this->_ended = 0 ; 
-    this->_player = player ; 
-    this->_enemy = enemy;
-    if (player->getDexterity() > enemy->getDexterity()){
+    this->_round = 1 ; //Numero do round
+    this->_ended = 0 ;  //Booleano de acabou
+    this->_player = player ;  //Pointer para a instancia de player
+    this->_enemy = enemy; //Pointer para a instancia de enermy
+    if (player->getDexterity() > enemy->getDexterity()){ //Define quem vai ter o primeiro turno
         this->_playerturn = 1 ; 
     } else {
         this->_playerturn = 0 ;
@@ -34,7 +34,7 @@ void Battle::round(){
                             _player->printPlayerSpells() ;
                              std::cin >> selectionIndex ; 
                             if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
-                                move(_player->getSpellVector()[selectionIndex-1]) ; 
+                                //move(_player->getSpellVector()[selectionIndex-1]) ; 
                                 return ;
                             } else if (selectionIndex == 0 ) {
                                 break ;
