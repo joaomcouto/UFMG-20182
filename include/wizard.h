@@ -12,9 +12,8 @@ class Wizard : public Character{
 	std::string _wand;
 	std::string _patronum;
 	int _skillPoints ;
-	std::vector<Spell *>_spellVector ;
  public:
-  	Wizard(std::string name, std::string type, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum);
+  	Wizard(std::string name, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum);
 	~Wizard();
 	void printPlayerSpells() ;
 	void printPlayerPotions();

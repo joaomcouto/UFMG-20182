@@ -1,8 +1,8 @@
 #include "character.h"
 #include <string>
 
-Character::Character(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex) : 
-_baseStats{level, hp, mp, str, cons, dex}, _name(name),_type(type) {} 
+Character::Character(std::string name, int level, int hp, int mp, int str, int cons, int dex) : 
+_baseStats{level, hp, mp, str, cons, dex}, _name(name) {} 
 
 Character::~Character(){}
 
@@ -35,7 +35,5 @@ int Character::getDexterity(){
 	return this->_baseStats.dexterity ;
 }
 
-std::string Character::getType(){
-	return this->_type; 
-}
+
 

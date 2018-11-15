@@ -3,8 +3,8 @@
 #include <iostream>
 #include <string>
 
-Wizard::Wizard(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum) :
- Character(name, type, level, hp, mp, str, cons, dex), _house(house), _wand(wand), _patronum(patronum) {};
+Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum) :
+ Character(name, level, hp, mp, str, cons, dex), _house(house), _wand(wand), _patronum(patronum) {};
 
 Wizard::~Wizard(){}
 

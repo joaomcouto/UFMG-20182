@@ -15,10 +15,10 @@ typedef struct {
 class Character{
  protected: 
 	std::string _name;
-	std::string _type;
 	Stats _baseStats ; 
+	std::vector<Spell *> _spellVector ;
  public:
-	Character(std::string name, std::string type, int level, int hp, int mp, int str, int cons, int dex);
+	Character(std::string name,int level, int hp, int mp, int str, int cons, int dex);
  	~Character();
 
 	std::string getName();
