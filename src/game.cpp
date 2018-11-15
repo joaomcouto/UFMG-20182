@@ -7,7 +7,7 @@
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
 
-    Spell * Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
+    Spell *Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
     Spell *ExpectroPatronum = new Spell("Expectro Patronum", 3, 50, 20, 20, 30, 40);
 
     spell.push_back(Expelliarmus);
