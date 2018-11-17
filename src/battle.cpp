@@ -45,17 +45,62 @@ void Battle::round(){
                         }
                     }
                 } else if (menuIndex == 2 ){ 
+                    int secondaryMenuIndex ;
                     while (1){
-                        std::cout << "[0] "<<  "Back to main menu" << std::endl ;
+                        try{
+                            std::cout << "[0] "<<  "Back to main menu" << std::endl ;
+                            std::cout << "Make a choice:" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl ; 
+                            std::cin>> secondaryMenuIndex ;
+                            if (secondaryMenuIndex == 0){
+                                break ;
+                            } else if (secondaryMenuIndex == 1){
+                                int potionIndex ;
+                                while(1){
+                                    try{
+                                        std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
+                                        _player->printPlayerPotions ;
+                                        std::cin >> potionIndex ;
+                                        if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector.size())){
+                                            //move(_player->getPOtionsVector()[potionsIndex-1]) ; 
+                                            return ;
+                                        } else if (potionIndex == 0 ) {
+                                            break ;
+                                        } else throw std::invalid_argument("Invalid potion index, try again ") ;
+                                    } catch (std::invalid_argument &t) {
+                                        std::cout << t.what() << std::endl;
+                                        }
+                                }
+                            } else if (secondaryMenuIndex == 2 ){
+                                int artifactsIndex ;
+                                while(1){
+                                    try{
+                                        std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
+                                        _player->printPlayerArtifacts ;
+                                        std::cin >> artifactsIndex;
+                                        if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector.size())){
+                                            //move(_player->getArtifactsVector()[artifactsIndex-1]) ; 
+                                            return ;
+                                        } else if (artifactsIndex == 0 ) {
+                                            break ;
+                                        } else throw std::invalid_argument("Invalid potion index, try again ") ;
+                                    } catch(std::invalid_argument &t){
+                                        std::cout << t.what << std::endl ;
+                                    }
+                                }
+                            } else {
+                                throw std::invalid_argument("Invalid secondary menu index, try again") ; 
+                            }
+                        } catch(std::invalid_argument &t){
+                            std::cout << t.what() << std::endl;
+                        }
+                        
                     }
                 } else { 
                     throw std::invalid_argument("Invalid menu index, try again") ; 
                 }
-                    
             } catch(std::invalid_argument &t) {
                 std::cout << t.what() << std::endl;
             }
-
         }
 
 
