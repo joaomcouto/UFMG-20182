@@ -208,7 +208,6 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells){
 void texts2(){
 	//textos sobre o inicio das batalhas/explicacao de jogo?
 }
-<<<<<<< HEAD
 
 void initialize_game(){
 	std::vector<Spell *> spell = instantiate_spell();
@@ -223,5 +222,4 @@ void initialize_game(){
 	//chamar funcao de batalha
 
 }
-=======
->>>>>>> ec7e60213802187039475ce51b4c008397ffa071
+
