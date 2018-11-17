@@ -68,9 +68,9 @@ void Wizard::printPlayerSpells() {
 void Wizard::printPlayerPotions() {
 	const int object_size = this-> _potionsVector.size();
 
-    std::cout << "Potions:" << std::endl;
+	
 
-    for (int i = 0; i < object_size; i++)
+    for (int i = 1; i < object_size; i++)
 	   std::cout << "[" << i << "] " <<  _potionsVector[i]->get_name() << " " << _potionsVector[i]->get_quant() << std::endl;
 
     std::cout <<std::endl;
@@ -79,9 +79,9 @@ void Wizard::printPlayerPotions() {
 void Wizard::printPlayerArtifacts(){
 	const int object_size = this-> _artifactsVector.size();
 
-    std::cout << "Artifacts:" << std::endl;
+    
 
-    for (int i = 0; i < object_size; i++)
+    for (int i = 1; i < object_size; i++)
 	   std::cout << "[" << i << "] " <<  _artifactsVector[i]->get_name() << " " << _artifactsVector[i]->get_exist() << std::endl;
 
     std::cout <<std::endl;
