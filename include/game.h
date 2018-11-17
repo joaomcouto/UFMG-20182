@@ -14,9 +14,10 @@ std::string texts1();
 std::string choice_of_wand();
 std::string choice_of_house();
 std::string choice_of_patronum();
-Wizard* initialize_player( std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts);
+Wizard* initialize_player(std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts);
 void texts2();
 std::vector<Spell *> instantiate_spell();
 std::vector<Artifacts *> instantiate_artifacts();
 std::vector<Potions *> instantiate_potions();
+std::vector<Enemy *> initialize_enemy();
 #endif

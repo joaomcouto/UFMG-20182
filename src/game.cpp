@@ -4,8 +4,8 @@
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
 	//os numeros nao sao reais, somente os niveis mais ou menos
-    Spell *Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
-    Spell *ExpectroPatronum = new Spell("Expectro Patronum", 4, 50, 20, 20, 30, 40);
+	Spell *Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
+	Spell *ExpectroPatronum = new Spell("Expectro Patronum", 4, 50, 20, 20, 30, 40);
 	Spell *Lumus = new Spell("Lumus", 1, 0, 10, 0, 1, 0);
 	Spell *Nox = new Spell("Nox", 1, 0, 10, 0, 1, 0);
 	Spell *Protego = new Spell("Protego", 1, 0, 10, 0, 1, 0);
@@ -23,8 +23,8 @@ std::vector<Spell *> instantiate_spell(){
 	Spell *AvadaKedavra = new Spell("Avada Kedavra", 7, 0, 10, 0, 1, 0);
 
 
-    spell.push_back(Expelliarmus);
-    spell.push_back(ExpectroPatronum);
+	spell.push_back(Expelliarmus);
+	spell.push_back(ExpectroPatronum);
 	spell.push_back(Lumus);
 	spell.push_back(Nox);
 	spell.push_back(Protego);
@@ -46,13 +46,15 @@ std::vector<Spell *> instantiate_spell(){
 std::vector<Artifacts *> instantiate_artifacts(){
 	std::vector<Artifacts *> object;
 
-    Artifacts *ViraTempo = new Artifacts("Vira-Tempo", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
+	Artifacts *ViraTempo = new Artifacts("Vira-Tempo", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
 	Artifacts *Capa = new Artifacts("Capa da Invisibilidade", 3, 0, 0, 0, 10, 0, 1, true ,"sumir");
 	Artifacts *VarinhaDasVarinhas = new Artifacts("Varinha das Varinhas", 4, 0, 0, 10, 0, 10, 2, true, "dano");
+	Artifacts *PedraDaRessureicao = new Artifacts("Pedra da Ressureicao", 4, 30, 10, 0, 0, 0, 1, 1, "vida");
 
-    object.push_back(ViraTempo);
-    object.push_back(Capa);
+	object.push_back(ViraTempo);
+	object.push_back(Capa);
 	object.push_back(VarinhaDasVarinhas);
+	object.push_back(PedraDaRessureicao);
 
     return object;
 }
@@ -60,11 +62,11 @@ std::vector<Artifacts *> instantiate_artifacts(){
 std::vector<Potions *> instantiate_potions(){
 	std::vector<Potions *> object;
 
-    Potions *Revigora = new Potions("Pocao Revigorante", 1, 10, 0, 0, 0, 0, 3);
+	Potions *Revigora = new Potions("Pocao Revigorante", 1, 10, 0, 0, 0, 0, 3);
 	Potions *AntidotoAranha = new Potions("Antidoto contra veneno de aranha", 1, 10, 0, 0, 0, 0, 1);
 	Potions *AntidotoSerpente = new Potions("Antido contra veneno de serpente", 2, 10, 0, 0, 0, 0, 1);
 
-    object.push_back(Revigora);
+	object.push_back(Revigora);
 	object.push_back(AntidotoAranha);
 	object.push_back(AntidotoSerpente);
 
@@ -190,4 +192,10 @@ Wizard* initialize_player(std::vector<Spell *> _spells, std::vector<Potions *> _
 	return player;
 }
 
-void texts2(){}
+std::vector<Enemy *> initialize_enemy(){
+
+}
+
+void texts2(){
+	//textos sobre o inicio das batalhas/explicacao de jogo?
+}
