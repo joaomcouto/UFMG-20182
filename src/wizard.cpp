@@ -3,6 +3,9 @@
 #include <iostream>
 #include <string>
 
+#define NUMBER_INCREMENT_HP_E_MP 10;
+#define NUMBER_INCREMENT_OTHERS 1;
+
 Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts):
 	Character(name, level, hp, mp, str, cons, dex, _spells), _house(house), _wand(wand), _patronum(patronum){
 	this->_potionsVector = instantiate_potions(_potions);
@@ -94,19 +97,19 @@ void set_quantPotions(std::vector<Potions *> potion, int i, int quant){
 void Wizard::incrementSkill(int selection) {
 	switch(selection){
 		case 1:
-			this->_baseStats.hp+=10;
+			this->_baseStats.hp += NUMBER_INCREMENT_HP_E_MP;
 			break;
 		case 2:
-			this->_baseStats.mp+=10;
+			this->_baseStats.mp += NUMBER_INCREMENT_HP_E_MP;
 			break;
 		case 3:
-			this->_baseStats.strenght+=1;
+			this->_baseStats.strenght += NUMBER_INCREMENT_OTHERS;
 			break;
 		case 4:
-			this->_baseStats.constitution+=1;
+			this->_baseStats.constitution += NUMBER_INCREMENT_OTHERS;
 			break;
 		case 5:
-			this->_baseStats.dexterity+=1;
+			this->_baseStats.dexterity += NUMBER_INCREMENT_OTHERS;
 			break;
 	}
 }

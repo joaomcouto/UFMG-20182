@@ -80,7 +80,7 @@ std::string texts1(){
 	std::cout << std::endl;
 	std::cout << "Hogwarts School of Witchcraft and Wizardry" << std::endl;
 	std::cout << "  Headmaster: Albus Dumbledore" << std::endl;
-	std::cout << "Dear" << name << ", " << std::endl;
+	std::cout << "Dear " << name << ", " << std::endl;
 	std::cout << "It is with great pleasure that we're hereby informing that you've been officialy admitted in the great Hogwarts School of Witchcraft and Wizardry." << std::endl;
 	std::cout << "First things first, you must acquire the necessary books and equipments." << std::endl;
 	std::cout << "Yours sincerely, " << std::endl;
@@ -130,20 +130,20 @@ std::string choice_of_wand(){
 	woods.push_back("Yew wood");
 	
 	std::vector<std::string> cores;
-	cores.push_back(" Phoenix feathers");
-	cores.push_back(" Unicorn tail hair");
-	cores.push_back(" Dragon heartstrings");
-	cores.push_back(" Thestral tail hair");
-	cores.push_back(" Chifre de Basilisco");
-	cores.push_back(" Veela hair");
-	cores.push_back(" Troll whisker");
-	cores.push_back(" Basilisk horn");
-	cores.push_back(" Bone");
-	cores.push_back(" Shell");
+	cores.push_back("Phoenix feathers");
+	cores.push_back("Unicorn tail hair");
+	cores.push_back("Dragon heartstrings");
+	cores.push_back("Thestral tail hair");
+	cores.push_back("Chifre de Basilisco");
+	cores.push_back("Veela hair");
+	cores.push_back("Troll whisker");
+	cores.push_back("Basilisk horn");
+	cores.push_back("Bone");
+	cores.push_back("Shell");
 	int number_wood =  rand() % woods.size();
 	int number_core =  rand() % cores.size();
 	std::string wand = woods[number_wood] + " and " + cores[number_core];
-	std::cout << "Your wand is made out of  " << wand << std::endl;
+	std::cout << "Your wand is made out of " << wand << std::endl;
 	std::cout << std::endl;
 	return wand;
 
@@ -219,6 +219,7 @@ void initialize_game(){
 	do{
 		number_enemy= rand() % enemies.size();
 	}while(enemies[number_enemy]->getLevel() != player->getLevel());
+	
 	//chamar funcao de batalha
 
 }
