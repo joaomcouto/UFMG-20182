@@ -14,6 +14,10 @@ Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, i
 
 Wizard::~Wizard(){}
 
+void Wizard::incrementSkillPoints(int points){
+	this->_skillPoints += points ;
+}
+
 std::vector<Potions *> Wizard::instantiate_potions(std::vector<Potions *> _potions){
 	const int potions_size = _potions.size();
 
@@ -68,13 +72,13 @@ void Wizard::printPlayerSpells() {
 void Wizard::printPlayerPotions() {
 	const int object_size = this-> _potionsVector.size();
 
-	
-
     for (int i = 1; i < object_size; i++)
 	   std::cout << "[" << i << "] " <<  _potionsVector[i]->get_name() << " " << _potionsVector[i]->get_quant() << std::endl;
 
     std::cout <<std::endl;
 }
+
+
 
 void Wizard::printPlayerArtifacts(){
 	const int object_size = this-> _artifactsVector.size();

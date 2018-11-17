@@ -24,6 +24,14 @@ std::string Character::getName(){
 	return this->_name;
 }
 
+Stats Character::getBaseStats(){
+	return this->_baseStats;
+}
+
+void Character::setStats(Stats st){
+	this->_baseStats = st ;
+}
+
 int Character::getLevel(){
 	return this->_baseStats.level;
 }

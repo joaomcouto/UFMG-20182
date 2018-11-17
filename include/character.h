@@ -35,6 +35,9 @@ class Character{
 	int getDexterity();
 	std::vector<Spell *> getSpellVector();  
 	Spell* getSpell(int i);
+	Stats getBaseStats();
+	void setStats(Stats st) ;
+
 	
 	void setLevel();
 	void setHP(int i);

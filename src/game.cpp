@@ -1,6 +1,14 @@
 #include "game.h"
 #include "battle.h"
 #include <iostream>
+#include <stdlib.h>
+
+void myPause()
+{
+	std::cout << "Press any character followed by ENTER to continue" << std::endl ;
+	std::string hold ; 
+	std::cin >> hold ;
+}
 
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
@@ -75,17 +83,22 @@ std::vector<Potions *> instantiate_potions(){
 }
 
 std::string texts1(){
-	std::string name;
+	std::string name ;
+	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << "Please, enter your wizard/witch's name " << std::endl;
 	std::cin >> name;
 	std::cout << std::endl;
+	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << "Hogwarts School of Witchcraft and Wizardry" << std::endl;
 	std::cout << "  Headmaster: Albus Dumbledore" << std::endl;
-	std::cout << "Dear " << name << ", " << std::endl;
+	std::cout << "Dear " << name << ", " << std::endl << " " <<std::endl ;
 	std::cout << "It is with great pleasure that we're hereby informing that you've been officialy admitted in the great Hogwarts School of Witchcraft and Wizardry." << std::endl;
-	std::cout << "First things first, you must acquire the necessary books and equipments." << std::endl;
+	std::cout << "First things first, you must acquire the necessary books and equipments." << std::endl << " " << std::endl ;
 	std::cout << "Yours sincerely, " << std::endl;
 	std::cout << "Minerva McGonagall" << std::endl;
+	std::cout << std::endl;
+	myPause();
+	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << std::endl;
 	return name;
 }
@@ -217,13 +230,14 @@ void initialize_game(){
 	Wizard *player = initialize_player(spell, potion, artifact);
 	std::vector<Enemy *> enemies = initialize_enemy(spell); 
 	//for (auto enemy : enemies){ std::cout << enemy->getName() ; }
+	
 	int number_enemy;
 	do{
 		number_enemy= rand() % enemies.size();
 	}while(enemies[number_enemy]->getLevel() != player->getLevel());
 
 	Battle teste1(player, enemies[0]) ;
-	teste1.round() ;
+	//teste1.round() ;
 	
 	//chamar funcao de batalha
 

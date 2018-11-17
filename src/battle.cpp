@@ -10,13 +10,28 @@ Battle::Battle(Wizard * player , Enemy * enemy){
     this->_ended = 0 ;  //Booleano de acabou
     this->_player = player ;  //Pointer para a instancia de player
     this->_enemy = enemy; //Pointer para a instancia de enermy
+    this->_originalStats = player->getBaseStats ;
     if (player->getDexterity() > enemy->getDexterity()){ //Define quem vai ter o primeiro turno
         this->_playerturn = 1 ;
     } else {
         this->_playerturn = 0 ;
     }
+    this->initializeBattle() ;
 }
 
+void Battle::initializeBattle(){
+    while((this->_player->getHP > 0) && (this->_enemy->getHP > 0)){
+        this->round() ;
+    }
+    _originalStats.level += 1 ;
+    this->_player->setStats(this->_originalStats) ; 
+    this->_player->incrementSkillPoints(1);
+}
+
+
+void Battle::spellMove(Spell* spell ){
+
+}
 
 void Battle::round(){
     if (this->_playerturn == 1){
@@ -36,6 +51,7 @@ void Battle::round(){
                             _player->printPlayerSpells() ;
                             std::cin >> selectionIndex ;
                             if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
+                                spellMove(_player->getSpellVector()[selectionIndex-1]) ;
                                 //move(_player->getSpellVector()[selectionIndex-1]) ;
                                 this->_playerturn = 0 ;
                                 return ;
