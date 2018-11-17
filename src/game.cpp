@@ -192,8 +192,14 @@ Wizard* initialize_player(std::vector<Spell *> _spells, std::vector<Potions *> _
 	return player;
 }
 
-std::vector<Enemy *> initialize_enemy(){
+std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells){
+	std::vector<Enemy *> enemies;
+	
+	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "humano", " ", 4, 100, 0, 4, 4, 7, _spells);
 
+	enemies.push_back(Bellatrix);
+
+	return enemies;
 }
 
 void texts2(){

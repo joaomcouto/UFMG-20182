@@ -19,5 +19,5 @@ void texts2();
 std::vector<Spell *> instantiate_spell();
 std::vector<Artifacts *> instantiate_artifacts();
 std::vector<Potions *> instantiate_potions();
-std::vector<Enemy *> initialize_enemy();
+std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells);
 #endif
