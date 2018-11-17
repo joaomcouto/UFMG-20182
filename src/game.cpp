@@ -46,15 +46,15 @@ std::vector<Spell *> instantiate_spell(){
 std::vector<Artifacts *> instantiate_artifacts(){
 	std::vector<Artifacts *> object;
 
-	Artifacts *ViraTempo = new Artifacts("Vira-Tempo", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
-	Artifacts *Capa = new Artifacts("Capa da Invisibilidade", 3, 0, 0, 0, 10, 0, 1, true ,"sumir");
-	Artifacts *VarinhaDasVarinhas = new Artifacts("Varinha das Varinhas", 4, 0, 0, 10, 0, 10, 2, true, "dano");
-	Artifacts *PedraDaRessureicao = new Artifacts("Pedra da Ressureicao", 4, 30, 10, 0, 0, 0, 1, 1, "vida");
+	Artifacts *TimeTurner = new Artifacts("Time-Turner", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
+	Artifacts *Cloak = new Artifacts("Invisibility Cloak", 3, 0, 0, 0, 10, 0, 1, true ,"sumir");
+	Artifacts *ElderWand = new Artifacts("Elder Wand", 4, 0, 0, 10, 0, 10, 2, true, "dano");
+	Artifacts *ResurrectionStone = new Artifacts("Resurrection Stone", 4, 30, 10, 0, 0, 0, 1, 1, "vida");
 
-	object.push_back(ViraTempo);
-	object.push_back(Capa);
-	object.push_back(VarinhaDasVarinhas);
-	object.push_back(PedraDaRessureicao);
+	object.push_back(TimeTurner);
+	object.push_back(Cloak);
+	object.push_back(ElderWand);
+	object.push_back(ResurrectionStone);
 
     return object;
 }
