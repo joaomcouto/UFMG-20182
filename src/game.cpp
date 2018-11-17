@@ -194,9 +194,12 @@ Wizard* initialize_player(std::vector<Spell *> _spells, std::vector<Potions *> _
 
 std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells){
 	std::vector<Enemy *> enemies;
-	
-	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "humano", " ", 4, 100, 0, 4, 4, 7, _spells);
+	std::vector<Spell *> empty;
 
+	Enemy *Spider = new Enemy("Spider", "spider", "picada", 1, 100, 0, 0, 0, 0, empty);
+	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", " ", 4, 100, 0, 4, 4, 7, _spells);
+
+	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
 
 	return enemies;
@@ -204,4 +207,18 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells){
 
 void texts2(){
 	//textos sobre o inicio das batalhas/explicacao de jogo?
+}
+
+void initialize_game(){
+	std::vector<Spell *> spell = instantiate_spell();
+	std::vector<Potions *> potion = instantiate_potions();
+	std::vector<Artifacts *> artifact = instantiate_artifacts();
+	Wizard *player = initialize_player(spell, potion, artifact);
+	std::vector<Enemy *> enemies = initialize_enemy(spell);
+	int number_enemy;
+	do{
+		number_enemy= rand() % enemies.size();
+	}while(enemies[number_enemy]->getLevel() != player->getLevel());
+	//chamar funcao de batalha
+
 }
