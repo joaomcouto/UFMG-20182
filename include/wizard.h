@@ -33,6 +33,9 @@ class Wizard : public Character{
 	std::vector<Potions *> getPotionsVector();
 	std::vector<Artifacts *> getArtifactsVector();
 
+	int getSkillPoints() ;
+
+
 
 	void printPlayerSpells();
 	void printPlayerPotions();

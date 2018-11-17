@@ -10,6 +10,7 @@ Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, i
 	Character(name, level, hp, mp, str, cons, dex, _spells), _house(house), _wand(wand), _patronum(patronum){
 	this->_potionsVector = instantiate_potions(_potions);
 	this->_artifactsVector = instantiate_artifacts(_artifacts);
+	this->_skillPoints = 3 ; 
 }
 
 Wizard::~Wizard(){}
@@ -41,6 +42,11 @@ std::vector<Artifacts *> Wizard::instantiate_artifacts(std::vector<Artifacts *> 
 	}
 	return Artifact;
 }
+
+int Wizard::getSkillPoints(){
+	return this->_skillPoints ;
+}
+
 
 std::string Wizard::getHouse(){
 	return this->_house;
@@ -117,4 +123,5 @@ void Wizard::incrementSkill(int selection) {
 			this->_baseStats.dexterity += NUMBER_INCREMENT_OTHERS;
 			break;
 	}
+	this->_skillPoints -= 1 ;
 }

@@ -10,7 +10,7 @@ Battle::Battle(Wizard * player , Enemy * enemy){
     this->_ended = 0 ;  //Booleano de acabou
     this->_player = player ;  //Pointer para a instancia de player
     this->_enemy = enemy; //Pointer para a instancia de enermy
-    this->_originalStats = player->getBaseStats ;
+    this->_originalStats = player->getBaseStats() ;
     if (player->getDexterity() > enemy->getDexterity()){ //Define quem vai ter o primeiro turno
         this->_playerturn = 1 ;
     } else {
@@ -20,7 +20,7 @@ Battle::Battle(Wizard * player , Enemy * enemy){
 }
 
 void Battle::initializeBattle(){
-    while((this->_player->getHP > 0) && (this->_enemy->getHP > 0)){
+    while((this->_player->getHP() > 0) && (this->_enemy->getHP() > 0)){
         this->round() ;
     }
     _originalStats.level += 1 ;
