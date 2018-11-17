@@ -9,6 +9,7 @@
 
 #include <string>
 #include <vector>
+void myPause() ;
 
 std::string texts1();
 std::string choice_of_wand();

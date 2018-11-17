@@ -9,11 +9,11 @@ Character::Character(std::string name, int level, int hp, int mp, int str, int c
 Character::~Character(){}
 
 void Character::printStats(){
-	std::cout << "Health: " << this->_baseStats.hp  << std::endl;
-	std::cout << "Magic Points: " << this->_baseStats.mp  << std::endl;
-	std::cout << "Strenght: " << this->_baseStats.strenght  << std::endl;
-	std::cout << "Constitution: " << this->_baseStats.constitution  << std::endl;
-	std::cout << "Dexterity: " << this->_baseStats.dexterity  << std::endl;
+	std::cout << " ->Health: " << this->_baseStats.hp  << std::endl;
+	std::cout << " ->Magic Points: " << this->_baseStats.mp  << std::endl;
+	std::cout << " ->Strenght: " << this->_baseStats.strenght  << std::endl;
+	std::cout << " ->Constitution: " << this->_baseStats.constitution  << std::endl;
+	std::cout << " ->Dexterity: " << this->_baseStats.dexterity  << std::endl;
 }
 
 std::vector<Spell *> Character::instantiate_spells(std::vector<Spell *> _spells){

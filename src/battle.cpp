@@ -5,6 +5,14 @@
 #include <iostream>
 #include <string>
 
+void myBattlePause(){
+	{
+	    std::cout << "Press any character followed by ENTER to continue" << std::endl ;
+	    std::string hold ; 
+	    std::cin >> hold ;
+    }
+}
+
 Battle::Battle(Wizard * player , Enemy * enemy){
     this->_round = 1 ; //Numero do round
     this->_ended = 0 ;  //Booleano de acabou
@@ -20,6 +28,8 @@ Battle::Battle(Wizard * player , Enemy * enemy){
 }
 
 void Battle::initializeBattle(){
+    this->introduction();
+
     while((this->_player->getHP() > 0) && (this->_enemy->getHP() > 0)){
         this->round() ;
     }
@@ -33,6 +43,19 @@ void Battle::spellMove(Spell* spell ){
 
 }
 
+void Battle::introduction(){
+    this->_enemy->printIntro() ;
+    std::cout << " " << std::endl; 
+    myBattlePause();
+    std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+    std::cout << "Get ready to battle!\nYour opponent is: " << this->_enemy->getName()  << std::endl ;
+    std::cout << "They are of type " << this->_enemy->getType() << std::endl ; 
+    std::cout << "Their stats are:\n" ;
+    this->_enemy->printStats() ;
+    myBattlePause();
+}
+
+
 void Battle::round(){
     if (this->_playerturn == 1){
         int menuIndex ;
@@ -40,6 +63,7 @@ void Battle::round(){
         unsigned int selectionIndex ;
         while(1){ //Deemed necessary, player might return to menu selection menu
             try {
+                std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                 std::cout << "Make a choice:" << std::endl << "[1] Spells" << std::endl << "[2] Inventory" << std::endl ;
                 std::cin >> menuIndex ;
                 std::cout << "\033[2J\033[1;1H"; //This line clear the screen
@@ -73,7 +97,7 @@ void Battle::round(){
                             if (secondaryMenuIndex == 0){
                                 break ;
                             } else if (secondaryMenuIndex == 1){
-                                unsigned int potionIndex ;
+                                int potionIndex ;
                                 while(1){
                                     try{
                                         std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
@@ -92,7 +116,7 @@ void Battle::round(){
                                         }
                                 }
                             } else if (secondaryMenuIndex == 2 ){
-                                unsigned int artifactsIndex ;
+                                int artifactsIndex ;
                                 while(1){
                                     try{
                                         _player->printPlayerArtifacts();
@@ -105,7 +129,7 @@ void Battle::round(){
                                         } else if (artifactsIndex == 0 ) {
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                             break ;
-                                        } else throw std::invalid_argument("Invalid potion index, try again ") ;
+                                        } else throw std::invalid_argument("Invalid artifact index, try again ") ;
                                     } catch(std::invalid_argument &t){
                                         std::cout << t.what() << std::endl ;
                                     }
