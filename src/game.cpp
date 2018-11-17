@@ -62,13 +62,13 @@ std::vector<Artifacts *> instantiate_artifacts(){
 std::vector<Potions *> instantiate_potions(){
 	std::vector<Potions *> object;
 
-	Potions *Revigora = new Potions("Pocao Revigorante", 1, 10, 0, 0, 0, 0, 3);
-	Potions *AntidotoAranha = new Potions("Antidoto contra veneno de aranha", 1, 10, 0, 0, 0, 0, 1);
-	Potions *AntidotoSerpente = new Potions("Antido contra veneno de serpente", 2, 10, 0, 0, 0, 0, 1);
+	Potions *Invigorate = new Potions("Invigorating Potion", 1, 10, 0, 0, 0, 0, 3);
+	Potions *SpiderAntidote = new Potions("Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
+	Potions *SerpentAntidote = new Potions("Antidote to serpent poison", 2, 10, 0, 0, 0, 0, 1);
 
-	object.push_back(Revigora);
-	object.push_back(AntidotoAranha);
-	object.push_back(AntidotoSerpente);
+	object.push_back(Invigorate);
+	object.push_back(SpiderAntidote);
+	object.push_back(SerpentAntidote);
 
     return object;
 }
