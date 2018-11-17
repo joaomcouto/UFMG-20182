@@ -17,7 +17,6 @@ Battle::Battle(Wizard * player , Enemy * enemy){
     }
 }
 
-
 void Battle::round(){
     if (this->_playerturn == 1){
         int menuIndex ;
@@ -35,12 +34,7 @@ void Battle::round(){
                             _player->printPlayerSpells() ;
                             std::cin >> selectionIndex ;
                             if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
-<<<<<<< HEAD
                                 //move(_player->getSpellVector()[selectionIndex-1]) ;
-=======
-                                //move(_player->getSpellVector()[selectionIndex-1]) ; 
-                                this->_playerturn = 0 ;
->>>>>>> 9b107c9c87dec918594996e7da4f8bfb41ca9e48
                                 return ;
                             } else if (selectionIndex == 0 ) {
                                 break ;
@@ -53,12 +47,8 @@ void Battle::round(){
                     int secondaryMenuIndex ;
                     while (1){
                         try{
-<<<<<<< HEAD
                             std::cout << "[0] "<<  "Back to main menu" << std::endl ;
                             std::cout << "Make a choice:" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl ;
-=======
-                            std::cout << "Make a choice:" << std::endl << "[0] Back to main menu" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl ; 
->>>>>>> 9b107c9c87dec918594996e7da4f8bfb41ca9e48
                             std::cin>> secondaryMenuIndex ;
                             if (secondaryMenuIndex == 0){
                                 break ;
@@ -70,12 +60,7 @@ void Battle::round(){
                                         _player->printPlayerPotions();
                                         std::cin >> potionIndex ;
                                         if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector().size())){
-<<<<<<< HEAD
                                             //move(_player->getPOtionsVector()[potionsIndex-1]) ;
-=======
-                                            //move(_player->getPotionsVector()[potionsIndex-1]) ; 
-                                            this->_playerturn = 0 ;
->>>>>>> 9b107c9c87dec918594996e7da4f8bfb41ca9e48
                                             return ;
                                         } else if (potionIndex == 0 ) {
                                             break ;
@@ -88,16 +73,11 @@ void Battle::round(){
                                 unsigned int artifactsIndex ;
                                 while(1){
                                     try{
-                                        _player->printPlayerArtifacts();
                                         std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
+                                        _player->printPlayerArtifacts();
                                         std::cin >> artifactsIndex;
                                         if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector().size())){
-<<<<<<< HEAD
                                             //move(_player->getArtifactsVector()[artifactsIndex-1]) ;
-=======
-                                            //move(_player->getArtifactsVector()[artifactsIndex-1]) ; 
-                                            this->_playerturn = 0 ;
->>>>>>> 9b107c9c87dec918594996e7da4f8bfb41ca9e48
                                             return ;
                                         } else if (artifactsIndex == 0 ) {
                                             break ;

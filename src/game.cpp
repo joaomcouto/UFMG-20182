@@ -1,5 +1,4 @@
 #include "game.h"
-#include "battle.h"
 #include <iostream>
 
 std::vector<Spell *> instantiate_spell(){
@@ -215,15 +214,11 @@ void initialize_game(){
 	std::vector<Potions *> potion = instantiate_potions();
 	std::vector<Artifacts *> artifact = instantiate_artifacts();
 	Wizard *player = initialize_player(spell, potion, artifact);
-	std::vector<Enemy *> enemies = initialize_enemy(spell); 
-	//for (auto enemy : enemies){ std::cout << enemy->getName() ; }
+	std::vector<Enemy *> enemies = initialize_enemy(spell);
 	int number_enemy;
 	do{
 		number_enemy= rand() % enemies.size();
 	}while(enemies[number_enemy]->getLevel() != player->getLevel());
-
-	Battle teste1(player, enemies[0]) ;
-	teste1.round() ;
 	
 	//chamar funcao de batalha
 
