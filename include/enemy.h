@@ -12,7 +12,7 @@ public:
   Enemy(std::string name, std::string type, std::string special, int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells);
  	~Enemy();
   void decrementSkill(int i);	
-   
- 
+  std::string getType();
+  std::string getSpecialAttack();
 };
 #endif

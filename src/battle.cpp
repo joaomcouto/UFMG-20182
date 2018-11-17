@@ -1,6 +1,5 @@
-
-#include "character.h"
 #include "wizard.h"
+#include "enemy.h"
 #include "battle.h"
 #include "spells.h"
 #include <iostream>
@@ -12,7 +11,7 @@ Battle::Battle(Wizard * player , Character * enemy){
     this->_player = player ;  //Pointer para a instancia de player
     this->_enemy = enemy; //Pointer para a instancia de enermy
     if (player->getDexterity() > enemy->getDexterity()){ //Define quem vai ter o primeiro turno
-        this->_playerturn = 1 ; 
+        this->_playerturn = 1 ;
     } else {
         this->_playerturn = 0 ;
     }
@@ -20,22 +19,22 @@ Battle::Battle(Wizard * player , Character * enemy){
 
 void Battle::round(){
     if (this->_playerturn == 1){
-        int menuIndex ; 
-        int actionIndex;
-        int selectionIndex ; 
+        int menuIndex ;
+        //int actionIndex; //essa variavel ainda nao foi usada, tire o comentario quando for usar
+        unsigned int selectionIndex ;
         while(1){ //Deemed necessary, player might return to menu selection menu
-            try { 
-                std::cout << "Make a choice:" << std::endl << "[1] Spells" << std::endl << "[2] Inventory" << std::endl ; 
-                std::cin >> menuIndex ; 
-                if (menuIndex == 1 ){ 
+            try {
+                std::cout << "Make a choice:" << std::endl << "[1] Spells" << std::endl << "[2] Inventory" << std::endl ;
+                std::cin >> menuIndex ;
+                if (menuIndex == 1 ){
                     //Print out spell options as well as option to return to menu. If a spell is selected, call the move function with it and terminate de round
                     while(1){ //Done
                         try {
                             std::cout << "[0] "<<  "Back to main menu" << std::endl ;
                             _player->printPlayerSpells() ;
-                             std::cin >> selectionIndex ; 
+                            std::cin >> selectionIndex ;
                             if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
-                                //move(_player->getSpellVector()[selectionIndex-1]) ; 
+                                //move(_player->getSpellVector()[selectionIndex-1]) ;
                                 return ;
                             } else if (selectionIndex == 0 ) {
                                 break ;
@@ -44,24 +43,24 @@ void Battle::round(){
                             std::cout << t.what() << std::endl;
                         }
                     }
-                } else if (menuIndex == 2 ){ 
+                } else if (menuIndex == 2 ){
                     int secondaryMenuIndex ;
                     while (1){
                         try{
                             std::cout << "[0] "<<  "Back to main menu" << std::endl ;
-                            std::cout << "Make a choice:" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl ; 
+                            std::cout << "Make a choice:" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl ;
                             std::cin>> secondaryMenuIndex ;
                             if (secondaryMenuIndex == 0){
                                 break ;
                             } else if (secondaryMenuIndex == 1){
-                                int potionIndex ;
+                                unsigned int potionIndex ;
                                 while(1){
                                     try{
                                         std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
-                                        _player->printPlayerPotions ;
+                                        _player->printPlayerPotions();
                                         std::cin >> potionIndex ;
-                                        if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector.size())){
-                                            //move(_player->getPOtionsVector()[potionsIndex-1]) ; 
+                                        if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector().size())){
+                                            //move(_player->getPOtionsVector()[potionsIndex-1]) ;
                                             return ;
                                         } else if (potionIndex == 0 ) {
                                             break ;
@@ -71,32 +70,32 @@ void Battle::round(){
                                         }
                                 }
                             } else if (secondaryMenuIndex == 2 ){
-                                int artifactsIndex ;
+                                unsigned int artifactsIndex ;
                                 while(1){
                                     try{
                                         std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
-                                        _player->printPlayerArtifacts ;
+                                        _player->printPlayerArtifacts();
                                         std::cin >> artifactsIndex;
-                                        if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector.size())){
-                                            //move(_player->getArtifactsVector()[artifactsIndex-1]) ; 
+                                        if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector().size())){
+                                            //move(_player->getArtifactsVector()[artifactsIndex-1]) ;
                                             return ;
                                         } else if (artifactsIndex == 0 ) {
                                             break ;
                                         } else throw std::invalid_argument("Invalid potion index, try again ") ;
                                     } catch(std::invalid_argument &t){
-                                        std::cout << t.what << std::endl ;
+                                        std::cout << t.what() << std::endl ;
                                     }
                                 }
                             } else {
-                                throw std::invalid_argument("Invalid secondary menu index, try again") ; 
+                                throw std::invalid_argument("Invalid secondary menu index, try again") ;
                             }
                         } catch(std::invalid_argument &t){
                             std::cout << t.what() << std::endl;
                         }
-                        
+
                     }
-                } else { 
-                    throw std::invalid_argument("Invalid menu index, try again") ; 
+                } else {
+                    throw std::invalid_argument("Invalid menu index, try again") ;
                 }
             } catch(std::invalid_argument &t) {
                 std::cout << t.what() << std::endl;

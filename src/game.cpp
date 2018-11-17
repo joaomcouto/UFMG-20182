@@ -3,12 +3,42 @@
 
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
+	//os numeros nao sao reais, somente os niveis mais ou menos
+	Spell *Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
+	Spell *ExpectroPatronum = new Spell("Expectro Patronum", 4, 50, 20, 20, 30, 40);
+	Spell *Lumus = new Spell("Lumus", 1, 0, 10, 0, 1, 0);
+	Spell *Nox = new Spell("Nox", 1, 0, 10, 0, 1, 0);
+	Spell *Protego = new Spell("Protego", 1, 0, 10, 0, 1, 0);
+	Spell *WingardiumLeviosa = new Spell("Wingardium Leviosa", 1, 0, 10, 0, 1, 0);
+	Spell *Incendio = new Spell("Incendio", 2, 0, 10, 0, 1, 0);
+	Spell *Rictusempra = new Spell("Rictusempra", 2, 0, 10, 0, 1, 0);	
+	Spell *Imobbilius = new Spell("Imobbilius", 3, 0, 10, 0, 1, 0);
+	Spell *Estupefaca = new Spell("Estupefaca", 4, 0, 10, 0, 1, 0);
+	Spell *PetrificusTotalus = new Spell("Petrificus Totalus", 4, 0, 10, 0, 1, 0);
+	Spell *Levicorpus = new Spell("Levicorpus", 5, 0, 10, 0, 1, 0);
+	Spell *Sectusempra = new Spell("Sectusempra", 6, 0, 10, 0, 1, 0);
+	Spell *Obscuro = new Spell("Obscuro", 6, 0, 10, 0, 1, 0);
+	//vamos deixar a arte das trevas entrar?
+	Spell *Crucio = new Spell("Crucio", 7, 0, 10, 0, 1, 0);
+	Spell *AvadaKedavra = new Spell("Avada Kedavra", 7, 0, 10, 0, 1, 0);
 
-    Spell *Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
-    Spell *ExpectroPatronum = new Spell("Expectro Patronum", 3, 50, 20, 20, 30, 40);
 
-    spell.push_back(Expelliarmus);
-    spell.push_back(ExpectroPatronum);
+	spell.push_back(Expelliarmus);
+	spell.push_back(ExpectroPatronum);
+	spell.push_back(Lumus);
+	spell.push_back(Nox);
+	spell.push_back(Protego);
+	spell.push_back(WingardiumLeviosa);
+	spell.push_back(Incendio);
+	spell.push_back(Rictusempra);
+	spell.push_back(Imobbilius);
+	spell.push_back(Estupefaca);
+	spell.push_back(PetrificusTotalus);
+	spell.push_back(Levicorpus);
+	spell.push_back(Sectusempra);
+	spell.push_back(Obscuro);
+	spell.push_back(Crucio);
+	spell.push_back(AvadaKedavra);
 
     return spell;
 }
@@ -16,13 +46,15 @@ std::vector<Spell *> instantiate_spell(){
 std::vector<Artifacts *> instantiate_artifacts(){
 	std::vector<Artifacts *> object;
 
-    Artifacts *ViraTempo = new Artifacts("Vira-Tempo", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
-	Artifacts *Capa = new Artifacts("Capa da Invisibilidade", 3, 0, 0, 0, 10, 0, 1, true ,"sumir");
-	Artifacts *VarinhaDasVarinhas = new Artifacts("Varinha das Varinhas", 4, 0, 0, 10, 0, 10, 2, true, "dano");
+	Artifacts *TimeTurner = new Artifacts("Time-Turner", 2, 0, 0, 0, 0, 0, 1, true, "return");
+	Artifacts *Cloak = new Artifacts("Invisibility Cloak", 3, 0, 0, 0, 10, 0, 1, true ,"cloak");
+	Artifacts *ElderWand = new Artifacts("Elder Wand", 4, 0, 0, 10, 0, 10, 2, true, "damage");
+	Artifacts *ResurrectionStone = new Artifacts("Resurrection Stone", 4, 30, 10, 0, 0, 0, 1, 1, "life");
 
-    object.push_back(ViraTempo);
-    object.push_back(Capa);
-	object.push_back(VarinhaDasVarinhas);
+	object.push_back(TimeTurner);
+	object.push_back(Cloak);
+	object.push_back(ElderWand);
+	object.push_back(ResurrectionStone);
 
     return object;
 }
@@ -30,13 +62,13 @@ std::vector<Artifacts *> instantiate_artifacts(){
 std::vector<Potions *> instantiate_potions(){
 	std::vector<Potions *> object;
 
-    Potions *Revigora = new Potions("Pocao Revigorante", 1, 10, 0, 0, 0, 0, 3);
-	Potions *AntidotoAranha = new Potions("Antidoto contra veneno de aranha", 1, 10, 0, 0, 0, 0, 1);
-	Potions *AntidotoSerpente = new Potions("Antido contra veneno de serpente", 2, 10, 0, 0, 0, 0, 1);
+	Potions *Invigorate = new Potions("Invigorating Potion", 1, 10, 0, 0, 0, 0, 3);
+	Potions *SpiderAntidote = new Potions("Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
+	Potions *SerpentAntidote = new Potions("Antidote to serpent poison", 2, 10, 0, 0, 0, 0, 1);
 
-    object.push_back(Revigora);
-	object.push_back(AntidotoAranha);
-	object.push_back(AntidotoSerpente);
+	object.push_back(Invigorate);
+	object.push_back(SpiderAntidote);
+	object.push_back(SerpentAntidote);
 
     return object;
 }
@@ -48,7 +80,7 @@ std::string texts1(){
 	std::cout << std::endl;
 	std::cout << "Hogwarts School of Witchcraft and Wizardry" << std::endl;
 	std::cout << "  Headmaster: Albus Dumbledore" << std::endl;
-	std::cout << "Dear" << name << ", " << std::endl;
+	std::cout << "Dear " << name << ", " << std::endl;
 	std::cout << "It is with great pleasure that we're hereby informing that you've been officialy admitted in the great Hogwarts School of Witchcraft and Wizardry." << std::endl;
 	std::cout << "First things first, you must acquire the necessary books and equipments." << std::endl;
 	std::cout << "Yours sincerely, " << std::endl;
@@ -98,20 +130,20 @@ std::string choice_of_wand(){
 	woods.push_back("Yew wood");
 	
 	std::vector<std::string> cores;
-	cores.push_back(" Phoenix feathers");
-	cores.push_back(" Unicorn tail hair");
-	cores.push_back(" Dragon heartstrings");
-	cores.push_back(" Thestral tail hair");
-	cores.push_back(" Chifre de Basilisco");
-	cores.push_back(" Veela hair");
-	cores.push_back(" Troll whisker");
-	cores.push_back(" Basilisk horn");
-	cores.push_back(" Bone");
-	cores.push_back(" Shell");
+	cores.push_back("Phoenix feathers");
+	cores.push_back("Unicorn tail hair");
+	cores.push_back("Dragon heartstrings");
+	cores.push_back("Thestral tail hair");
+	cores.push_back("Chifre de Basilisco");
+	cores.push_back("Veela hair");
+	cores.push_back("Troll whisker");
+	cores.push_back("Basilisk horn");
+	cores.push_back("Bone");
+	cores.push_back("Shell");
 	int number_wood =  rand() % woods.size();
 	int number_core =  rand() % cores.size();
 	std::string wand = woods[number_wood] + " and " + cores[number_core];
-	std::cout << "Your wand is made out of  " << wand << std::endl;
+	std::cout << "Your wand is made out of " << wand << std::endl;
 	std::cout << std::endl;
 	return wand;
 
@@ -160,4 +192,35 @@ Wizard* initialize_player(std::vector<Spell *> _spells, std::vector<Potions *> _
 	return player;
 }
 
-void texts2(){}
+std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells){
+	std::vector<Enemy *> enemies;
+	std::vector<Spell *> empty;
+
+	Enemy *Spider = new Enemy("Spider", "spider", "picada", 1, 100, 0, 0, 0, 0, empty);
+	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", " ", 4, 100, 0, 4, 4, 7, _spells);
+
+	enemies.push_back(Spider);
+	enemies.push_back(Bellatrix);
+
+	return enemies;
+}
+
+void texts2(){
+	//textos sobre o inicio das batalhas/explicacao de jogo?
+}
+
+void initialize_game(){
+	std::vector<Spell *> spell = instantiate_spell();
+	std::vector<Potions *> potion = instantiate_potions();
+	std::vector<Artifacts *> artifact = instantiate_artifacts();
+	Wizard *player = initialize_player(spell, potion, artifact);
+	std::vector<Enemy *> enemies = initialize_enemy(spell);
+	int number_enemy;
+	do{
+		number_enemy= rand() % enemies.size();
+	}while(enemies[number_enemy]->getLevel() != player->getLevel());
+	
+	//chamar funcao de batalha
+
+}
+

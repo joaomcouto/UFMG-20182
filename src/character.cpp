@@ -13,7 +13,7 @@ std::vector<Spell *> Character::instantiate_spells(std::vector<Spell *> _spells)
 	std::vector<Spell *> Spells;
 
     for (int i = 0; i < spells_size; i++){
-		if(_spells[i]->get_level() == 1)
+		if(_spells[i]->get_level() <= getLevel())
 			Spells.push_back(_spells[i]);
 	}
 	return Spells;
