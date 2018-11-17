@@ -3,12 +3,42 @@
 
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
-
+	//os numeros nao sao reais, somente os niveis mais ou menos
     Spell *Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
-    Spell *ExpectroPatronum = new Spell("Expectro Patronum", 3, 50, 20, 20, 30, 40);
+    Spell *ExpectroPatronum = new Spell("Expectro Patronum", 4, 50, 20, 20, 30, 40);
+	Spell *Lumus = new Spell("Lumus", 1, 0, 10, 0, 1, 0);
+	Spell *Nox = new Spell("Nox", 1, 0, 10, 0, 1, 0);
+	Spell *Protego = new Spell("Protego", 1, 0, 10, 0, 1, 0);
+	Spell *WingardiumLeviosa = new Spell("Wingardium Leviosa", 1, 0, 10, 0, 1, 0);
+	Spell *Incendio = new Spell("Incendio", 2, 0, 10, 0, 1, 0);
+	Spell *Rictusempra = new Spell("Rictusempra", 2, 0, 10, 0, 1, 0);	
+	Spell *Imobbilius = new Spell("Imobbilius", 3, 0, 10, 0, 1, 0);
+	Spell *Estupefaca = new Spell("Estupefaca", 4, 0, 10, 0, 1, 0);
+	Spell *PetrificusTotalus = new Spell("Petrificus Totalus", 4, 0, 10, 0, 1, 0);
+	Spell *Levicorpus = new Spell("Levicorpus", 5, 0, 10, 0, 1, 0);
+	Spell *Sectusempra = new Spell("Sectusempra", 6, 0, 10, 0, 1, 0);
+	Spell *Obscuro = new Spell("Obscuro", 6, 0, 10, 0, 1, 0);
+	//vamos deixar a arte das trevas entrar?
+	Spell *Crucio = new Spell("Crucio", 7, 0, 10, 0, 1, 0);
+	Spell *AvadaKedavra = new Spell("Avada Kedavra", 7, 0, 10, 0, 1, 0);
+
 
     spell.push_back(Expelliarmus);
     spell.push_back(ExpectroPatronum);
+	spell.push_back(Lumus);
+	spell.push_back(Nox);
+	spell.push_back(Protego);
+	spell.push_back(WingardiumLeviosa);
+	spell.push_back(Incendio);
+	spell.push_back(Rictusempra);
+	spell.push_back(Imobbilius);
+	spell.push_back(Estupefaca);
+	spell.push_back(PetrificusTotalus);
+	spell.push_back(Levicorpus);
+	spell.push_back(Sectusempra);
+	spell.push_back(Obscuro);
+	spell.push_back(Crucio);
+	spell.push_back(AvadaKedavra);
 
     return spell;
 }
