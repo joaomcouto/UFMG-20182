@@ -94,6 +94,11 @@ void Wizard::printPlayerArtifacts(){
 void set_quantPotions(std::vector<Potions *> potion, int i, int quant){
 	potion[i]->set_quant(quant);
 }
+
+void set_existArtifacts(std::vector<Artifacts *> artifact, int i){
+	artifact[i]->set_exist();
+}
+
 void Wizard::incrementSkill(int selection) {
 	switch(selection){
 		case 1:

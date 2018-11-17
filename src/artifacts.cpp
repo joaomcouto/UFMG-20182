@@ -7,6 +7,14 @@ Artifacts::~Artifacts(){
 
 }
 
+std::string Artifacts::getSpecialEffect(){
+    return this->special_effect;
+}
+
+void Artifacts::set_exist(){
+    this->_exist = false;
+}
+
 bool Artifacts::get_exist(){
     return _exist;
 }
