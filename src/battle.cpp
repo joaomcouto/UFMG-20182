@@ -27,6 +27,7 @@ void Battle::round(){
             try {
                 std::cout << "Make a choice:" << std::endl << "[1] Spells" << std::endl << "[2] Inventory" << std::endl ;
                 std::cin >> menuIndex ;
+                std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                 if (menuIndex == 1 ){
                     //Print out spell options as well as option to return to menu. If a spell is selected, call the move function with it and terminate de round
                     while(1){ //Done
@@ -39,6 +40,7 @@ void Battle::round(){
                                 this->_playerturn = 0 ;
                                 return ;
                             } else if (selectionIndex == 0 ) {
+                                std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                 break ;
                             } else throw std::invalid_argument("Invalid spell index, try again ") ;
                         } catch (std::invalid_argument &t){
@@ -49,9 +51,9 @@ void Battle::round(){
                     int secondaryMenuIndex ;
                     while (1){
                         try{
-                            std::cout << "Make a choice:" << std::endl << "[0] Back to main menu" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl ;
-
+                            std::cout << "Make a choice:" << std::endl << "[0] Back to main menu" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl;
                             std::cin>> secondaryMenuIndex ;
+                            std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                             if (secondaryMenuIndex == 0){
                                 break ;
                             } else if (secondaryMenuIndex == 1){
@@ -66,6 +68,7 @@ void Battle::round(){
                                             this->_playerturn = 0 ;
                                             return ;
                                         } else if (potionIndex == 0 ) {
+                                            std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                             break ;
                                         } else throw std::invalid_argument("Invalid potion index, try again ") ;
                                     } catch (std::invalid_argument &t) {
@@ -84,6 +87,7 @@ void Battle::round(){
                                             this->_playerturn = 0 ;
                                             return ;
                                         } else if (artifactsIndex == 0 ) {
+                                            std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                             break ;
                                         } else throw std::invalid_argument("Invalid potion index, try again ") ;
                                     } catch(std::invalid_argument &t){
