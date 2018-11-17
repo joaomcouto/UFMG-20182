@@ -1,10 +1,11 @@
 #include "character.h"
 #include "enemy.h"
+#include <iostream>
 
 #define NUMBER_DECREMENT 10;
 
-Enemy::Enemy(std::string name, std::string type, std::string special,  int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells):
-	Character(name, level, hp, mp, str, cons, dex, _spells), _type(type), special_attack(special){}
+Enemy::Enemy(std::string name, std::string type, std::string special,  int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells , std::string intro):
+	Character(name, level, hp, mp, str, cons, dex, _spells), _type(type), special_attack(special), _intro(intro){}
 
 Enemy::~Enemy(){}
 
@@ -25,4 +26,8 @@ std::string Enemy::getType(){
 
 std::string Enemy::getSpecialAttack(){
 	return this->special_attack;
+}
+
+void Enemy::printIntro(){
+	std::cout << this->_intro << std::endl;
 }

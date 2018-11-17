@@ -5,12 +5,11 @@
 #include <iostream>
 #include <stdlib.h>
 
-void myPause()
-{
-	 do{
-    std::cout << "Press ENTER  to continue!" << std::endl;
-    std::cin.get();
-  }while(std::cin.get() != '\n');
+void myPause(){
+	do{
+    	std::cout << "Press ENTER  to continue!" << std::endl;
+    	std::cin.get();
+  	}while(std::cin.get() != '\n');
 }
 
 std::vector<Spell *> instantiate_spell(){
@@ -93,7 +92,8 @@ std::string texts1(){
 	std::cout << std::endl;
 	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << "Hogwarts School of Witchcraft and Wizardry" << std::endl;
-	std::cout << "  Headmaster: Albus Dumbledore" << std::endl;
+	std::cout << "  ->Headmaster: Albus Dumbledore" << std::endl;
+	std::cout << " " << std::endl;
 	std::cout << "Dear " << name << ", " << std::endl << " " <<std::endl ;
 	std::cout << "It is with great pleasure that we're hereby informing that you've been officialy admitted in the great Hogwarts School of Witchcraft and Wizardry." << std::endl;
 	std::cout << "First things first, you must acquire the necessary books and equipments." << std::endl << " " << std::endl ;
@@ -213,8 +213,8 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells){
 	std::vector<Enemy *> enemies;
 	std::vector<Spell *> empty;
 
-	Enemy *Spider = new Enemy("Spider", "spider", "picada", 1, 100, 0, 0, 0, 0, empty);
-	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", " ", 4, 100, 0, 4, 4, 7, _spells);
+	Enemy *Spider = new Enemy("Spider", "spider", "picada", 4, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
+	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", " ", 1, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
 
 	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
@@ -228,7 +228,7 @@ void texts2(){
 
 void printMainMenu(){
 	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-	std::cout << "[1] Proxima batalha" << std::endl << "[2] Distribuir skillpoints" << std::endl << "[3] Visualizar stats atuais" << std::endl;
+	std::cout << "[1] Next battle" << std::endl << "[2] Distribute skillpoints" << std::endl << "[3] Display current character stats" << std::endl;
 }
 
 void initialize_game(){
@@ -268,6 +268,7 @@ void initialize_game(){
                             std::cout << t.what() << std::endl;
                         }
                     }
+					std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 					std::cout << "You have no skillpoints available\n" ;
 					myPause() ;
                 } else if(menuIndex ==3){
@@ -291,13 +292,6 @@ void initialize_game(){
                 std::cout << t.what() << std::endl;
             }
         }
-	
-
-	Battle teste1(player, enemies[0]) ;
-	//teste1.round() ;
-	
-	//chamar funcao de batalha
-
 }
 
 

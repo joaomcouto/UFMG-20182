@@ -16,6 +16,7 @@ public:
     void spellMove(Spell * spell);
     void round() ; 
     void initializeBattle() ;
+    void introduction() ; 
 
 
 
