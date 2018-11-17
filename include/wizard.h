@@ -5,6 +5,7 @@
 #include "spells.h"
 #include "potions.h"
 #include "artifacts.h"
+#include "excecoes.h"
 #include <string>
 #include <vector>
 
@@ -18,7 +19,7 @@ class Wizard : public Character{
 	std::vector<Artifacts *> _artifactsVector;
 
  public:
-  	Wizard(std::string name, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts);
+  	Wizard(std::string name, int level, int hp, int mp, int str , int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts) throw (InvalidCharacterException);
 	~Wizard();
 
 	std::vector<Potions *> instantiate_potions(std::vector<Potions *> _potions);

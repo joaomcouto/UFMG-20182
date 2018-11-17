@@ -6,7 +6,7 @@
 #define NUMBER_INCREMENT_HP_E_MP 10;
 #define NUMBER_INCREMENT_OTHERS 1;
 
-Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts):
+Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts) throw (InvalidCharacterException) :
 	Character(name, level, hp, mp, str, cons, dex, _spells), _house(house), _wand(wand), _patronum(patronum){
 	this->_potionsVector = instantiate_potions(_potions);
 	this->_artifactsVector = instantiate_artifacts(_artifacts);
@@ -58,13 +58,13 @@ std::vector<Artifacts *> Wizard::getArtifactsVector(){
 	return this->_artifactsVector;
 }
 
-void Wizard::printPlayerSpells() { 
+void Wizard::printPlayerSpells() {
 	int i = 1 ;
 	for ( Spell* spell : this->_spellVector){
     	std::cout << "[" << i << "] "<< spell->get_name() << std::endl;
     	i++ ;
     }
-} 
+}
 void Wizard::printPlayerPotions() {
 	const int object_size = this-> _potionsVector.size();
 
