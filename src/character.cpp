@@ -48,6 +48,14 @@ int Character::getDexterity(){
 	return this->_baseStats.dexterity ;
 }
 
+std::vector<Spell *> Character::getSpellVector(){
+	return this->_spellVector ;
+}
+
+Spell* Character::getSpell(int i){
+	return this->_spellVector[i];
+}
+
 void Character::setLevel(){
 	 _baseStats.level++;
 }
