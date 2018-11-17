@@ -8,7 +8,7 @@
 void myPause()
 {
 	 do{
-    std::cout << "Press any key to continue!" << std::endl;
+    std::cout << "Press ENTER  to continue!" << std::endl;
     std::cin.get();
   }while(std::cin.get() != '\n');
 }
