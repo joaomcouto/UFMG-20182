@@ -27,7 +27,6 @@ class Wizard : public Character{
 	std::string getHouse();
 	std::string getWand();
 	std::string getPatronum();
-	std::vector<Spell *> getSpellVector();  
 	std::vector<Potions *> getPotionsVector();
 	std::vector<Artifacts *> getArtifactsVector();
 

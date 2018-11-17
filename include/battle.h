@@ -7,10 +7,10 @@ protected:
     bool _ended ; 
     bool _playerturn ; 
     Wizard * _player ; 
-    Character * _enemy ; 
+    Enemy * _enemy ; 
 
 public:
-    Battle(Wizard * player , Character * enemy) ;
+    Battle(Wizard * player , Enemy * enemy) ;
     void round() ; 
 
 

@@ -50,10 +50,6 @@ std::string Wizard::getPatronum(){
 	return this->_patronum;
 }
 
-std::vector<Spell *> Wizard::getSpellVector(){
-	return this->_spellVector ;
-}
-
 std::vector<Potions *> Wizard::getPotionsVector(){
 	return this->_potionsVector;
 }

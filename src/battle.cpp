@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-Battle::Battle(Wizard * player , Character * enemy){
+Battle::Battle(Wizard * player , Enemy * enemy){
     this->_round = 1 ; //Numero do round
     this->_ended = 0 ;  //Booleano de acabou
     this->_player = player ;  //Pointer para a instancia de player
@@ -104,6 +104,10 @@ void Battle::round(){
 
 
     } else {
+        if (this->_enemy->getType() == "human"){
+            int number_spell = rand() % this->_enemy->getSpellVector().size();
+            std::cout << _enemy->getSpell(number_spell)->get_name() << std::endl; //imprimir o nome do feitico do inimigo na tela
+        }
         //Generate/select a random action given the enemy's level stat, call the Move() function with that action and modify the target character's stats according to _playerturn
     }
 

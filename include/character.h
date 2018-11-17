@@ -33,6 +33,8 @@ class Character{
 	int getStrenght();
 	int getConstitution();
 	int getDexterity();
+	std::vector<Spell *> getSpellVector();  
+	Spell* getSpell(int i);
 	
 	void setLevel();
 	void setHP(int i);
