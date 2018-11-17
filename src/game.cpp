@@ -7,9 +7,10 @@
 
 void myPause()
 {
-	std::cout << "Press any character followed by ENTER to continue" << std::endl ;
-	std::string hold ; 
-	std::cin >> hold ;
+	 do{
+    std::cout << "Press any key to continue!" << std::endl;
+    std::cin.get();
+  }while(std::cin.get() != '\n');
 }
 
 std::vector<Spell *> instantiate_spell(){
