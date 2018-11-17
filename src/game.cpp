@@ -46,15 +46,15 @@ std::vector<Spell *> instantiate_spell(){
 std::vector<Artifacts *> instantiate_artifacts(){
 	std::vector<Artifacts *> object;
 
-	Artifacts *ViraTempo = new Artifacts("Vira-Tempo", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
-	Artifacts *Capa = new Artifacts("Capa da Invisibilidade", 3, 0, 0, 0, 10, 0, 1, true ,"sumir");
-	Artifacts *VarinhaDasVarinhas = new Artifacts("Varinha das Varinhas", 4, 0, 0, 10, 0, 10, 2, true, "dano");
-	Artifacts *PedraDaRessureicao = new Artifacts("Pedra da Ressureicao", 4, 30, 10, 0, 0, 0, 1, 1, "vida");
+	Artifacts *TimeTurner = new Artifacts("Time-Turner", 2, 0, 0, 0, 0, 0, 1, true, "voltar");
+	Artifacts *Cloak = new Artifacts("Invisibility Cloak", 3, 0, 0, 0, 10, 0, 1, true ,"sumir");
+	Artifacts *ElderWand = new Artifacts("Elder Wand", 4, 0, 0, 10, 0, 10, 2, true, "dano");
+	Artifacts *ResurrectionStone = new Artifacts("Resurrection Stone", 4, 30, 10, 0, 0, 0, 1, 1, "vida");
 
-	object.push_back(ViraTempo);
-	object.push_back(Capa);
-	object.push_back(VarinhaDasVarinhas);
-	object.push_back(PedraDaRessureicao);
+	object.push_back(TimeTurner);
+	object.push_back(Cloak);
+	object.push_back(ElderWand);
+	object.push_back(ResurrectionStone);
 
     return object;
 }
@@ -62,13 +62,13 @@ std::vector<Artifacts *> instantiate_artifacts(){
 std::vector<Potions *> instantiate_potions(){
 	std::vector<Potions *> object;
 
-	Potions *Revigora = new Potions("Pocao Revigorante", 1, 10, 0, 0, 0, 0, 3);
-	Potions *AntidotoAranha = new Potions("Antidoto contra veneno de aranha", 1, 10, 0, 0, 0, 0, 1);
-	Potions *AntidotoSerpente = new Potions("Antido contra veneno de serpente", 2, 10, 0, 0, 0, 0, 1);
+	Potions *Invigorate = new Potions("Invigorating Potion", 1, 10, 0, 0, 0, 0, 3);
+	Potions *SpiderAntidote = new Potions("Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
+	Potions *SerpentAntidote = new Potions("Antidote to serpent poison", 2, 10, 0, 0, 0, 0, 1);
 
-	object.push_back(Revigora);
-	object.push_back(AntidotoAranha);
-	object.push_back(AntidotoSerpente);
+	object.push_back(Invigorate);
+	object.push_back(SpiderAntidote);
+	object.push_back(SerpentAntidote);
 
     return object;
 }
@@ -208,6 +208,7 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells){
 void texts2(){
 	//textos sobre o inicio das batalhas/explicacao de jogo?
 }
+<<<<<<< HEAD
 
 void initialize_game(){
 	std::vector<Spell *> spell = instantiate_spell();
@@ -222,3 +223,5 @@ void initialize_game(){
 	//chamar funcao de batalha
 
 }
+=======
+>>>>>>> ec7e60213802187039475ce51b4c008397ffa071
