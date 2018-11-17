@@ -107,6 +107,8 @@ void Battle::round(){
         if (this->_enemy->getType() == "human"){
             int number_spell = rand() % this->_enemy->getSpellVector().size();
             std::cout << _enemy->getSpell(number_spell)->get_name() << std::endl; //imprimir o nome do feitico do inimigo na tela
+        } else {
+            std::cout << _enemy->getSpecialAttack()<< std::endl;
         }
         //Generate/select a random action given the enemy's level stat, call the Move() function with that action and modify the target character's stats according to _playerturn
     }
