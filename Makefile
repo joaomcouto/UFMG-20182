@@ -42,6 +42,6 @@ coverage:
 		$(RM) *.gcda *.gcno
 
 clean:
-		$(RM) -r $(OBJDIR)/* $(BINDIR)/* coverage/* *.gcda *.gcno *.gcov
+		$(RM) -r $(OBJDIR)/* $(BINDIR)/* coverage/* *.gcda *.gcno
 
 .PHONY: clean coverage
