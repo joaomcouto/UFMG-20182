@@ -30,7 +30,7 @@ typedef struct Stats {
 		t.dexterity =this->dexterity + a.dexterity ;
 		return t ;
 	}
-	int printStats(){
+	void printStats(){
 		std::cout << " ->Health: " << this->hp  << std::endl;
 		std::cout << " ->Magic Points: " << this->mp  << std::endl;
 		std::cout << " ->Strenght: " << this->strenght  << std::endl;

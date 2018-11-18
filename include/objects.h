@@ -16,6 +16,8 @@ public:
 	virtual ~Object();
 	std::string get_name();
 	int get_level();
+	int getDuration();
+	Stats getEffectsStats() ;
 };
 
 #endif

@@ -22,3 +22,11 @@ std::string Object::get_name(){
 int Object::get_level(){
 	return this->_effectStats.level;
 }
+
+int Object::getDuration(){
+	return this->_duration ; 
+}
+
+Stats Object::getEffectsStats(){
+	return this->_effectStats ;
+}
