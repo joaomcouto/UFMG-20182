@@ -37,6 +37,11 @@ void Battle::initializeBattle(){
     this->introduction();
     while((this->_player->getHP() > 0) && (this->_enemy->getHP() > 0)){
         this->round() ;
+        if(this->_playerturn == 0) {
+            _playerturn = 1  ;
+            } else {
+                _playerturn = 0 ;
+            }
     }
     _originalStats.level += 1 ;
     this->_player->setStats(this->_originalStats) ; 
@@ -49,26 +54,32 @@ void Battle::spellMove(Spell* spell ){
     if (_playerturn == 1 ){
         std::cout << "\033[2J\033[1;1H"; //This line clear the screen
         std::cout << "Player has used the spell " << spell->get_name() << "!" << std::endl;
-        updateDebuffs(spell->getDuration() , spell->getDamageStats() ) ;
+        updateDebuffs(spell->getDuration() , spell->getDamageStats() , 0 ) ;
         _enemy->setHP( spell->get_hp_dmg()*(1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentEnemyStats().constitution) ) ;
         std::cout << "The enemy now has the following stats: " << std::endl ;
         getCurrentEnemyStats().printStats() ;
+        myBattlePause();
     } else {
         //std::cout << "\033[2J\033[1;1H"; //This line clear the screen
         //std::cout << "Enemy has used the spell " << spell->get_name() << ", for the following damage" << std::endl;
         //_player->setHP( spell->get_hp_dmg()*(1 + 0.1*currentEnemyStats.strenght)*(1 - 0.1*currentPlayerStats.constitution) ) ;
         //updateDebuffs(spell->getDuration() , spell->getDamageStats()) ;
+        std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+        std::cout << "Enemy has used the spell " << spell->get_name() << "!" << std::endl;
+        updateDebuffs(spell->getDuration() , spell->getDamageStats() , 1 ) ;
+        _player->setHP( spell->get_hp_dmg()*(1 + 0.1*getCurrentEnemyStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
+        std::cout << "The player now has the following stats: " << std::endl ;
+        getCurrentPlayerStats().printStats() ;
+        myBattlePause();
     }
 }
 
-void Battle::updateDebuffs(int duration, Stats debuff) {
-    if (this->_playerturn == 1)
+void Battle::updateDebuffs(int duration, Stats debuff, bool actOnPlayer) {
+    if (actOnPlayer == 0 )
         for (int i = _round-1 ; i <= _round+duration-1 ; i++){
             this->_enemyDebuffs[i] += debuff ; 
-            //std::cout <<"printando debuff " << std::endl;
             this->_enemyDebuffs[i].hp = 0 ;
-            this->_enemyDebuffs[i].mp = 0 ;
-            //_enemyDebuffs[i].printStats() ;
+            this->_enemyDebuffs[i].mp = 0 ; 
             
         }
     else
@@ -125,9 +136,7 @@ void Battle::round(){
                             std::cin >> selectionIndex ;
                             if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
                                 spellMove(_player->getSpellVector()[selectionIndex-1]) ;
-                                myBattlePause();
                                 //move(_player->getSpellVector()[selectionIndex-1]) ;
-                                this->_playerturn = 0 ;
                                 return ;
                             } else if (selectionIndex == 0 ) {
                                 std::cout << "\033[2J\033[1;1H"; //This line clear the screen
@@ -155,7 +164,7 @@ void Battle::round(){
                                         std::cin >> potionIndex ;
                                         if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector().size())){
                                             //move(_player->getPotionsVector()[potionsIndex-1]) ;
-                                            this->_playerturn = 0 ;
+                                            
                                             return ;
                                         } else if (potionIndex == 0 ) {
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
@@ -174,7 +183,7 @@ void Battle::round(){
                                         std::cin >> artifactsIndex;
                                         if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector().size())){
                                             //move(_player->getArtifactsVector()[artifactsIndex-1]) ;
-                                            this->_playerturn = 0 ;
+                                            
                                             return ;
                                         } else if (artifactsIndex == 0 ) {
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
@@ -204,7 +213,8 @@ void Battle::round(){
     } else {
         if (this->_enemy->getType() == "human"){
             int number_spell = rand() % this->_enemy->getSpellVector().size();
-            std::cout << _enemy->getSpell(number_spell)->get_name() << std::endl; //imprimir o nome do feitico do inimigo na tela
+            spellMove(_enemy->getSpellVector()[number_spell]) ;
+            return ; 
         } else {
             std::cout << _enemy->getSpecialAttack()<< std::endl;
         }

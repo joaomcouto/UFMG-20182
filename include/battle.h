@@ -19,7 +19,7 @@ public:
     Battle(Wizard * player , Enemy * enemy) ;
     void spellMove(Spell * spell);
     void round() ; 
-    void updateDebuffs(int duration, Stats debuff);
+    void updateDebuffs(int duration, Stats debuff, bool actOnPlayer);
     void initializeBattle() ;
     void introduction() ; 
     Stats getCurrentPlayerStats() ;
