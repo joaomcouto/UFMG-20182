@@ -1,6 +1,7 @@
 #include "character.h"
 #include "wizard.h"
 #include "spells.h"
+#include "stats.h"
 
 class Battle {
 protected:

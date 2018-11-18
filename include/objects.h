@@ -2,7 +2,7 @@
 #define OBJECT_H
 
 #include <string>
-#include <character.h>
+#include "stats.h"
 
 class Object {
 protected:

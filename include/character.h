@@ -4,15 +4,9 @@
 #include <string>
 #include <vector>
 #include "spells.h"
+#include "stats.h"
 
-typedef struct {
-	int level;
- 	int hp;
- 	int mp;
- 	int strenght; 
- 	int constitution;
- 	int dexterity;
-} Stats ;
+
 
 class Character{
  protected: 
