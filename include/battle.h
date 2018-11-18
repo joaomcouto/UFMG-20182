@@ -18,6 +18,7 @@ protected:
 public:
     Battle(Wizard * player , Enemy * enemy) ;
     void spellMove(Spell * spell);
+    void potionMove(Potions * potion) ;
     void round() ; 
     void updateDebuffs(int duration, Stats debuff, bool actOnPlayer);
     void initializeBattle() ;

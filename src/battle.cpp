@@ -74,6 +74,11 @@ void Battle::spellMove(Spell* spell ){
     }
 }
 
+void Battle::potionMove(Potions* potion){
+    updateDebuffs(potion->getDuration() , potion->getEffectsStats(), 1) ;
+    potion->set_quant(-1) ;
+}
+
 void Battle::updateDebuffs(int duration, Stats debuff, bool actOnPlayer) {
     if (actOnPlayer == 0 )
         for (int i = _round-1 ; i <= _round+duration-1 ; i++){
@@ -163,9 +168,12 @@ void Battle::round(){
                                         _player->printPlayerPotions();
                                         std::cin >> potionIndex ;
                                         if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector().size())){
-                                            //move(_player->getPotionsVector()[potionsIndex-1]) ;
-                                            
-                                            return ;
+                                            //updateDebuffs(_player->getPotionsVector()[potionIndex]->getDuration() , _player->getPotionsVector()[potionIndex]->get ) ;
+                                            potionMove(_player->getPotionsVector()[potionIndex-1]) ;
+                                            if (_player->getPotionsVector()[potionIndex-1]->get_quant() == 0) {
+                                                this->_player->getPotionsVector().erase( (_player->getPotionsVector().begin()) + potionIndex) ;
+                                            }
+                                            break ;
                                         } else if (potionIndex == 0 ) {
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                             break ;

@@ -25,7 +25,7 @@ std::vector<Potions *> Wizard::instantiate_potions(std::vector<Potions *> _potio
 	std::vector<Potions *> Potion;
 
     for (int i = 0; i < potions_size; i++){
-		if(_potions[i]->get_level() == 1)
+		if(_potions[i]->get_level() < 3)
 			Potion.push_back(_potions[i]);
 	}
 	return Potion;
