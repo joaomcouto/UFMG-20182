@@ -1,4 +1,4 @@
-#include "character.h"
+#include "enemy.h"
 #include "wizard.h"
 #include "spells.h"
 #include "stats.h"
@@ -18,6 +18,7 @@ protected:
 public:
     Battle(Wizard * player , Enemy * enemy) ;
     void spellMove(Spell * spell);
+    void specialAttackMove(specialAttack _attack);
     void potionMove(Potions * potion) ;
     void round() ; 
     void updateDebuffs(int duration, Stats debuff, bool actOnPlayer);

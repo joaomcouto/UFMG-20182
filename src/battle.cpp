@@ -39,9 +39,9 @@ void Battle::initializeBattle(){
         this->round() ;
         if(this->_playerturn == 0) {
             _playerturn = 1  ;
-            } else {
-                _playerturn = 0 ;
-            }
+        } else {
+            _playerturn = 0 ;
+        }
     }
     _originalStats.level += 1 ;
     this->_player->setStats(this->_originalStats) ; 
@@ -72,6 +72,16 @@ void Battle::spellMove(Spell* spell ){
         getCurrentPlayerStats().printStats() ;
         myBattlePause();
     }
+}
+
+void Battle::specialAttackMove(specialAttack _attack){
+    std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+    std::cout << "Enemy has used the attack " << _attack._name << "!" << std::endl;
+    updateDebuffs(1, _attack._damageStats, 1) ;
+    _player->setHP(_attack._damageStats.hp * (1 + 0.1*getCurrentEnemyStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
+    std::cout << "The player now has the following stats: " << std::endl ;
+    getCurrentPlayerStats().printStats() ;
+    myBattlePause();
 }
 
 void Battle::potionMove(Potions* potion){
@@ -222,9 +232,10 @@ void Battle::round(){
         if (this->_enemy->getType() == "human"){
             int number_spell = rand() % this->_enemy->getSpellVector().size();
             spellMove(_enemy->getSpellVector()[number_spell]) ;
-            return ; 
+            return; 
         } else {
-            std::cout << _enemy->getSpecialAttack()<< std::endl;
+            specialAttackMove(_enemy->getSpecialAttack());
+            return;
         }
         //Generate/select a random action given the enemy's level stat, call the Move() function with that action and modify the target character's stats according to _playerturn
     }

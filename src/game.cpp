@@ -91,6 +91,20 @@ std::vector<Potions *> instantiate_potions(){
     return object;
 }
 
+std::vector<specialAttack > instantiate_attack(){
+	std::vector<specialAttack > attack;
+
+	specialAttack None = {"NONE", 0, 0, 0, 0, 0, 0};
+	specialAttack Picada = {"Picada", 1, -30, -40, -2, -1, 0};
+	specialAttack Veneno = {"Veneno", 0, 0, 0, 0, 0, 0};
+
+	attack.push_back(None);
+	attack.push_back(Picada);
+	attack.push_back(Veneno);
+
+	return attack;
+}
+
 std::string texts1(){
 	std::string name ;
 	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
@@ -225,12 +239,12 @@ Wizard* initialize_player(std::vector<Spell *> _spells, std::vector<Potions *> _
 	return player;
 }
 
-std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells){
+std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<specialAttack> attack){
 	std::vector<Enemy *> enemies;
 	std::vector<Spell *> empty;
 
-	Enemy *Spider = new Enemy("Spider", "spider", "picada", 4, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
-	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", " ", 1, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
+	Enemy *Spider = new Enemy("Spider", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
+	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 3, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
 
 	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
@@ -252,11 +266,12 @@ void initialize_game(){
 	std::vector<Potions *> potion = instantiate_potions();
 	std::vector<Artifacts *> artifact = instantiate_artifacts();
 	Wizard *player = initialize_player(spell, potion, artifact);
-	std::vector<Enemy *> enemies = initialize_enemy(spell); 
+	std::vector<specialAttack> attack = instantiate_attack();
+	std::vector<Enemy *> enemies = initialize_enemy(spell, attack); 
 	
 
-	 while(1){ 
-		 int selectionIndex, menuIndex ;
+	while(1){ 
+		int selectionIndex, menuIndex ;
             try {
                 printMainMenu() ;
                 std::cin >> menuIndex ;

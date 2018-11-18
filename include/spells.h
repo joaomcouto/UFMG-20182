@@ -10,8 +10,8 @@ protected:
 	Stats _damageStats ;
 	int _duration ; 
 	int _level;
-	int _hp ;
-	int _mp ;
+//	int _hp ;
+//	int _mp ;
 	
 
 public:	
