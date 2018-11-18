@@ -3,7 +3,7 @@
 Object::Object(int duration, std::string name, int _level, int _hp, int _mp,  int _strenght, int _constituion, int _dexterity){
 	this->_duration = duration ; 
 	this->_name = name;
-	this->_effectStats.level = 0;
+	this->_effectStats.level = _level;
 	this->_effectStats.hp = _hp;
  	this->_effectStats.mp = _mp;
  	this->_effectStats.strenght = _strenght; 
@@ -29,4 +29,8 @@ int Object::getDuration(){
 
 Stats Object::getEffectsStats(){
 	return this->_effectStats ;
+}
+
+int Object::get_hp_effect(){
+	return this->_effectStats.hp;
 }

@@ -48,8 +48,6 @@ void Battle::initializeBattle(){
     this->_player->incrementSkillPoints(1);
 }
 
-
-
 void Battle::spellMove(Spell* spell ){
     if (_playerturn == 1 ){
         std::cout << "\033[2J\033[1;1H"; //This line clear the screen
@@ -77,16 +75,21 @@ void Battle::spellMove(Spell* spell ){
 void Battle::specialAttackMove(specialAttack _attack){
     std::cout << "\033[2J\033[1;1H"; //This line clear the screen
     std::cout << "Enemy has used the attack " << _attack._name << "!" << std::endl;
-    updateDebuffs(1, _attack._damageStats, 1) ;
+    updateDebuffs(1, _attack._damageStats, 1);
     _player->setHP(_attack._damageStats.hp * (1 + 0.1*getCurrentEnemyStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
-    std::cout << "The player now has the following stats: " << std::endl ;
-    getCurrentPlayerStats().printStats() ;
+    std::cout << "The player now has the following stats: " << std::endl;
+    getCurrentPlayerStats().printStats();
     myBattlePause();
 }
 
 void Battle::potionMove(Potions* potion){
-    updateDebuffs(potion->getDuration() , potion->getEffectsStats(), 1) ;
-    potion->set_quant(-1) ;
+    std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+    std::cout << "Player has used the potion " << potion->get_name() << "!" << std::endl;
+    updateDebuffs(potion->getDuration() , potion->getEffectsStats(), 1);
+    _player->setHP(potion->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
+    std::cout << "The player now has the following stats: " << std::endl;
+    getCurrentPlayerStats().printStats();
+    myBattlePause();
 }
 
 void Battle::updateDebuffs(int duration, Stats debuff, bool actOnPlayer) {
@@ -130,7 +133,6 @@ void Battle::introduction(){
     myBattlePause();
 }
 
-
 void Battle::round(){
     if (this->_playerturn == 1){
         unsigned int menuIndex ;
@@ -147,11 +149,10 @@ void Battle::round(){
                     while(1){ //Done
                         try {
                             std::cout << "[0] "<<  "Back to main menu" << std::endl ;
-                            _player->printPlayerSpells() ;
+                            _player->printPlayerSpells();
                             std::cin >> selectionIndex ;
                             if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
                                 spellMove(_player->getSpellVector()[selectionIndex-1]) ;
-                                //move(_player->getSpellVector()[selectionIndex-1]) ;
                                 return ;
                             } else if (selectionIndex == 0 ) {
                                 std::cout << "\033[2J\033[1;1H"; //This line clear the screen
@@ -176,10 +177,10 @@ void Battle::round(){
                                     try{
                                         std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
                                         _player->printPlayerPotions();
-                                        std::cin >> potionIndex ;
+                                        std::cin >> potionIndex;
                                         if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector().size())){
-                                            //updateDebuffs(_player->getPotionsVector()[potionIndex]->getDuration() , _player->getPotionsVector()[potionIndex]->get ) ;
-                                            potionMove(_player->getPotionsVector()[potionIndex-1]) ;
+                                            potionMove(_player->getPotionsVector()[potionIndex-1]);
+                                            _player->set_quantPotions(potionIndex-1, -1);
                                             if (_player->getPotionsVector()[potionIndex-1]->get_quant() == 0) {
                                                 this->_player->getPotionsVector().erase( (_player->getPotionsVector().begin()) + potionIndex) ;
                                             }
@@ -190,8 +191,9 @@ void Battle::round(){
                                         } else throw std::invalid_argument("Invalid potion index, try again ") ;
                                     } catch (std::invalid_argument &t) {
                                         std::cout << t.what() << std::endl;
-                                        }
+                                    }
                                 }
+                                break;
                             } else if (secondaryMenuIndex == 2 ){
                                 unsigned int artifactsIndex ;
                                 while(1){

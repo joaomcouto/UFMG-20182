@@ -18,6 +18,7 @@ public:
 	int get_level();
 	int getDuration();
 	Stats getEffectsStats() ;
+	int get_hp_effect();
 };
 
 #endif
