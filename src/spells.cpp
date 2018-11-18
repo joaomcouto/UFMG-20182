@@ -1,7 +1,8 @@
 #include "spells.h"
 
 
-Spell::Spell(std::string name, int level, int hp, int mp, int strenght, int constituion, int dexterity){
+Spell::Spell(int duration, std::string name, int level, int hp, int mp, int strenght, int constituion, int dexterity){
+	this->_duration = duration ;
 	this->_name = name;
 	this->_level = level;
 	this->_damageStats.hp= hp;
@@ -13,6 +14,14 @@ Spell::Spell(std::string name, int level, int hp, int mp, int strenght, int cons
 
 Spell::~Spell(){
 
+}
+
+int Spell::getDuration(){
+	return this->_duration ; 
+}
+
+Stats Spell::getDamageStats(){
+	return this->_damageStats ; 
 }
 
 int Spell::get_level(){

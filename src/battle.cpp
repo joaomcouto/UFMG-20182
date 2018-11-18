@@ -35,7 +35,6 @@ Battle::Battle(Wizard * player , Enemy * enemy){
 
 void Battle::initializeBattle(){
     this->introduction();
-
     while((this->_player->getHP() > 0) && (this->_enemy->getHP() > 0)){
         this->round() ;
     }
@@ -45,10 +44,53 @@ void Battle::initializeBattle(){
 }
 
 
+
 void Battle::spellMove(Spell* spell ){
-    
+    if (_playerturn == 1 ){
+        std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+        std::cout << "Player has used the spell " << spell->get_name() << "!" << std::endl;
+        updateDebuffs(spell->getDuration() , spell->getDamageStats() ) ;
+        _enemy->setHP( spell->get_hp_dmg()*(1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentEnemyStats().constitution) ) ;
+        std::cout << "The enemy now has the following stats: " << std::endl ;
+        getCurrentEnemyStats().printStats() ;
+    } else {
+        //std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+        //std::cout << "Enemy has used the spell " << spell->get_name() << ", for the following damage" << std::endl;
+        //_player->setHP( spell->get_hp_dmg()*(1 + 0.1*currentEnemyStats.strenght)*(1 - 0.1*currentPlayerStats.constitution) ) ;
+        //updateDebuffs(spell->getDuration() , spell->getDamageStats()) ;
+    }
+}
+
+void Battle::updateDebuffs(int duration, Stats debuff) {
+    if (this->_playerturn == 1)
+        for (int i = _round-1 ; i <= _round+duration-1 ; i++){
+            this->_enemyDebuffs[i] += debuff ; 
+            //std::cout <<"printando debuff " << std::endl;
+            this->_enemyDebuffs[i].hp = 0 ;
+            this->_enemyDebuffs[i].mp = 0 ;
+            //_enemyDebuffs[i].printStats() ;
+            
+        }
+    else
+        for (int i = _round-1 ; i <= _round+duration-1 ; i++){
+            this->_playerDebuffs[i] += debuff ; 
+            this->_playerDebuffs[i].hp = 0 ;
+            this->_playerDebuffs[i].mp = 0 ;
+        }
+    }
+
+Stats Battle::getCurrentPlayerStats(){
+    Stats currentPlayerStats = (this->_playerDebuffs[_round-1] + _player->getBaseStats()) ;
+    return currentPlayerStats ;
 
 }
+
+Stats Battle::getCurrentEnemyStats(){
+    Stats currentEnemyStats = (this->_enemyDebuffs[_round-1] + _enemy->getBaseStats()) ;
+    std::cout << "\n" ;
+    return currentEnemyStats ;
+}
+
 
 void Battle::introduction(){
     this->_enemy->printIntro() ;
@@ -83,6 +125,7 @@ void Battle::round(){
                             std::cin >> selectionIndex ;
                             if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
                                 spellMove(_player->getSpellVector()[selectionIndex-1]) ;
+                                myBattlePause();
                                 //move(_player->getSpellVector()[selectionIndex-1]) ;
                                 this->_playerturn = 0 ;
                                 return ;

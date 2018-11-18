@@ -15,23 +15,24 @@ void myPause(){
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
 	//os numeros nao sao reais, somente os niveis mais ou menos
-	Spell *Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
-	Spell *ExpectroPatronum = new Spell("Expectro Patronum", 4, 50, 20, 20, 30, 40);
-	Spell *Lumus = new Spell("Lumus", 1, 0, 10, 0, 1, 0);
-	Spell *Nox = new Spell("Nox", 1, 0, 10, 0, 1, 0);
-	Spell *Protego = new Spell("Protego", 1, 0, 10, 0, 1, 0);
-	Spell *WingardiumLeviosa = new Spell("Wingardium Leviosa", 1, 0, 10, 0, 1, 0);
-	Spell *Incendio = new Spell("Incendio", 2, 0, 10, 0, 1, 0);
-	Spell *Rictusempra = new Spell("Rictusempra", 2, 0, 10, 0, 1, 0);	
-	Spell *Imobbilius = new Spell("Imobbilius", 3, 0, 10, 0, 1, 0);
-	Spell *Estupefaca = new Spell("Estupefaca", 4, 0, 10, 0, 1, 0);
-	Spell *PetrificusTotalus = new Spell("Petrificus Totalus", 4, 0, 10, 0, 1, 0);
-	Spell *Levicorpus = new Spell("Levicorpus", 5, 0, 10, 0, 1, 0);
-	Spell *Sectusempra = new Spell("Sectusempra", 6, 0, 10, 0, 1, 0);
-	Spell *Obscuro = new Spell("Obscuro", 6, 0, 10, 0, 1, 0);
+	//duracao, nome, level, hp, mp , stg, cons, dex 
+	Spell *Expelliarmus = new Spell(2, "Expelliarmus", 1, -30, -40, -2, -1, 0);
+	Spell *ExpectroPatronum = new Spell(2, "Expectro Patronum", 4, -50, -20, -20, -30, -40);
+	Spell *Lumus = new Spell(2, "Lumus", 1, 0, 10, 0, -1, 0);
+	Spell *Nox = new Spell(2, "Nox", 1, 0, 10, 0, -1, 0);
+	Spell *Protego = new Spell(2, "Protego", 1, 0, 10, 0, -1, 0);
+	Spell *WingardiumLeviosa = new Spell(2, "Wingardium Leviosa", 1, 0, 10, 0, -1, 0);
+	Spell *Incendio = new Spell(2, "Incendio", 2, 0, 10, 0, -1, 0);
+	Spell *Rictusempra = new Spell(2, "Rictusempra", 2, 0, -10, 0, -1, 0);	
+	Spell *Imobbilius = new Spell(2, "Imobbilius", 3, 0, -10, 0, -1, 0);
+	Spell *Estupefaca = new Spell(2, "Estupefaca", 4, 0, -10, 0, -1, 0);
+	Spell *PetrificusTotalus = new Spell(2, "Petrificus Totalus", 4, 0, -10, 0, -1, 0);
+	Spell *Levicorpus = new Spell(2, "Levicorpus", 5, 0, -10, 0, -1, 0);
+	Spell *Sectusempra = new Spell(2, "Sectusempra", 6, 0, -10, 0, -1, 0);
+	Spell *Obscuro = new Spell(2, "Obscuro", 6, 0, -10, 0, -1, 0);
 	//vamos deixar a arte das trevas entrar?
-	Spell *Crucio = new Spell("Crucio", 7, 0, 10, 0, 1, 0);
-	Spell *AvadaKedavra = new Spell("Avada Kedavra", 7, 0, 10, 0, 1, 0);
+	Spell *Crucio = new Spell(2, "Crucio", 7, 0, -10, 0, -1, 0);
+	Spell *AvadaKedavra = new Spell(2, "Avada Kedavra", 7, 0, -10, 0, -1, 0);
 
 
 	spell.push_back(Expelliarmus);
