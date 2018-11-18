@@ -169,6 +169,9 @@ std::string choice_of_wand(){
 	std::string wand = woods[number_wood] + " and " + cores[number_core];
 	std::cout << "Your wand is made out of " << wand << std::endl;
 	std::cout << std::endl;
+	myPause();
+	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+	std::cout << std::endl;
 	return wand;
 
 }
@@ -182,6 +185,9 @@ std::string choice_of_house(){
 	int number_house = rand() % houses.size();
 	std::string house = houses[number_house];
 	std::cout << "Your house is: " << house << std::endl;
+	std::cout << std::endl;
+	myPause();
+	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << std::endl;
 	return house;
 
@@ -202,6 +208,9 @@ std::string choice_of_patronum(){
 	int number_patronum = rand() % patronuns.size();
 	std::string patronum = patronuns[number_patronum];
 	std::cout << "Every witch and wizard has their very own patronus, yours shall take the form of a: " << patronum << std::endl;
+	std::cout << std::endl;
+	myPause();
+	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << std::endl;
 	return patronum;
 }
