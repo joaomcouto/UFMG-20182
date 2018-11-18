@@ -40,6 +40,7 @@ void Battle::initializeBattle(){
 
 
 void Battle::spellMove(Spell* spell ){
+    //this->_enemy = 
 
 }
 
@@ -58,7 +59,7 @@ void Battle::introduction(){
 
 void Battle::round(){
     if (this->_playerturn == 1){
-        int menuIndex ;
+        unsigned int menuIndex ;
         //int actionIndex; //essa variavel ainda nao foi usada, tire o comentario quando for usar
         unsigned int selectionIndex ;
         while(1){ //Deemed necessary, player might return to menu selection menu
@@ -88,7 +89,7 @@ void Battle::round(){
                         }
                     }
                 } else if (menuIndex == 2 ){
-                    int secondaryMenuIndex ;
+                    unsigned int secondaryMenuIndex ;
                     while (1){
                         try{
                             std::cout << "Make a choice:" << std::endl << "[0] Back to main menu" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl;
@@ -97,7 +98,7 @@ void Battle::round(){
                             if (secondaryMenuIndex == 0){
                                 break ;
                             } else if (secondaryMenuIndex == 1){
-                                int potionIndex ;
+                                unsigned int potionIndex ;
                                 while(1){
                                     try{
                                         std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
@@ -116,7 +117,7 @@ void Battle::round(){
                                         }
                                 }
                             } else if (secondaryMenuIndex == 2 ){
-                                int artifactsIndex ;
+                                unsigned int artifactsIndex ;
                                 while(1){
                                     try{
                                         _player->printPlayerArtifacts();
