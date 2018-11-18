@@ -77,10 +77,16 @@ std::vector<Potions *> instantiate_potions(){
 	Potions *Invigorate = new Potions(1, "Invigorating Potion", 1, 10, 0, 0, 0, 0, 3);
 	Potions *SpiderAntidote = new Potions(1, "Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
 	Potions *SerpentAntidote = new Potions(1, "Antidote to serpent poison", 2, 10, 0, 0, 0, 0, 1);
+	Potions *Strength = new Potions(1, "Strength Potion", 3, 10, 0, 0, 0, 0, 1);
+	Potions *Restoration = new Potions (1, "Restoration Potion", 5, 10, 0, 0, 0, 0, 1);
+	Potions *Death = new Potions(1, "Death Potion", 7, 10, 0, 0, 0, 0, 1);
 
 	object.push_back(Invigorate);
 	object.push_back(SpiderAntidote);
 	object.push_back(SerpentAntidote);
+	object.push_back(Strength);
+	object.push_back(Restoration);
+	object.push_back(Death);
 
     return object;
 }
