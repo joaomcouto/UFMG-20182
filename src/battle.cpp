@@ -182,7 +182,7 @@ void Battle::round(){
                                             potionMove(_player->getPotionsVector()[potionIndex-1]);
                                             _player->set_quantPotions(potionIndex-1, -1);
                                             if (_player->getPotionsVector()[potionIndex-1]->get_quant() == 0) {
-                                                this->_player->getPotionsVector().erase( (_player->getPotionsVector().begin()) + potionIndex) ;
+                                                this->_player->erase_Potion(potionIndex-1);
                                             }
                                             break ;
                                         } else if (potionIndex == 0 ) {

@@ -98,6 +98,10 @@ void Wizard::set_quantPotions(int i, int quant){
 	this->_potionsVector[i]->set_quant(quant);
 }
 
+void Wizard::erase_Potion(int i){
+	this->_potionsVector.erase(_potionsVector.begin() + i);
+}
+
 void Wizard::set_existArtifacts(std::vector<Artifacts *> artifact, int i){
 	artifact[i]->set_exist();
 }
