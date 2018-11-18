@@ -1,6 +1,7 @@
 #include "objects.h"
 
-Object::Object(std::string name, int _level, int _hp, int _mp,  int _strenght, int _constituion, int _dexterity){
+Object::Object(int duration, std::string name, int _level, int _hp, int _mp,  int _strenght, int _constituion, int _dexterity){
+	this->_duration = duration ; 
 	this->_name = name;
 	this->_effectStats.level = 0;
 	this->_effectStats.hp = _hp;

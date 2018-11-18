@@ -57,10 +57,10 @@ std::vector<Spell *> instantiate_spell(){
 std::vector<Artifacts *> instantiate_artifacts(){
 	std::vector<Artifacts *> object;
 
-	Artifacts *TimeTurner = new Artifacts("Time-Turner", 2, 0, 0, 0, 0, 0, 1, true, "return");
-	Artifacts *Cloak = new Artifacts("Invisibility Cloak", 3, 0, 0, 0, 10, 0, 1, true ,"cloak");
-	Artifacts *ElderWand = new Artifacts("Elder Wand", 4, 0, 0, 10, 0, 10, 2, true, "damage");
-	Artifacts *ResurrectionStone = new Artifacts("Resurrection Stone", 4, 30, 10, 0, 0, 0, 1, 1, "life");
+	Artifacts *TimeTurner = new Artifacts(0, "Time-Turner", 2, 0, 0, 0, 0, 0, 1, true, "return");
+	Artifacts *Cloak = new Artifacts(2 , "Invisibility Cloak", 3, 0, 0, 0, 10, 0, 1, true ,"cloak");
+	Artifacts *ElderWand = new Artifacts(2 , "Elder Wand", 4, 0, 0, 10, 0, 10, 2, true, "damage");
+	Artifacts *ResurrectionStone = new Artifacts(2, "Resurrection Stone", 4, 30, 10, 0, 0, 0, 1, 1, "life");
 
 	object.push_back(TimeTurner);
 	object.push_back(Cloak);
@@ -73,9 +73,9 @@ std::vector<Artifacts *> instantiate_artifacts(){
 std::vector<Potions *> instantiate_potions(){
 	std::vector<Potions *> object;
 
-	Potions *Invigorate = new Potions("Invigorating Potion", 1, 10, 0, 0, 0, 0, 3);
-	Potions *SpiderAntidote = new Potions("Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
-	Potions *SerpentAntidote = new Potions("Antidote to serpent poison", 2, 10, 0, 0, 0, 0, 1);
+	Potions *Invigorate = new Potions(1, "Invigorating Potion", 1, 10, 0, 0, 0, 0, 3);
+	Potions *SpiderAntidote = new Potions(1, "Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
+	Potions *SerpentAntidote = new Potions(1, "Antidote to serpent poison", 2, 10, 0, 0, 0, 0, 1);
 
 	object.push_back(Invigorate);
 	object.push_back(SpiderAntidote);

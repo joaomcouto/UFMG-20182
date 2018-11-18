@@ -2,6 +2,7 @@
 #include "enemy.h"
 #include "battle.h"
 #include "spells.h"
+#include "stats.h"
 #include <iostream>
 #include <string>
 
@@ -24,6 +25,11 @@ Battle::Battle(Wizard * player , Enemy * enemy){
     } else {
         this->_playerturn = 0 ;
     }
+    Stats filler = {0,0,0,0,0,0} ;
+    for ( int i = 0 ; i < 20 ; i ++) {
+        _playerDebuffs.push_back(filler);
+        _enemyDebuffs.push_back(filler) ;
+    }
     this->initializeBattle() ;
 }
 
@@ -40,7 +46,7 @@ void Battle::initializeBattle(){
 
 
 void Battle::spellMove(Spell* spell ){
-    //this->_enemy = 
+    
 
 }
 

@@ -2,16 +2,14 @@
 #define SPELLS_H
 
 #include <string>
+#include "stats.h"
 
 class Spell {
 protected:
 	std::string _name;
+	Stats _damageStats ;
 	int _level;
-	int hp_dmg;
-	int mp_dmg;
-	int strenght_dmg;
-	int constituion_dmg;
-	int dexterity_dmg;
+	
 
 public:	
 	Spell(std::string name, int level, int hp, int mp, int strenght, int constituion, int dexterity);
