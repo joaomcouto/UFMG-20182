@@ -244,8 +244,8 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<
 	std::vector<Spell *> empty;
 
 	Enemy *Spider = new Enemy("Spider", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
-	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 3, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
-
+	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 2, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
+	Enemy *Dementor = new Enemy ("Dementor", "" )
 	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
 
@@ -293,15 +293,15 @@ void initialize_game(){
                                 player->incrementSkill(selectionIndex);
                             } else if (selectionIndex == 0 ) {
                                 std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-                                break ;
+                                break;
                             } else throw std::invalid_argument("Invalid skill index, try again ") ;
                         } catch (std::invalid_argument &t){
                             std::cout << t.what() << std::endl;
                         }
                     }
 					std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-					std::cout << "You have no skillpoints available\n" ;
-					myPause() ;
+					std::cout << "You have no skillpoints available!\n" ;
+					myPause();
                 } else if(menuIndex ==3){
 					while(1){
                         try {

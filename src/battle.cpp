@@ -20,6 +20,7 @@ Battle::Battle(Wizard * player , Enemy * enemy){
     this->_player = player ;  //Pointer para a instancia de player
     this->_enemy = enemy; //Pointer para a instancia de enermy
     this->_originalStats = player->getBaseStats();
+    this->_originalStatsEnemy = enemy->getBaseStats();
     this->_olderHP = player->getHP();
     if (player->getDexterity() > enemy->getDexterity()){ //Define quem vai ter o primeiro turno
         this->_playerturn = 1 ;
@@ -48,9 +49,15 @@ void Battle::initializeBattle(){
             _playerturn = 0 ;
         }
     }
-    _originalStats.level += 1 ;
+    std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+    if (this->_enemy->getHP() <= 0){
+        std::cout << "You have won this battle! " << std::endl;
+        _originalStats.level += 1 ;
+    } else 
+        std::cout << "You lost this battle! " << std::endl;
     this->_player->setStats(this->_originalStats) ; 
     this->_player->incrementSkillPoints(1);
+    this->_enemy->setStats(this->_originalStatsEnemy);
 }
 
 void Battle::spellMove(Spell* spell ){

@@ -10,6 +10,7 @@ protected:
     bool _ended ; 
     bool _playerturn ; 
     Stats _originalStats ;
+    Stats _originalStatsEnemy ;
     std::vector<Stats> _playerDebuffs ; //cada posicao i se refere a um round
     std::vector<Stats> _enemyDebuffs ;
     int _olderHP;
