@@ -219,7 +219,7 @@ void Battle::round(){
                                             if (_player->getPotionsVector()[potionIndex-1]->get_quant() == 0) {
                                                 this->_player->erase_Potion(potionIndex-1);
                                             }
-                                            break ;
+                                            return ;
                                         } else if (potionIndex == 0 ) {
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                             break ;
@@ -228,7 +228,6 @@ void Battle::round(){
                                         std::cout << t.what() << std::endl;
                                     }
                                 }
-                                break;
                             } else if (secondaryMenuIndex == 2 ){
                                 unsigned int artifactsIndex ;
                                 while(1){

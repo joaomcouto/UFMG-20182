@@ -324,6 +324,8 @@ void initialize_game(){
                     throw std::invalid_argument("Invalid menu index, try again") ;
                 }
 			player->setSpellVector(spell);
+			player->setArtifactsVector(artifact);
+			player->setPotionsVector(potion);
             } catch(std::invalid_argument &t) {
                 std::cout << t.what() << std::endl;
             }
