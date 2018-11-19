@@ -4,17 +4,22 @@
 #include "character.h"
 #include <string>
 
+typedef struct {
+  std::string _name;
+	Stats _damageStats ;
+} specialAttack;
+
 class Enemy : public Character{
 protected:
   std::string _type ;
-  std::string  special_attack;
+  specialAttack _attack;
   std::string _intro ; 
 public:
-  Enemy(std::string name, std::string type, std::string special, int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells, std::string intro);
+  Enemy(std::string name, std::string type, specialAttack attack, int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells, std::string intro);
  	~Enemy();
   void decrementSkill(int i);	
   std::string getType();
-  std::string getSpecialAttack();
+  specialAttack getSpecialAttack();
   void printIntro();
 };
 #endif

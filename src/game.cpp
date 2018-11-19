@@ -15,23 +15,24 @@ void myPause(){
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
 	//os numeros nao sao reais, somente os niveis mais ou menos
-	Spell *Expelliarmus = new Spell("Expelliarmus", 1, 30, 40, 50, 20, 10);
-	Spell *ExpectroPatronum = new Spell("Expectro Patronum", 4, 50, 20, 20, 30, 40);
-	Spell *Lumus = new Spell("Lumus", 1, 0, 10, 0, 1, 0);
-	Spell *Nox = new Spell("Nox", 1, 0, 10, 0, 1, 0);
-	Spell *Protego = new Spell("Protego", 1, 0, 10, 0, 1, 0);
-	Spell *WingardiumLeviosa = new Spell("Wingardium Leviosa", 1, 0, 10, 0, 1, 0);
-	Spell *Incendio = new Spell("Incendio", 2, 0, 10, 0, 1, 0);
-	Spell *Rictusempra = new Spell("Rictusempra", 2, 0, 10, 0, 1, 0);	
-	Spell *Imobbilius = new Spell("Imobbilius", 3, 0, 10, 0, 1, 0);
-	Spell *Estupefaca = new Spell("Estupefaca", 4, 0, 10, 0, 1, 0);
-	Spell *PetrificusTotalus = new Spell("Petrificus Totalus", 4, 0, 10, 0, 1, 0);
-	Spell *Levicorpus = new Spell("Levicorpus", 5, 0, 10, 0, 1, 0);
-	Spell *Sectusempra = new Spell("Sectusempra", 6, 0, 10, 0, 1, 0);
-	Spell *Obscuro = new Spell("Obscuro", 6, 0, 10, 0, 1, 0);
+	//duracao, nome, level, hp, mp , stg, cons, dex 
+	Spell *Expelliarmus = new Spell(2, "Expelliarmus", 1, -30, -40, -2, -1, 0);
+	Spell *ExpectroPatronum = new Spell(2, "Expectro Patronum", 4, -50, -20, -20, -30, -40);
+	Spell *Lumus = new Spell(2, "Lumus", 1, 0, 10, 0, -1, 0);
+	Spell *Nox = new Spell(2, "Nox", 1, 0, 10, 0, -1, 0);
+	Spell *Protego = new Spell(2, "Protego", 1, 0, 10, 0, -1, 0);
+	Spell *WingardiumLeviosa = new Spell(2, "Wingardium Leviosa", 1, 0, 10, 0, -1, 0);
+	Spell *Incendio = new Spell(2, "Incendio", 2, 0, 10, 0, -1, 0);
+	Spell *Rictusempra = new Spell(2, "Rictusempra", 2, 0, -10, 0, -1, 0);	
+	Spell *Imobbilius = new Spell(2, "Imobbilius", 3, 0, -10, 0, -1, 0);
+	Spell *Estupefaca = new Spell(2, "Estupefaca", 4, 0, -10, 0, -1, 0);
+	Spell *PetrificusTotalus = new Spell(2, "Petrificus Totalus", 4, 0, -10, 0, -1, 0);
+	Spell *Levicorpus = new Spell(2, "Levicorpus", 5, 0, -10, 0, -1, 0);
+	Spell *Sectusempra = new Spell(2, "Sectusempra", 6, 0, -10, 0, -1, 0);
+	Spell *Obscuro = new Spell(2, "Obscuro", 6, 0, -10, 0, -1, 0);
 	//vamos deixar a arte das trevas entrar?
-	Spell *Crucio = new Spell("Crucio", 7, 0, 10, 0, 1, 0);
-	Spell *AvadaKedavra = new Spell("Avada Kedavra", 7, 0, 10, 0, 1, 0);
+	Spell *Crucio = new Spell(2, "Crucio", 7, 0, -10, 0, -1, 0);
+	Spell *AvadaKedavra = new Spell(2, "Avada Kedavra", 7, 0, -10, 0, -1, 0);
 
 
 	spell.push_back(Expelliarmus);
@@ -57,10 +58,10 @@ std::vector<Spell *> instantiate_spell(){
 std::vector<Artifacts *> instantiate_artifacts(){
 	std::vector<Artifacts *> object;
 
-	Artifacts *TimeTurner = new Artifacts("Time-Turner", 2, 0, 0, 0, 0, 0, 1, true, "return");
-	Artifacts *Cloak = new Artifacts("Invisibility Cloak", 3, 0, 0, 0, 10, 0, 1, true ,"cloak");
-	Artifacts *ElderWand = new Artifacts("Elder Wand", 4, 0, 0, 10, 0, 10, 2, true, "damage");
-	Artifacts *ResurrectionStone = new Artifacts("Resurrection Stone", 4, 30, 10, 0, 0, 0, 1, 1, "life");
+	Artifacts *TimeTurner = new Artifacts(0, "Time-Turner", 1, 0, 0, 0, 0, 0, 1, true, "return");
+	Artifacts *Cloak = new Artifacts(2 , "Invisibility Cloak", 1, 0, 0, 0, 10, 0, 1, true ,"cloak");
+	Artifacts *ElderWand = new Artifacts(2 , "Elder Wand", 4, 0, 0, 10, 0, 10, 2, true, "damage");
+	Artifacts *ResurrectionStone = new Artifacts(2, "Resurrection Stone", 4, 30, 10, 0, 0, 0, 1, 1, "life");
 
 	object.push_back(TimeTurner);
 	object.push_back(Cloak);
@@ -73,15 +74,35 @@ std::vector<Artifacts *> instantiate_artifacts(){
 std::vector<Potions *> instantiate_potions(){
 	std::vector<Potions *> object;
 
-	Potions *Invigorate = new Potions("Invigorating Potion", 1, 10, 0, 0, 0, 0, 3);
-	Potions *SpiderAntidote = new Potions("Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
-	Potions *SerpentAntidote = new Potions("Antidote to serpent poison", 2, 10, 0, 0, 0, 0, 1);
+	Potions *Invigorate = new Potions(1, "Invigorating Potion", 1, 10, 0, 0, 0, 0, 3);
+	Potions *SpiderAntidote = new Potions(1, "Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
+	Potions *SerpentAntidote = new Potions(1, "Antidote to serpent poison", 2, 10, 0, 0, 0, 0, 1);
+	Potions *Strength = new Potions(1, "Strength Potion", 3, 0, 0, 10, 0, 0, 1);
+	Potions *Restoration = new Potions (1, "Restoration Potion", 5, 10, 0, 0, 0, 0, 1);
+	Potions *Death = new Potions(1, "Death Potion", 7, 0, 0, 0, 0, 0, 1);
 
 	object.push_back(Invigorate);
 	object.push_back(SpiderAntidote);
 	object.push_back(SerpentAntidote);
+	object.push_back(Strength);
+	object.push_back(Restoration);
+	object.push_back(Death);
 
     return object;
+}
+
+std::vector<specialAttack > instantiate_attack(){
+	std::vector<specialAttack > attack;
+
+	specialAttack None = {"NONE", 0, 0, 0, 0, 0, 0};
+	specialAttack Picada = {"Picada", 1, -30, -40, -2, -1, 0};
+	specialAttack Veneno = {"Veneno", 0, 0, 0, 0, 0, 0};
+
+	attack.push_back(None);
+	attack.push_back(Picada);
+	attack.push_back(Veneno);
+
+	return attack;
 }
 
 std::string texts1(){
@@ -162,6 +183,9 @@ std::string choice_of_wand(){
 	std::string wand = woods[number_wood] + " and " + cores[number_core];
 	std::cout << "Your wand is made out of " << wand << std::endl;
 	std::cout << std::endl;
+	myPause();
+	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+	std::cout << std::endl;
 	return wand;
 
 }
@@ -175,6 +199,9 @@ std::string choice_of_house(){
 	int number_house = rand() % houses.size();
 	std::string house = houses[number_house];
 	std::cout << "Your house is: " << house << std::endl;
+	std::cout << std::endl;
+	myPause();
+	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << std::endl;
 	return house;
 
@@ -196,6 +223,9 @@ std::string choice_of_patronum(){
 	std::string patronum = patronuns[number_patronum];
 	std::cout << "Every witch and wizard has their very own patronus, yours shall take the form of a: " << patronum << std::endl;
 	std::cout << std::endl;
+	myPause();
+	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+	std::cout << std::endl;
 	return patronum;
 }
 
@@ -209,12 +239,12 @@ Wizard* initialize_player(std::vector<Spell *> _spells, std::vector<Potions *> _
 	return player;
 }
 
-std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells){
+std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<specialAttack> attack){
 	std::vector<Enemy *> enemies;
 	std::vector<Spell *> empty;
 
-	Enemy *Spider = new Enemy("Spider", "spider", "picada", 4, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
-	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", " ", 1, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
+	Enemy *Spider = new Enemy("Spider", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
+	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 3, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
 
 	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
@@ -236,11 +266,12 @@ void initialize_game(){
 	std::vector<Potions *> potion = instantiate_potions();
 	std::vector<Artifacts *> artifact = instantiate_artifacts();
 	Wizard *player = initialize_player(spell, potion, artifact);
-	std::vector<Enemy *> enemies = initialize_enemy(spell); 
+	std::vector<specialAttack> attack = instantiate_attack();
+	std::vector<Enemy *> enemies = initialize_enemy(spell, attack); 
 	
 
-	 while(1){ 
-		 int selectionIndex, menuIndex ;
+	while(1){ 
+		int selectionIndex, menuIndex ;
             try {
                 printMainMenu() ;
                 std::cin >> menuIndex ;
@@ -250,7 +281,7 @@ void initialize_game(){
 					do{
 						number_enemy= rand() % enemies.size();
 					} while(enemies[number_enemy]->getLevel() != player->getLevel());   
-					Battle(player , enemies[number_enemy]) ;
+					Battle(player , enemies[number_enemy]);
                 } else if (menuIndex == 2 ){
                     while(player->getSkillPoints() > 0){
                         try {

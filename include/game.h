@@ -9,6 +9,7 @@
 
 #include <string>
 #include <vector>
+
 void myPause() ;
 
 std::string texts1();
@@ -20,6 +21,7 @@ void texts2();
 std::vector<Spell *> instantiate_spell();
 std::vector<Artifacts *> instantiate_artifacts();
 std::vector<Potions *> instantiate_potions();
-std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells);
+std::vector<specialAttack > instantiate_attack();
+std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<specialAttack> attack);
 void initialize_game();
 #endif

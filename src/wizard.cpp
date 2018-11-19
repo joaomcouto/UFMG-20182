@@ -25,7 +25,7 @@ std::vector<Potions *> Wizard::instantiate_potions(std::vector<Potions *> _potio
 	std::vector<Potions *> Potion;
 
     for (int i = 0; i < potions_size; i++){
-		if(_potions[i]->get_level() == 1)
+		if(_potions[i]->get_level() <= getLevel())
 			Potion.push_back(_potions[i]);
 	}
 	return Potion;
@@ -37,7 +37,7 @@ std::vector<Artifacts *> Wizard::instantiate_artifacts(std::vector<Artifacts *> 
 	std::vector<Artifacts *> Artifact;
 
     for (int i = 0; i < artifacts_size; i++){
-		if(_artifacts[i]->get_level() == 1)
+		if(_artifacts[i]->get_level() <= getLevel())
 			Artifact.push_back(_artifacts[i]);
 	}
 	return Artifact;
@@ -78,30 +78,31 @@ void Wizard::printPlayerSpells() {
 void Wizard::printPlayerPotions() {
 	const int object_size = this-> _potionsVector.size();
 
-    for (int i = 1; i < object_size; i++)
-	   std::cout << "[" << i << "] " <<  _potionsVector[i]->get_name() << " " << _potionsVector[i]->get_quant() << std::endl;
+    for (int i = 0; i < object_size; i++)
+		if (_potionsVector[i]->get_quant() > 0)
+	   		std::cout << "[" << i+1 << "] " <<  _potionsVector[i]->get_name() << " " << _potionsVector[i]->get_quant() << std::endl;
 
     std::cout <<std::endl;
 }
-
-
 
 void Wizard::printPlayerArtifacts(){
 	const int object_size = this-> _artifactsVector.size();
 
-    
-
-    for (int i = 1; i < object_size; i++)
-	   std::cout << "[" << i << "] " <<  _artifactsVector[i]->get_name() << " " << _artifactsVector[i]->get_exist() << std::endl;
+    for (int i = 0; i < object_size; i++)
+	   std::cout << "[" << i+1 << "] " <<  _artifactsVector[i]->get_name() << " " << _artifactsVector[i]->get_exist() << std::endl;
 
     std::cout <<std::endl;
 }
 
-void set_quantPotions(std::vector<Potions *> potion, int i, int quant){
-	potion[i]->set_quant(quant);
+void Wizard::set_quantPotions(int i, int quant){
+	this->_potionsVector[i]->set_quant(quant);
 }
 
-void set_existArtifacts(std::vector<Artifacts *> artifact, int i){
+void Wizard::erase_Potion(int i){
+	this->_potionsVector.erase(_potionsVector.begin() + i);
+}
+
+void Wizard::set_existArtifacts(std::vector<Artifacts *> artifact, int i){
 	artifact[i]->set_exist();
 }
 
