@@ -95,12 +95,14 @@ std::vector<specialAttack > instantiate_attack(){
 	std::vector<specialAttack > attack;
 
 	specialAttack None = {"NONE", 0, 0, 0, 0, 0, 0};
-	specialAttack Picada = {"Picada", 1, -30, -40, -2, -1, 0};
+	specialAttack Sting = {"Sting", 1, -30, -40, -2, -1, 0};
 	specialAttack Veneno = {"Veneno", 0, 0, 0, 0, 0, 0};
+	specialAttack DementorsKiss = {"DementorsKiss",1, -30, -40, -2, -1, 0};
 
 	attack.push_back(None);
-	attack.push_back(Picada);
+	attack.push_back(Sting);
 	attack.push_back(Veneno);
+	attack.push_back(DementorsKiss);
 
 	return attack;
 }
@@ -245,9 +247,11 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<
 
 	Enemy *Spider = new Enemy("Spider", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
 	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 2, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
-	Enemy *Dementor = new Enemy ("Dementor", "" )
+	Enemy *Dementor = new Enemy ("Dementor", "wraith", attack[4], 3, 100, 0, 4, 4, 0, _spells, "FDP QUE QUER SUGAR SUA FELICIDADE");
+	
 	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
+	enemies.push_back(Dementor);
 
 	return enemies;
 }
