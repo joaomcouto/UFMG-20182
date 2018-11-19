@@ -58,8 +58,8 @@ std::vector<Spell *> instantiate_spell(){
 std::vector<Artifacts *> instantiate_artifacts(){
 	std::vector<Artifacts *> object;
 
-	Artifacts *TimeTurner = new Artifacts(0, "Time-Turner", 2, 0, 0, 0, 0, 0, 1, true, "return");
-	Artifacts *Cloak = new Artifacts(2 , "Invisibility Cloak", 3, 0, 0, 0, 10, 0, 1, true ,"cloak");
+	Artifacts *TimeTurner = new Artifacts(0, "Time-Turner", 1, 0, 0, 0, 0, 0, 1, true, "return");
+	Artifacts *Cloak = new Artifacts(2 , "Invisibility Cloak", 1, 0, 0, 0, 10, 0, 1, true ,"cloak");
 	Artifacts *ElderWand = new Artifacts(2 , "Elder Wand", 4, 0, 0, 10, 0, 10, 2, true, "damage");
 	Artifacts *ResurrectionStone = new Artifacts(2, "Resurrection Stone", 4, 30, 10, 0, 0, 0, 1, 1, "life");
 
@@ -281,7 +281,7 @@ void initialize_game(){
 					do{
 						number_enemy= rand() % enemies.size();
 					} while(enemies[number_enemy]->getLevel() != player->getLevel());   
-					Battle(player , enemies[number_enemy]) ;
+					Battle(player , enemies[number_enemy]);
                 } else if (menuIndex == 2 ){
                     while(player->getSkillPoints() > 0){
                         try {

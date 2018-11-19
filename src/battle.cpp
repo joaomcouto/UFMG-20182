@@ -19,7 +19,8 @@ Battle::Battle(Wizard * player , Enemy * enemy){
     this->_ended = 0 ;  //Booleano de acabou
     this->_player = player ;  //Pointer para a instancia de player
     this->_enemy = enemy; //Pointer para a instancia de enermy
-    this->_originalStats = player->getBaseStats() ;
+    this->_originalStats = player->getBaseStats();
+    this->_olderHP = player->getHP();
     if (player->getDexterity() > enemy->getDexterity()){ //Define quem vai ter o primeiro turno
         this->_playerturn = 1 ;
     } else {
@@ -31,6 +32,10 @@ Battle::Battle(Wizard * player , Enemy * enemy){
         _enemyDebuffs.push_back(filler) ;
     }
     this->initializeBattle() ;
+}
+
+Battle::~Battle(){
+    
 }
 
 void Battle::initializeBattle(){
@@ -58,13 +63,10 @@ void Battle::spellMove(Spell* spell ){
         getCurrentEnemyStats().printStats() ;
         myBattlePause();
     } else {
-        //std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-        //std::cout << "Enemy has used the spell " << spell->get_name() << ", for the following damage" << std::endl;
-        //_player->setHP( spell->get_hp_dmg()*(1 + 0.1*currentEnemyStats.strenght)*(1 - 0.1*currentPlayerStats.constitution) ) ;
-        //updateDebuffs(spell->getDuration() , spell->getDamageStats()) ;
         std::cout << "\033[2J\033[1;1H"; //This line clear the screen
         std::cout << "Enemy has used the spell " << spell->get_name() << "!" << std::endl;
         updateDebuffs(spell->getDuration() , spell->getDamageStats() , 1 ) ;
+        this->_olderHP = _player->getHP();
         _player->setHP( spell->get_hp_dmg()*(1 + 0.1*getCurrentEnemyStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
         std::cout << "The player now has the following stats: " << std::endl ;
         getCurrentPlayerStats().printStats() ;
@@ -76,6 +78,7 @@ void Battle::specialAttackMove(specialAttack _attack){
     std::cout << "\033[2J\033[1;1H"; //This line clear the screen
     std::cout << "Enemy has used the attack " << _attack._name << "!" << std::endl;
     updateDebuffs(1, _attack._damageStats, 1);
+    this->_olderHP = _player->getHP();
     _player->setHP(_attack._damageStats.hp * (1 + 0.1*getCurrentEnemyStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
     std::cout << "The player now has the following stats: " << std::endl;
     getCurrentPlayerStats().printStats();
@@ -86,10 +89,31 @@ void Battle::potionMove(Potions* potion){
     std::cout << "\033[2J\033[1;1H"; //This line clear the screen
     std::cout << "Player has used the potion " << potion->get_name() << "!" << std::endl;
     updateDebuffs(potion->getDuration() , potion->getEffectsStats(), 1);
+    this->_olderHP = _player->getHP();
     _player->setHP(potion->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
     std::cout << "The player now has the following stats: " << std::endl;
     getCurrentPlayerStats().printStats();
     myBattlePause();
+}
+
+bool Battle::artifactsMove(Artifacts * artifact){
+    bool i = 0;
+    std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+    std::cout << "Player has used the artifact " << artifact->get_name() << "!" << std::endl;
+    std::cout << "The player now has the following stats: " << std::endl;
+    if (artifact->getSpecialEffect() == "return"){
+        getOlderPlayerStats(_olderHP).printStats();
+    } else {
+        if (artifact->getSpecialEffect() == "cloak")
+            i = 1;
+        updateDebuffs(artifact->getDuration() , artifact->getEffectsStats(), 1);
+        this->_olderHP = _player->getHP();
+        _player->setHP(artifact->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) );
+    
+        getCurrentPlayerStats().printStats();
+    }
+    myBattlePause();
+    return i;
 }
 
 void Battle::updateDebuffs(int duration, Stats debuff, bool actOnPlayer) {
@@ -119,7 +143,11 @@ Stats Battle::getCurrentEnemyStats(){
     std::cout << "\n" ;
     return currentEnemyStats ;
 }
-
+Stats Battle::getOlderPlayerStats(int olderHP){
+    Stats olderPlayerStats = (this->_playerDebuffs[_round-2] + _player->getBaseStats());
+    olderPlayerStats.hp = olderHP;
+    return olderPlayerStats;
+}
 
 void Battle::introduction(){
     this->_enemy->printIntro() ;
@@ -198,12 +226,13 @@ void Battle::round(){
                                 unsigned int artifactsIndex ;
                                 while(1){
                                     try{
+                                        std::cout << "[0] "<<  "Back to inventory menu" << std::endl;
                                         _player->printPlayerArtifacts();
-                                        std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
                                         std::cin >> artifactsIndex;
                                         if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector().size())){
-                                            //move(_player->getArtifactsVector()[artifactsIndex-1]) ;
-                                            
+                                            bool aux = artifactsMove(_player->getArtifactsVector()[artifactsIndex - 1]);
+                                            if (aux == true)
+                                                _playerturn = 0;
                                             return ;
                                         } else if (artifactsIndex == 0 ) {
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
