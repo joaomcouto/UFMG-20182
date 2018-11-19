@@ -7,11 +7,10 @@
 #include <string>
 
 void myBattlePause(){
-	{
-	    std::cout << "Press any character followed by ENTER to continue" << std::endl ;
-	    std::string hold ; 
-	    std::cin >> hold ;
-    }
+	do{
+      std::cout << "Press ENTER  to continue!" << std::endl;
+      std::cin.get();
+    }while(std::cin.get() != '\n');
 }
 
 Battle::Battle(Wizard * player , Enemy * enemy){

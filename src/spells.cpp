@@ -50,4 +50,10 @@ int Spell::get_constituion_dmg(){
 
 int Spell::get_dexterity_dmg(){
 	return this->_damageStats.dexterity ;
+<<<<<<< HEAD
 }
+=======
+
+}
+
+>>>>>>> 651c8381dd248ab2508b4c4d85db56615a29f09d
