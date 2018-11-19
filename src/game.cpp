@@ -247,7 +247,7 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<
 
 	Enemy *Spider = new Enemy("Spider", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
 	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 2, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
-	Enemy *Dementor = new Enemy ("Dementor", "wraith", attack[4], 3, 100, 0, 4, 4, 0, _spells, "FDP QUE QUER SUGAR SUA FELICIDADE");
+	Enemy *Dementor = new Enemy ("Dementor", "wraith", attack[3], 3, 100, 0, 4, 4, 0, _spells, "FDP QUE QUER SUGAR SUA FELICIDADE");
 	
 	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
@@ -323,6 +323,7 @@ void initialize_game(){
 				} else {
                     throw std::invalid_argument("Invalid menu index, try again") ;
                 }
+			player->setSpellVector(spell);
             } catch(std::invalid_argument &t) {
                 std::cout << t.what() << std::endl;
             }

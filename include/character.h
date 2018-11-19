@@ -33,7 +33,7 @@ class Character{
 	Stats getBaseStats();
 	void setStats(Stats st) ;
 
-	
+	void setSpellVector(std::vector<Spell *> _spells);
 	void setLevel();
 	void setHP(int i);
 	void setMP(int i);

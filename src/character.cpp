@@ -73,6 +73,11 @@ Spell* Character::getSpell(int i){
 	return this->_spellVector[i];
 }
 
+void Character::setSpellVector(std::vector<Spell *> _spells){
+	std::vector<Spell *> new_spells = instantiate_spells(_spells);
+	this->_spellVector = new_spells;
+}
+
 void Character::setLevel(){
 	 _baseStats.level++;
 }

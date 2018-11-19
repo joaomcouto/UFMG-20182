@@ -54,6 +54,7 @@ void Battle::initializeBattle(){
         _originalStats.level += 1 ;
     } else 
         std::cout << "You lost this battle! " << std::endl;
+    myBattlePause();
     this->_player->setStats(this->_originalStats) ; 
     this->_player->incrementSkillPoints(1);
     this->_enemy->setStats(this->_originalStatsEnemy);
