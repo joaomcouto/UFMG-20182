@@ -30,6 +30,7 @@ Battle::Battle(Wizard * player , Enemy * enemy){
     for ( int i = 0 ; i < 20 ; i ++) {
         _playerDebuffs.push_back(filler);
         _enemyDebuffs.push_back(filler) ;
+        _playerDebuffsOlder.push_back(filler);
     }
     this->initializeBattle() ;
 }
@@ -141,6 +142,7 @@ void Battle::updateDebuffs(int duration, Stats debuff, bool actOnPlayer) {
 
 Stats Battle::getCurrentPlayerStats(){
     Stats currentPlayerStats = (this->_playerDebuffs[_round-1] + _player->getBaseStats()) ;
+    this->_playerDebuffsOlder[_round-2] = this->_playerDebuffs[_round-1];
     return currentPlayerStats ;
 
 }
@@ -151,7 +153,9 @@ Stats Battle::getCurrentEnemyStats(){
     return currentEnemyStats ;
 }
 Stats Battle::getOlderPlayerStats(int olderHP){
-    Stats olderPlayerStats = (this->_playerDebuffs[_round-2] + _player->getBaseStats());
+    Stats olderPlayerStats = this->_playerDebuffsOlder[_round-1] + _player->getBaseStats();
+    updateDebuffs(1, _playerDebuffsOlder[_round-1], 1);
+    _playerDebuffs[_round-1].hp = olderHP;
     olderPlayerStats.hp = olderHP;
     return olderPlayerStats;
 }

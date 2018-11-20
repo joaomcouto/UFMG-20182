@@ -13,6 +13,7 @@ protected:
     Stats _originalStatsEnemy ;
     std::vector<Stats> _playerDebuffs ; //cada posicao i se refere a um round
     std::vector<Stats> _enemyDebuffs ;
+    std::vector<Stats> _playerDebuffsOlder;
     int _olderHP;
     Wizard * _player ; 
     Enemy * _enemy ; 
