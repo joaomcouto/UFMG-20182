@@ -13,7 +13,7 @@ protected:
     Stats _originalStatsEnemy ;
     std::vector<Stats> _playerDebuffs ; //cada posicao i se refere a um round
     std::vector<Stats> _enemyDebuffs ;
-    std::vector<Stats> _playerDebuffsOlder;
+    std::vector<Stats> _StatsPlayer;
     int _olderHP;
     Wizard * _player ; 
     Enemy * _enemy ; 
@@ -27,12 +27,11 @@ public:
     bool artifactsMove(Artifacts * artifact);
     void round() ; 
     void updateDebuffs(int duration, Stats debuff, bool actOnPlayer);
+    void setDebuffs(Stats debuff);
     void initializeBattle() ;
     void introduction() ; 
     Stats getCurrentPlayerStats() ;
     Stats getCurrentEnemyStats() ;
-    Stats getOlderPlayerStats(int olderHP);
-
 
 
 };

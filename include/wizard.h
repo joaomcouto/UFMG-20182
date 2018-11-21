@@ -43,7 +43,8 @@ class Wizard : public Character{
 
 	void set_quantPotions(int i, int quant);
 	void erase_Potion(int i);
-	void set_existArtifacts(std::vector<Artifacts *> artifact, int i);
+	void set_existArtifacts(int i);
+	void erase_Artifact(int i);
 	void incrementSkill(int selection);
 };
 #endif

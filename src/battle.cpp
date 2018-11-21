@@ -30,8 +30,9 @@ Battle::Battle(Wizard * player , Enemy * enemy){
     for ( int i = 0 ; i < 20 ; i ++) {
         _playerDebuffs.push_back(filler);
         _enemyDebuffs.push_back(filler) ;
-        _playerDebuffsOlder.push_back(filler);
+        _StatsPlayer.push_back(filler);
     }
+    this->_StatsPlayer[_round-1] = player->getBaseStats();
     this->initializeBattle() ;
 }
 
@@ -73,11 +74,11 @@ void Battle::spellMove(Spell* spell ){
     } else {
         std::cout << "\033[2J\033[1;1H"; //This line clear the screen
         std::cout << "Enemy has used the spell " << spell->get_name() << "!" << std::endl;
-        updateDebuffs(spell->getDuration() , spell->getDamageStats() , 1 ) ;
-        this->_olderHP = _player->getHP();
+        this->_StatsPlayer[_round-1] = getCurrentPlayerStats();
+        updateDebuffs(spell->getDuration() , spell->getDamageStats() , 1 );
         _player->setHP( spell->get_hp_dmg()*(1 + 0.1*getCurrentEnemyStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
         std::cout << "The player now has the following stats: " << std::endl ;
-        getCurrentPlayerStats().printStats() ;
+        getCurrentPlayerStats().printStats();
         myBattlePause();
     }
 }
@@ -85,8 +86,8 @@ void Battle::spellMove(Spell* spell ){
 void Battle::specialAttackMove(specialAttack _attack){
     std::cout << "\033[2J\033[1;1H"; //This line clear the screen
     std::cout << "Enemy has used the attack " << _attack._name << "!" << std::endl;
+    this->_StatsPlayer[_round-1] = getCurrentPlayerStats();
     updateDebuffs(1, _attack._damageStats, 1);
-    this->_olderHP = _player->getHP();
     _player->setHP(_attack._damageStats.hp * (1 + 0.1*getCurrentEnemyStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
     std::cout << "The player now has the following stats: " << std::endl;
     getCurrentPlayerStats().printStats();
@@ -96,8 +97,8 @@ void Battle::specialAttackMove(specialAttack _attack){
 void Battle::potionMove(Potions* potion){
     std::cout << "\033[2J\033[1;1H"; //This line clear the screen
     std::cout << "Player has used the potion " << potion->get_name() << "!" << std::endl;
+    this->_StatsPlayer[_round-1] = getCurrentPlayerStats();
     updateDebuffs(potion->getDuration() , potion->getEffectsStats(), 1);
-    this->_olderHP = _player->getHP();
     _player->setHP(potion->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
     std::cout << "The player now has the following stats: " << std::endl;
     getCurrentPlayerStats().printStats();
@@ -110,14 +111,15 @@ bool Battle::artifactsMove(Artifacts * artifact){
     std::cout << "Player has used the artifact " << artifact->get_name() << "!" << std::endl;
     std::cout << "The player now has the following stats: " << std::endl;
     if (artifact->getSpecialEffect() == "return"){
-        getOlderPlayerStats(_olderHP).printStats();
+        (this->_StatsPlayer[_round-1]).printStats();
+        _player->setHP(_StatsPlayer[_round-1].hp-_player->getHP());
+        setDebuffs(_StatsPlayer[_round-1]);
     } else {
         if (artifact->getSpecialEffect() == "cloak")
             i = 1;
         updateDebuffs(artifact->getDuration() , artifact->getEffectsStats(), 1);
-        this->_olderHP = _player->getHP();
         _player->setHP(artifact->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) );
-    
+
         getCurrentPlayerStats().printStats();
     }
     myBattlePause();
@@ -140,9 +142,14 @@ void Battle::updateDebuffs(int duration, Stats debuff, bool actOnPlayer) {
         }
     }
 
+void Battle::setDebuffs(Stats debuff){
+    this->_playerDebuffs[_round-1] = debuff ; 
+    this->_playerDebuffs[_round-1].hp = 0 ;
+    this->_playerDebuffs[_round-1].mp = 0 ;
+}
+
 Stats Battle::getCurrentPlayerStats(){
     Stats currentPlayerStats = (this->_playerDebuffs[_round-1] + _player->getBaseStats()) ;
-    this->_playerDebuffsOlder[_round-2] = this->_playerDebuffs[_round-1];
     return currentPlayerStats ;
 
 }
@@ -152,13 +159,7 @@ Stats Battle::getCurrentEnemyStats(){
     std::cout << "\n" ;
     return currentEnemyStats ;
 }
-Stats Battle::getOlderPlayerStats(int olderHP){
-    Stats olderPlayerStats = this->_playerDebuffsOlder[_round-1] + _player->getBaseStats();
-    updateDebuffs(1, _playerDebuffsOlder[_round-1], 1);
-    _playerDebuffs[_round-1].hp = olderHP;
-    olderPlayerStats.hp = olderHP;
-    return olderPlayerStats;
-}
+
 
 void Battle::introduction(){
     this->_enemy->printIntro() ;
@@ -240,7 +241,14 @@ void Battle::round(){
                                         _player->printPlayerArtifacts();
                                         std::cin >> artifactsIndex;
                                         if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector().size())){
+                                            if((_player->getArtifactsVector()[artifactsIndex-1]->get_name() == "Time-Turner")&&(_round==1))
+                                                throw TimeTurnerException();
+                                                //return;
                                             bool aux = artifactsMove(_player->getArtifactsVector()[artifactsIndex - 1]);
+                                            _player->set_existArtifacts(artifactsIndex - 1);
+                                            if(_player->getArtifactsVector()[artifactsIndex-1]->get_exist() == 0){
+                                                this->_player->erase_Artifact(artifactsIndex-1);
+                                            }
                                             if (aux == true)
                                                 _playerturn = 0;
                                             return ;
@@ -248,7 +256,7 @@ void Battle::round(){
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                             break ;
                                         } else throw std::invalid_argument("Invalid artifact index, try again ") ;
-                                    } catch(std::invalid_argument &t){
+                                    } catch(std::exception &t){
                                         std::cout << t.what() << std::endl ;
                                     }
                                 }

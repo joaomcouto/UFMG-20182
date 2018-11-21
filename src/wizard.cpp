@@ -89,7 +89,7 @@ void Wizard::printPlayerArtifacts(){
 	const int object_size = this-> _artifactsVector.size();
 
     for (int i = 0; i < object_size; i++)
-	   std::cout << "[" << i+1 << "] " <<  _artifactsVector[i]->get_name() << " " << _artifactsVector[i]->get_exist() << std::endl;
+	   std::cout << "[" << i+1 << "] " <<  _artifactsVector[i]->get_name() << std::endl;
 
     std::cout <<std::endl;
 }
@@ -112,8 +112,12 @@ void Wizard::erase_Potion(int i){
 	this->_potionsVector.erase(_potionsVector.begin() + i);
 }
 
-void Wizard::set_existArtifacts(std::vector<Artifacts *> artifact, int i){
-	artifact[i]->set_exist();
+void Wizard::set_existArtifacts(int i){
+	this->_artifactsVector[i]->set_exist();
+}
+
+void Wizard::erase_Artifact(int i){
+	this->_artifactsVector.erase(_artifactsVector.begin() + i);
 }
 
 void Wizard::incrementSkill(int selection) {

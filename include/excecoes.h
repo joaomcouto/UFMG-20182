@@ -8,4 +8,9 @@ class InvalidCharacterException : public std::exception{
   virtual const char* what() const noexcept override;
 };
 
+class TimeTurnerException : public std::exception{
+  public:
+    virtual const char* what() const noexcept override;
+};
+
 #endif
