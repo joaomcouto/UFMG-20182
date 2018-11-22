@@ -116,11 +116,15 @@ bool Battle::artifactsMove(Artifacts * artifact){
         _player->setHP(_StatsPlayer[_round-2].hp-_player->getHP());
         setDebuffs(_StatsPlayer[_round-2]);
     } else {
-        if (artifact->getSpecialEffect() == "cloak")
+        if (artifact->getSpecialEffect() == "cloak"){
             i = 1;
+        }
         updateDebuffs(artifact->getDuration() , artifact->getEffectsStats(), 1);
-        _player->setHP(artifact->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) );
-
+        if (artifact->getSpecialEffect() == "life"){
+            _player->setHP(100-_player->getHP());
+        } else {
+            _player->setHP(artifact->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) );
+        }
         getCurrentPlayerStats().printStats();
     }
     myBattlePause();
@@ -244,14 +248,15 @@ void Battle::round(){
                                         if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector().size())){
                                             if((_player->getArtifactsVector()[artifactsIndex-1]->get_name() == "Time-Turner")&&(_round==1))
                                                 throw TimeTurnerException();
-                                                //return;
                                             bool aux = artifactsMove(_player->getArtifactsVector()[artifactsIndex - 1]);
                                             _player->set_existArtifacts(artifactsIndex - 1);
                                             if(_player->getArtifactsVector()[artifactsIndex-1]->get_exist() == 0){
                                                 this->_player->erase_Artifact(artifactsIndex-1);
                                             }
-                                            if (aux == true)
+                                            if (aux == true){
+                                                std::cout << "Voce sumiu para o inimigo, escolha sua proxima jogada" << std::endl;
                                                 _playerturn = 0;
+                                            }
                                             return ;
                                         } else if (artifactsIndex == 0 ) {
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
