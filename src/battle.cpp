@@ -44,6 +44,7 @@ void Battle::initializeBattle(){
     this->introduction();
     while((this->_player->getHP() > 0) && (this->_enemy->getHP() > 0)){
         this->round() ;
+        this->_round+=1;
         if(this->_playerturn == 0) {
             _playerturn = 1  ;
         } else {
@@ -72,7 +73,7 @@ void Battle::spellMove(Spell* spell ){
         getCurrentEnemyStats().printStats() ;
         myBattlePause();
     } else {
-        std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+        std::cout << "\033[2J\033[1;1H"; //This line clears the screen
         std::cout << "Enemy has used the spell " << spell->get_name() << "!" << std::endl;
         this->_StatsPlayer[_round-1] = getCurrentPlayerStats();
         updateDebuffs(spell->getDuration() , spell->getDamageStats() , 1 );
@@ -111,9 +112,9 @@ bool Battle::artifactsMove(Artifacts * artifact){
     std::cout << "Player has used the artifact " << artifact->get_name() << "!" << std::endl;
     std::cout << "The player now has the following stats: " << std::endl;
     if (artifact->getSpecialEffect() == "return"){
-        (this->_StatsPlayer[_round-1]).printStats();
-        _player->setHP(_StatsPlayer[_round-1].hp-_player->getHP());
-        setDebuffs(_StatsPlayer[_round-1]);
+        (this->_StatsPlayer[_round-2]).printStats();
+        _player->setHP(_StatsPlayer[_round-2].hp-_player->getHP());
+        setDebuffs(_StatsPlayer[_round-2]);
     } else {
         if (artifact->getSpecialEffect() == "cloak")
             i = 1;
