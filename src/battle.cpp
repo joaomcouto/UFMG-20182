@@ -98,11 +98,17 @@ void Battle::specialAttackMove(specialAttack _attack){
 void Battle::potionMove(Potions* potion){
     std::cout << "\033[2J\033[1;1H"; //This line clear the screen
     std::cout << "Player has used the potion " << potion->get_name() << "!" << std::endl;
-    this->_StatsPlayer[_round-1] = getCurrentPlayerStats();
-    updateDebuffs(potion->getDuration() , potion->getEffectsStats(), 1);
-    _player->setHP(potion->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
-    std::cout << "The player now has the following stats: " << std::endl;
-    getCurrentPlayerStats().printStats();
+    if ((potion->get_name() == "Antidote to spider poison")&&(_enemy->getType() != "spider"))
+        std::cout << "Potion wasn't effective, your enemy is not a spider!" << std::endl;
+    else if ((potion->get_name() == "Antidote to serpent poison")&&(_enemy->getType() != "serpent"))
+        std::cout << "Potion wasn't effective, your enemy is not a serpent!" << std::endl;
+    else {
+        this->_StatsPlayer[_round-1] = getCurrentPlayerStats();
+        updateDebuffs(potion->getDuration() , potion->getEffectsStats(), 1);
+        _player->setHP(potion->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) ) ;
+        std::cout << "The player now has the following stats: " << std::endl;
+        getCurrentPlayerStats().printStats();
+    }
     myBattlePause();
 }
 
@@ -226,6 +232,7 @@ void Battle::round(){
                                         if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector().size())){
                                             potionMove(_player->getPotionsVector()[potionIndex-1]);
                                             _player->set_quantPotions(potionIndex-1, -1);
+                                            //_playerturn = 0;
                                             if (_player->getPotionsVector()[potionIndex-1]->get_quant() == 0) {
                                                 this->_player->erase_Potion(potionIndex-1);
                                             }

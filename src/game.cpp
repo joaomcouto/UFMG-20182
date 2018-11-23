@@ -245,14 +245,16 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<
 	std::vector<Enemy *> enemies;
 	std::vector<Spell *> empty;
 
-	Enemy *Spider = new Enemy("Spider", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
+	Enemy *Spider = new Enemy("Aragog", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
 	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 2, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
 	Enemy *Dementor = new Enemy ("Dementor", "wraith", attack[3], 3, 100, 0, 4, 4, 0, _spells, "FDP QUE QUER SUGAR SUA FELICIDADE");
+	Enemy *Basilisk = new Enemy ("Basilisk", "serpent", attack[1], 1, 100, 0, 4, 4, 0, _spells, "A CAMARA SECRETA ESTA ABERTA! INIMIGOS DO HERDEIRO, CUIDADO");
 	
 	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
 	enemies.push_back(Dementor);
-
+	enemies.push_back(Basilisk);
+	
 	return enemies;
 }
 
