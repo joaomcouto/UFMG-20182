@@ -26,8 +26,8 @@ TEST_CASE("Testing SkillPoint - Getters and Setters"){
 		_skillPoints = Harry->getSkillPoints();
 			CHECK(_skillPoints == 4);
 
-		int _strenght = Harry 
-		Harry->incrementSkill()
+		//int _strenght = Harry->getStrenght();
+		//Harry->incrementSkill();
 }
 
 TEST_CASE("Testing ")
