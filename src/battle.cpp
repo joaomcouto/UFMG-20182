@@ -42,14 +42,22 @@ Battle::~Battle(){
 
 void Battle::initializeBattle(){
     this->introduction();
+    int _turn;
+    int _turnOld;
     while((this->_player->getHP() > 0) && (this->_enemy->getHP() > 0)){
-        this->round() ;
+        _turn = this->round();
+        _turn += _turnOld;
         this->_round+=1;
         if(this->_playerturn == 0) {
             _playerturn = 1  ;
         } else {
             _playerturn = 0 ;
         }
+        if (_turn > 0)
+            _playerturn = 1;
+        _turnOld = _turn-1;
+        if (_turnOld < 0)
+            _turnOld = 0;
     }
     std::cout << "\033[2J\033[1;1H"; //This line clear the screen
     if (this->_enemy->getHP() <= 0){
@@ -112,8 +120,8 @@ void Battle::potionMove(Potions* potion){
     myBattlePause();
 }
 
-bool Battle::artifactsMove(Artifacts * artifact){
-    bool i = 0;
+int Battle::artifactsMove(Artifacts * artifact){
+    int i = 0;
     std::cout << "\033[2J\033[1;1H"; //This line clear the screen
     std::cout << "Player has used the artifact " << artifact->get_name() << "!" << std::endl;
     std::cout << "The player now has the following stats: " << std::endl;
@@ -122,9 +130,6 @@ bool Battle::artifactsMove(Artifacts * artifact){
         _player->setHP(_StatsPlayer[_round-2].hp-_player->getHP());
         setDebuffs(_StatsPlayer[_round-2]);
     } else {
-        if (artifact->getSpecialEffect() == "cloak"){
-            i = 1;
-        }
         updateDebuffs(artifact->getDuration() , artifact->getEffectsStats(), 1);
         if (artifact->getSpecialEffect() == "life"){
             _player->setHP(100-_player->getHP());
@@ -132,6 +137,16 @@ bool Battle::artifactsMove(Artifacts * artifact){
             _player->setHP(artifact->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) );
         }
         getCurrentPlayerStats().printStats();
+        if (artifact->getSpecialEffect() == "cloak"){
+            i = 2;
+            std::cout << std::endl;
+            std::cout << "Voce sumiu para o inimigo, escolha sua proxima jogada" << std::endl;
+        }
+    }
+    if (artifact->getSpecialEffect() == "damage"){
+        std::cout << std::endl;
+        std::cout << "Voce esta usando a varinha das varinhas, escolha a proxima jogada:" << std::endl;
+        i = 1;
     }
     myBattlePause();
     return i;
@@ -184,7 +199,8 @@ void Battle::introduction(){
     myBattlePause();
 }
 
-void Battle::round(){
+int Battle::round(){
+    int aux = 0;
     if (this->_playerturn == 1){
         unsigned int menuIndex ;
         //int actionIndex; //essa variavel ainda nao foi usada, tire o comentario quando for usar
@@ -204,7 +220,7 @@ void Battle::round(){
                             std::cin >> selectionIndex ;
                             if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
                                 spellMove(_player->getSpellVector()[selectionIndex-1]) ;
-                                return ;
+                                return aux;
                             } else if (selectionIndex == 0 ) {
                                 std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                 break ;
@@ -232,15 +248,16 @@ void Battle::round(){
                                         if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector().size())){
                                             potionMove(_player->getPotionsVector()[potionIndex-1]);
                                             _player->set_quantPotions(potionIndex-1, -1);
-                                            //_playerturn = 0;
+                                            _playerturn = 0;
                                             if (_player->getPotionsVector()[potionIndex-1]->get_quant() == 0) {
                                                 this->_player->erase_Potion(potionIndex-1);
                                             }
-                                            return ;
+                                            return aux;
                                         } else if (potionIndex == 0 ) {
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                             break ;
                                         } else throw std::invalid_argument("Invalid potion index, try again ") ;
+
                                     } catch (std::invalid_argument &t) {
                                         std::cout << t.what() << std::endl;
                                     }
@@ -255,16 +272,12 @@ void Battle::round(){
                                         if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector().size())){
                                             if((_player->getArtifactsVector()[artifactsIndex-1]->get_name() == "Time-Turner")&&(_round==1))
                                                 throw TimeTurnerException();
-                                            bool aux = artifactsMove(_player->getArtifactsVector()[artifactsIndex - 1]);
+                                            aux = artifactsMove(_player->getArtifactsVector()[artifactsIndex - 1]);
                                             _player->set_existArtifacts(artifactsIndex - 1);
                                             if(_player->getArtifactsVector()[artifactsIndex-1]->get_exist() == 0){
                                                 this->_player->erase_Artifact(artifactsIndex-1);
                                             }
-                                            if (aux == true){
-                                                std::cout << "Voce sumiu para o inimigo, escolha sua proxima jogada" << std::endl;
-                                                _playerturn = 0;
-                                            }
-                                            return ;
+                                            return aux;
                                         } else if (artifactsIndex == 0 ) {
                                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                                             break ;
@@ -294,12 +307,12 @@ void Battle::round(){
         if (this->_enemy->getType() == "human"){
             int number_spell = rand() % this->_enemy->getSpellVector().size();
             spellMove(_enemy->getSpellVector()[number_spell]) ;
-            return; 
+            return aux; 
         } else {
             specialAttackMove(_enemy->getSpecialAttack());
-            return;
+            return aux;
         }
         //Generate/select a random action given the enemy's level stat, call the Move() function with that action and modify the target character's stats according to _playerturn
     }
-
+    return aux;
 }
