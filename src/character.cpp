@@ -84,22 +84,42 @@ void Character::setLevel(){
 
 void Character::setHP(int i){
 	 _baseStats.hp += i;
+
+	if(_baseStats.hp < 0){
+		_baseStats.hp = 0;
+	}
 }
 
 void Character::setMP(int i){
 	 _baseStats.mp += i;
+
+  if(_baseStats.mp < 0){
+    _baseStats.mp = 0;
+  }
 }
 
 void Character::setStrenght(int i){
 	 _baseStats.strenght += i;
+  
+	if(_baseStats.strenght < 0){
+    _baseStats.strenght = 0;
+  }
 }
 
 void Character::setConstitution(int i){
 	 _baseStats.constitution += i;
+  
+	if(_baseStats.constitution < 0){
+    _baseStats.constitution = 0;
+  }
 }
 
 void Character::setDexterity(int i){
 	 _baseStats.dexterity += i;
+  
+	if(_baseStats.dexterity < 0){
+    _baseStats.dexterity = 0;
+  }
 }
 
 
