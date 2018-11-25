@@ -118,7 +118,7 @@ std::string texts1(){
 	std::cout << "  ->Headmaster: Albus Dumbledore" << std::endl;
 	std::cout << " " << std::endl;
 	std::cout << "Dear " << name << ", " << std::endl << " " <<std::endl ;
-	std::cout << "It is with great pleasure that we're hereby informing that you've been officialy admitted in the great Hogwarts School of Witchcraft and Wizardry." << std::endl;
+	std::cout << "It is with great pleasure that we're hereby informing that you've been officially admitted in the great Hogwarts School of Witchcraft and Wizardry." << std::endl;
 	std::cout << "First things first, you must acquire the necessary books and equipments." << std::endl << " " << std::endl ;
 	std::cout << "Yours sincerely, " << std::endl;
 	std::cout << "Minerva McGonagall" << std::endl;

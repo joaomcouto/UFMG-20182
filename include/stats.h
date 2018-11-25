@@ -33,7 +33,7 @@ typedef struct Stats {
 	void printStats(){
 		std::cout << " ->Health: " << this->hp  << std::endl;
 		std::cout << " ->Magic Points: " << this->mp  << std::endl;
-		std::cout << " ->Strenght: " << this->strenght  << std::endl;
+		std::cout << " ->Strength: " << this->strenght  << std::endl;
 		std::cout << " ->Constitution: " << this->constitution  << std::endl;
 		std::cout << " ->Dexterity: " << this->dexterity  << std::endl;
 	}

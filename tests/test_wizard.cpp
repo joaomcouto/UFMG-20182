@@ -5,7 +5,7 @@ TEST_CASE("Testing Construtor"){
     std::vector<Spell *> _spells;
     std::vector<Potions *> _potions;
     std::vector<Artifacts *> _artifacts;
-    CHECK_NOTHROW(Wizard("Harry Potter", 1, 100, 100, 1, 1, 1, "Gryffindor", "Holly wood and Phoenix feathers", "Deer", _spells, _potions, _artifacts));
+    CHECK_NOTHROW(Wizard("Harry Potter", 1, 100, 0, 1, 1, 1, "Gryffindor", "Holly wood and Phoenix feathers", "Deer", _spells, _potions, _artifacts));
 }
 
 
@@ -13,7 +13,7 @@ TEST_CASE("Testing SkillPoint - Getters and Setters"){
 		std::vector<Spell *> _spells;
     std::vector<Potions *> _potions;
     std::vector<Artifacts *> _artifacts;		
-    Wizard *Harry = new Wizard("Harry Potter", 1, 100, 100, 1, 1, 1, "Gryffindor", "Holly wood and Phoenix feathers", "Deer", _spells, _potions, _artifacts);	
+    Wizard *Harry = new Wizard("Harry Potter", 1, 0, 100, 1, 1, 1, "Gryffindor", "Holly wood and Phoenix feathers", "Deer", _spells, _potions, _artifacts);	
 		
 		int _skillPoints = Harry->getSkillPoints();
 			CHECK(_skillPoints == 3);
@@ -30,4 +30,27 @@ TEST_CASE("Testing SkillPoint - Getters and Setters"){
 		//Harry->incrementSkill();
 }
 
-TEST_CASE("Testing ")
+TEST_CASE("Testing Wizard's BaseStats"){
+	 std::vector<Spell *> _spells;
+    std::vector<Potions *> _potions;
+    std::vector<Artifacts *> _artifacts;
+    Wizard *Harry = new Wizard("Harry Potter", 1, 100, 0, 1, 1, 1, "Gryffindor", "Holly wood and Phoenix feathers", "Deer", _spells, _potions, _artifacts);
+
+		Harry->incrementSkill(1);
+			int new_HP = Harry->getHP();
+				CHECK(new_HP == 110);
+		Harry->incrementSkill(2);
+			int new_MP = Harry->getMP();
+ 				CHECK(new_MP == 10);
+	  Harry->incrementSkill(3);
+			int new_STR = Harry->getStrenght();
+         CHECK(new_STR == 2);
+	  Harry->incrementSkill(4);
+			int new_CONS = Harry->getConstitution();
+         CHECK(new_CONS == 2);
+    Harry->incrementSkill(5);
+			int new_DEX = Harry->getDexterity();
+         CHECK(new_DEX == 2);
+
+
+}
