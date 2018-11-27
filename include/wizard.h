@@ -24,6 +24,7 @@ class Wizard : public Character{
 
 	void incrementSkillPoints(int points) ;
 
+	virtual std::vector<Spell *> instantiate_spells(std::vector<Spell *> _spells) override;
 	std::vector<Potions *> instantiate_potions(std::vector<Potions *> _potions);
 	std::vector<Artifacts *> instantiate_artifacts(std::vector<Artifacts *> _artifacts);
 

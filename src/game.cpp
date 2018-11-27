@@ -97,7 +97,7 @@ std::vector<specialAttack > instantiate_attack(){
 	specialAttack None = {"NONE", 0, 0, 0, 0, 0, 0};
 	specialAttack Sting = {"Sting", 1, -30, -40, -2, -1, 0};
 	specialAttack Veneno = {"Veneno", 0, 0, 0, 0, 0, 0};
-	specialAttack DementorsKiss = {"DementorsKiss",1, -30, -40, -2, -1, 0};
+	specialAttack DementorsKiss = {"Dementors Kiss",1, -30, -40, -2, -1, 0};
 
 	attack.push_back(None);
 	attack.push_back(Sting);

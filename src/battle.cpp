@@ -6,6 +6,9 @@
 #include <iostream>
 #include <string>
 
+#define MAX_ROUNDS 20
+#define MAX_HP 100
+
 void myBattlePause(){
 	do{
       std::cout << "Press ENTER  to continue!" << std::endl;
@@ -14,7 +17,7 @@ void myBattlePause(){
 }
 
 Battle::Battle(Wizard * player , Enemy * enemy){
-    this->_round = 1 ; //Numero do round
+    this->_round = 1; //Numero do round
     this->_ended = 0 ;  //Booleano de acabou
     this->_player = player ;  //Pointer para a instancia de player
     this->_enemy = enemy; //Pointer para a instancia de enermy
@@ -27,7 +30,7 @@ Battle::Battle(Wizard * player , Enemy * enemy){
         this->_playerturn = 0 ;
     }
     Stats filler = {0,0,0,0,0,0} ;
-    for ( int i = 0 ; i < 20 ; i ++) {
+    for ( int i = 0 ; i < MAX_ROUNDS ; i ++) {
         _playerDebuffs.push_back(filler);
         _enemyDebuffs.push_back(filler) ;
         _StatsPlayer.push_back(filler);
@@ -132,7 +135,7 @@ int Battle::artifactsMove(Artifacts * artifact){
     } else {
         updateDebuffs(artifact->getDuration() , artifact->getEffectsStats(), 1);
         if (artifact->getSpecialEffect() == "life"){
-            _player->setHP(100-_player->getHP());
+            _player->setHP(MAX_HP -_player->getHP());
         } else {
             _player->setHP(artifact->get_hp_effect() * (1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentPlayerStats().constitution) );
         }

@@ -7,7 +7,8 @@
 #define NUMBER_INCREMENT_OTHERS 1;
 
 Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts) throw (InvalidCharacterException) :
-	Character(name, level, hp, mp, str, cons, dex, _spells), _house(house), _wand(wand), _patronum(patronum){
+	Character(name, level, hp, mp, str, cons, dex), _house(house), _wand(wand), _patronum(patronum){
+	setSpellVector(instantiate_spells(_spells));
 	this->_potionsVector = instantiate_potions(_potions);
 	this->_artifactsVector = instantiate_artifacts(_artifacts);
 	this->_skillPoints = 3 ; 
@@ -17,6 +18,18 @@ Wizard::~Wizard(){}
 
 void Wizard::incrementSkillPoints(int points){
 	this->_skillPoints += points ;
+}
+
+std::vector<Spell *> Wizard::instantiate_spells(std::vector<Spell *> _spells){
+	const int spells_size = _spells.size();
+
+	std::vector<Spell *> Spells;
+
+    for (int i = 0; i < spells_size; i++){
+		if(_spells[i]->get_level() <= getLevel())
+			Spells.push_back(_spells[i]);
+	}
+	return Spells;
 }
 
 std::vector<Potions *> Wizard::instantiate_potions(std::vector<Potions *> _potions){

@@ -1,17 +1,17 @@
 #include "doctest.h"
-#include "character.h"
+#include "wizard.h"
+#include "spells.h"
+#include "artifacts.h"
+#include "potions.h"
 #include <string.h>
 #include <cstring>
 
-TEST_CASE("Testing Constructor"){
-	std::vector<Spell *> _spells;
-	CHECK_NOTHROW(Character("Sirius Black", 1, 100, 0, 1, 1, 1, _spells));
-}
-
 TEST_CASE("Testing Getters and Setters"){
 	std::vector<Spell *> _spells;
+	std::vector<Potions *> _potions;
+	std::vector<Artifacts *> _artifacts;
 
-	Character *Sirius = new Character("Sirius Black", 1, 100, 0, 1, 1, 1, _spells);	
+	Character *Sirius = new Wizard("Sirius Black", 1, 100, 0, 1, 1, 1, "Grifinoria", " ", " ",  _spells, _potions, _artifacts);	
 
 	std::string name = Sirius->getName();
 		CHECK_EQ(name, "Sirius Black");
@@ -40,11 +40,11 @@ TEST_CASE("Testing Getters and Setters"){
 	Stats _stats = Sirius->getBaseStats();
 	
 	CHECK(new_stats.level == _stats.level);
-  CHECK(new_stats.hp == _stats.hp);
-  CHECK(new_stats.mp == _stats.mp);
+	CHECK(new_stats.hp == _stats.hp);
+	CHECK(new_stats.mp == _stats.mp);
 	CHECK(new_stats.strenght == _stats.strenght);
-  CHECK(new_stats.constitution == _stats.constitution);
-  CHECK(new_stats.dexterity == _stats.dexterity);
+	CHECK(new_stats.constitution == _stats.constitution);
+	CHECK(new_stats.dexterity == _stats.dexterity);
 
 
 }

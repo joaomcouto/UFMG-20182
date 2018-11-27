@@ -17,6 +17,9 @@ protected:
 public:
   Enemy(std::string name, std::string type, specialAttack attack, int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells, std::string intro);
  	~Enemy();
+
+  virtual std::vector<Spell *> instantiate_spells(std::vector<Spell *> _spells) override;
+
   void decrementSkill(int i);	
   std::string getType();
   specialAttack getSpecialAttack();

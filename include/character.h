@@ -15,10 +15,10 @@ class Character{
 	std::vector<Spell *> _spellVector ;
 
  public:
-	Character(std::string name,int level, int hp, int mp, int str, int cons, int dex, std::vector<Spell *> _spells);
+	Character(std::string name,int level, int hp, int mp, int str, int cons, int dex);
  	virtual ~Character();
 
-	std::vector<Spell *> instantiate_spells(std::vector<Spell *> _spells);
+	virtual std::vector<Spell *> instantiate_spells(std::vector<Spell *> _spells) = 0;
 
 	std::string getName();
 	int getLevel();
