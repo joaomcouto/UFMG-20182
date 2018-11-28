@@ -46,5 +46,5 @@ TEST_CASE("Testing Getters and Setters"){
 	CHECK(new_stats.constitution == _stats.constitution);
 	CHECK(new_stats.dexterity == _stats.dexterity);
 
-
+delete Sirius;
 }

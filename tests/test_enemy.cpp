@@ -21,6 +21,7 @@ TEST_CASE("Testing DecrementSkill"){
 	Malfoy->decrementSkill(2);
 		int new_mp = Malfoy->getMP();
 			CHECK(new_mp == 10);
+	delete Malfoy;
 }
 
 
@@ -37,4 +38,5 @@ Enemy *Malfoy = new Enemy("Malfoy","Human", _attack, 1, 100, 20, 1, 1 ,1, _spell
 		CHECK_EQ(Attack._name, "Incendio");
 		CHECK_EQ(Attack._damageStats.hp, -10);
 //	CHECK_EQ(Attack._damageStats.mp, 0);
+	delete Malfoy;
 }
