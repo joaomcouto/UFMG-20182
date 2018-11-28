@@ -263,7 +263,6 @@ void texts2(){
 }
 
 void printMainMenu(){
-	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << "[1] Next battle" << std::endl << "[2] Distribute skillpoints" << std::endl << "[3] Display current character stats" << std::endl;
 }
 
@@ -277,61 +276,76 @@ void initialize_game(){
 	
 
 	while(1){ 
-		int selectionIndex, menuIndex ;
+		char menuIndex;
+		char selectionIndex;
+		std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+		while(1){
             try {
-                printMainMenu() ;
+				printMainMenu();
                 std::cin >> menuIndex ;
                 std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-                if (menuIndex == 1 ){
-					int number_enemy;
-					do{
-						number_enemy= rand() % enemies.size();
-					} while(enemies[number_enemy]->getLevel() != player->getLevel());   
-					Battle(player , enemies[number_enemy]);
-                } else if (menuIndex == 2 ){
-                    while(player->getSkillPoints() > 0){
-                        try {
-							std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-							std::cout << "Available points: " << player->getSkillPoints()  << std::endl ;
-                            std::cout <<"Pick an attribute to increase it:\n"<<  "[0]Return to main menu\n[1]Health\n[2]Magic Points\n[3]Strenght\n[4]Constitution\n[5]Dexterity" << std::endl ;
-                            std::cin >> selectionIndex ;
-                            if ((selectionIndex > 0) && (selectionIndex <= 5)){
-                                player->incrementSkill(selectionIndex);
-                            } else if (selectionIndex == 0 ) {
-                                std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-                                break;
-                            } else throw std::invalid_argument("Invalid skill index, try again ") ;
-                        } catch (std::invalid_argument &t){
-                            std::cout << t.what() << std::endl;
-                        }
-                    }
-					std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-					std::cout << "You have no skillpoints available!\n" ;
-					myPause();
-                } else if(menuIndex ==3){
-					while(1){
-                        try {
-                            std::cout <<"[0]Return to main menu\nPlayer attributes:" << std::endl ;
-							player->printStats() ;
-                            std::cin >> selectionIndex ;
-                            if ((selectionIndex == 0)){
-                            	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-                            	break ;
-                            }else throw std::invalid_argument("Invalid selection index, try again ") ;
-                        } catch (std::invalid_argument &t){
-                            std::cout << t.what() << std::endl;
-                        }
-                    }
-				} else {
-                    throw std::invalid_argument("Invalid menu index, try again") ;
-                }
-			player->setSpellVector(spell);
-			player->setArtifactsVector(artifact);
-			player->setPotionsVector(potion);
-            } catch(std::invalid_argument &t) {
+				if ((menuIndex == '1')||(menuIndex == '2')||(menuIndex == '3'))
+					break;
+				else throw std::invalid_argument("Invalid menu index, try again ") ;
+            } catch (std::invalid_argument &t){
                 std::cout << t.what() << std::endl;
             }
-        }
+		}     
+		if (menuIndex == '1'){
+			int number_enemy;
+			do{
+				number_enemy= rand() % enemies.size();
+			} while(enemies[number_enemy]->getLevel() != player->getLevel());   
+				Battle(player , enemies[number_enemy]);
+        } else if (menuIndex == '2' ){
+			bool ind;
+			std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+            while(player->getSkillPoints() > 0){
+        	    try {
+					ind = 0;
+					std::cout << "Available points: " << player->getSkillPoints()  << std::endl ;
+                    std::cout <<"Pick an attribute to increase it:\n"<<  "[0]Return to main menu\n[1]Health\n[2]Magic Points\n[3]Strenght\n[4]Constitution\n[5]Dexterity" << std::endl ;
+                    std::cin >> selectionIndex ;
+					std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+					for (int i = 1; i < 6; i++)
+						if (selectionIndex == (char)(i+48)){
+							player->incrementSkill(i);
+							ind = 1;
+						}
+                    if (selectionIndex == '0' ) {
+                        std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+						ind = 1;
+                        break;
+                    } else if (ind == 0)
+						throw std::invalid_argument("Invalid skill index, try again ") ;
+                } catch (std::invalid_argument &t){
+                    std::cout << t.what() << std::endl;
+                }
+            }
+			std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+			if (player->getSkillPoints() == 0){
+				std::cout << "You have no skillpoints available!\n" ;
+				myPause();
+			}
+        } else if(menuIndex == '3'){
+			while(1){
+                try {
+                    std::cout <<"[0]Return to main menu\nPlayer attributes:" << std::endl ;
+					player->printStats() ;
+                    std::cin >> selectionIndex ;
+					std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+                    if ((selectionIndex == '0')){
+        	           	break ;
+                    } else throw std::invalid_argument("Invalid selection index, try again ") ;
+                } catch (std::invalid_argument &t){
+                    std::cout << t.what() << std::endl;
+            	}
+            }
+		}
+		player->setSpellVector(spell);
+		player->setArtifactsVector(artifact);
+		player->setPotionsVector(potion);
+    }
 }
 
 

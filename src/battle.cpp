@@ -205,107 +205,120 @@ void Battle::introduction(){
 int Battle::round(){
     int aux = 0;
     if (this->_playerturn == 1){
-        unsigned int menuIndex ;
+        char menuIndex;
         //int actionIndex; //essa variavel ainda nao foi usada, tire o comentario quando for usar
-        unsigned int selectionIndex ;
+        char selectionIndex ;
         while(1){ //Deemed necessary, player might return to menu selection menu
-            try {
                 std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-                std::cout << "Make a choice:" << std::endl << "[1] Spells" << std::endl << "[2] Inventory" << std::endl ;
-                std::cin >> menuIndex ;
-                std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-                if (menuIndex == 1 ){
+                while(1){
+                    try{
+                        std::cout << "Make a choice:" << std::endl << "[1] Spells" << std::endl << "[2] Inventory" << std::endl ;
+                        std::cin >> menuIndex ;
+                        std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+                        if ((menuIndex == '1')||(menuIndex == '2'))
+                            break;
+                        else throw std::invalid_argument("Invalid menu index, try again ");
+                    } catch(std::invalid_argument &t){
+                            std::cout << t.what() << std::endl;
+                    }
+                }
+                if (menuIndex == '1' ){
                     //Print out spell options as well as option to return to menu. If a spell is selected, call the move function with it and terminate de round
-                    while(1){ //Done
+                    while(1){ 
                         try {
                             std::cout << "[0] "<<  "Back to main menu" << std::endl ;
                             _player->printPlayerSpells();
                             std::cin >> selectionIndex ;
-                            if ((selectionIndex > 0) && (selectionIndex <= _player->getSpellVector().size())){
-                                spellMove(_player->getSpellVector()[selectionIndex-1]) ;
-                                return aux;
-                            } else if (selectionIndex == 0 ) {
-                                std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+                            std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+                            for (unsigned int i = 1; i <= _player->getSpellVector().size(); i ++){
+                                if (selectionIndex == (char)(i+48)){
+                                    spellMove(_player->getSpellVector()[i-1]) ;
+                                    return aux;
+                                }
+                            }
+                            if (selectionIndex == '0') 
                                 break ;
-                            } else throw std::invalid_argument("Invalid spell index, try again ") ;
+                            else throw std::invalid_argument("Invalid spell index, try again ") ;
                         } catch (std::invalid_argument &t){
                             std::cout << t.what() << std::endl;
                         }
                     }
-                } else if (menuIndex == 2 ){
-                    unsigned int secondaryMenuIndex ;
-                    while (1){
-                        try{
-                            std::cout << "Make a choice:" << std::endl << "[0] Back to main menu" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl;
-                            std::cin>> secondaryMenuIndex ;
-                            std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-                            if (secondaryMenuIndex == 0){
-                                break ;
-                            } else if (secondaryMenuIndex == 1){
-                                unsigned int potionIndex ;
-                                while(1){
-                                    try{
-                                        std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
-                                        _player->printPlayerPotions();
-                                        std::cin >> potionIndex;
-                                        if ((potionIndex > 0) && (potionIndex <= _player->getPotionsVector().size())){
-                                            potionMove(_player->getPotionsVector()[potionIndex-1]);
-                                            _player->set_quantPotions(potionIndex-1, -1);
+                } else if (menuIndex == '2'){
+                    char secondaryMenuIndex ;
+                    bool cond1 = 1;
+                    while (cond1){
+                        while(cond1){
+                            try{
+                                std::cout << "Make a choice:" << std::endl << "[0] Back to main menu" << std::endl << "[1] Potions" << std::endl << "[2] Artifacts" << std::endl;
+                                std::cin>> secondaryMenuIndex ;
+                                std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+                                if ((secondaryMenuIndex == '1')||(secondaryMenuIndex == '2'))
+                                    break;
+                                else if ((secondaryMenuIndex == '0'))
+                                    cond1 = 0;
+                                else throw std::invalid_argument("Invalid spell index, try again ");
+                            } catch (std::invalid_argument &t) {
+                                std::cout << t.what() << std::endl;
+                            }
+                        }
+                        if (secondaryMenuIndex == '1'){
+                            char potionIndex ;
+                            while(1){
+                                try{
+                                    std::cout << "[0] "<<  "Back to inventory menu" << std::endl ;
+                                    _player->printPlayerPotions();
+                                    std::cin >> potionIndex;
+                                    std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+                                    for (unsigned int i = 1; i <= _player->getPotionsVector().size(); i ++){
+                                        if (potionIndex == (char)(i+48)){
+                                            potionMove(_player->getPotionsVector()[i-1]);
+                                            _player->set_quantPotions(i-1, -1);
                                             _playerturn = 0;
-                                            if (_player->getPotionsVector()[potionIndex-1]->get_quant() == 0) {
-                                                this->_player->erase_Potion(potionIndex-1);
+                                            if (_player->getPotionsVector()[i-1]->get_quant() == 0) {
+                                                this->_player->erase_Potion(i-1);
                                             }
                                             return aux;
-                                        } else if (potionIndex == 0 ) {
-                                            std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+                                        }
+                                    }
+                                        if (potionIndex == '0' ) 
                                             break ;
-                                        } else throw std::invalid_argument("Invalid potion index, try again ") ;
+                                        else throw std::invalid_argument("Invalid potion index, try again ") ;
 
                                     } catch (std::invalid_argument &t) {
                                         std::cout << t.what() << std::endl;
                                     }
                                 }
-                            } else if (secondaryMenuIndex == 2 ){
-                                unsigned int artifactsIndex ;
+                            } else if (secondaryMenuIndex == '2' ){
+                                char artifactsIndex ;
                                 while(1){
                                     try{
                                         std::cout << "[0] "<<  "Back to inventory menu" << std::endl;
                                         _player->printPlayerArtifacts();
                                         std::cin >> artifactsIndex;
-                                        if ((artifactsIndex > 0) && (artifactsIndex <= _player->getArtifactsVector().size())){
-                                            if((_player->getArtifactsVector()[artifactsIndex-1]->get_name() == "Time-Turner")&&(_round==1))
-                                                throw TimeTurnerException();
-                                            aux = artifactsMove(_player->getArtifactsVector()[artifactsIndex - 1]);
-                                            _player->set_existArtifacts(artifactsIndex - 1);
-                                            if(_player->getArtifactsVector()[artifactsIndex-1]->get_exist() == 0){
-                                                this->_player->erase_Artifact(artifactsIndex-1);
+                                        std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+                                        for (unsigned int i = 1; i <= _player->getArtifactsVector().size(); i ++){
+                                            if (artifactsIndex == (char)(i+48)){
+                                                if((_player->getArtifactsVector()[i-1]->get_name() == "Time-Turner")&&(_round==1))
+                                                    throw TimeTurnerException();
+                                                aux = artifactsMove(_player->getArtifactsVector()[i - 1]);
+                                                _player->set_existArtifacts(i - 1);
+                                                if(_player->getArtifactsVector()[i-1]->get_exist() == 0){
+                                                    this->_player->erase_Artifact(i-1);
+                                                }
+                                                return aux;
                                             }
-                                            return aux;
-                                        } else if (artifactsIndex == 0 ) {
-                                            std::cout << "\033[2J\033[1;1H"; //This line clear the screen
+                                        }
+                                        if (artifactsIndex == '0' )
                                             break ;
-                                        } else throw std::invalid_argument("Invalid artifact index, try again ") ;
+                                        else throw std::invalid_argument("Invalid artifact index, try again ") ;
                                     } catch(std::exception &t){
                                         std::cout << t.what() << std::endl ;
                                     }
                                 }
-                            } else {
-                                throw std::invalid_argument("Invalid secondary menu index, try again") ;
                             }
-                        } catch(std::invalid_argument &t){
-                            std::cout << t.what() << std::endl;
-                        }
-
                     }
-                } else {
-                    throw std::invalid_argument("Invalid menu index, try again") ;
-                }
-            } catch(std::invalid_argument &t) {
-                std::cout << t.what() << std::endl;
             }
         }
-
-
     } else {
         if (this->_enemy->getType() == "human"){
             int number_spell = rand() % this->_enemy->getSpellVector().size();
