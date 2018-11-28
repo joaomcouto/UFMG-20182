@@ -28,6 +28,7 @@ TEST_CASE("Testing SkillPoint - Getters and Setters"){
 
 		//int _strenght = Harry->getStrenght();
 		//Harry->incrementSkill();
+		delete Harry;
 }
 
 TEST_CASE("Testing Wizard's BaseStats"){
@@ -52,5 +53,6 @@ TEST_CASE("Testing Wizard's BaseStats"){
 			int new_DEX = Harry->getDexterity();
          CHECK(new_DEX == 2);
 
+		delete Harry;
 
 }
