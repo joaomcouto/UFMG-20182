@@ -21,12 +21,12 @@ TEST_CASE("Testing Getters"){
 			CHECK(hp_effect == -10);
 
 		Stats test = {6, -10, -40, 3, 1, 2};
-			CHECK_EQ(LovePotion->getEffectsStats().level, 6);
-			CHECK_EQ(LovePotion->getEffectsStats().hp, -10);
-			CHECK_EQ(LovePotion->getEffectsStats().mp, -40);
-			CHECK_EQ(LovePotion->getEffectsStats().strenght, 3);
-			CHECK_EQ(LovePotion->getEffectsStats().constitution, 1);
-			CHECK_EQ(LovePotion->getEffectsStats().dexterity, 2);
+			CHECK_EQ(LovePotion->getEffectsStats().level, test.level);
+			CHECK_EQ(LovePotion->getEffectsStats().hp, test.hp);
+			CHECK_EQ(LovePotion->getEffectsStats().mp, test.mp);
+			CHECK_EQ(LovePotion->getEffectsStats().strenght, test.strenght);
+			CHECK_EQ(LovePotion->getEffectsStats().constitution, test.constitution);
+			CHECK_EQ(LovePotion->getEffectsStats().dexterity, test.dexterity);
 			
 	delete LovePotion;
 }

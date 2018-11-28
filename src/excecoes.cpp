@@ -7,3 +7,9 @@ const char* InvalidCharacterException::what() const noexcept{
 const char* TimeTurnerException::what() const noexcept {
   return "You cannot go back in time in the first round! Try again";
 }
+
+
+const char* NULL_Pointer_Exception::what() const noexcept {
+  return "You're trying to acess a NULL Pointer";
+}
+
