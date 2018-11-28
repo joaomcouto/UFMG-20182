@@ -4,6 +4,17 @@
 #include "wizard.h"
 #include <iostream>
 #include <stdlib.h>
+#include <cctype>
+
+bool StringValidation(std::string myString){
+	for(int i = 0; i < myString.size(); i++){
+		if(!isalpha(myString[i])){
+			throw InvalidStringException();
+			return false;
+		}
+	}
+	return true;
+}
 
 void myPause(){
 	do{
@@ -112,6 +123,9 @@ std::string texts1(){
 	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << "Please, enter your wizard/witch's name " << std::endl;
 	std::cin >> name;
+	if(!StringValidation(name)){
+		std::cout << "Please, enter a valid wizard/witch's name " << std::endl;
+	}
 	std::cout << std::endl;
 	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
 	std::cout << "Hogwarts School of Witchcraft and Wizardry" << std::endl;

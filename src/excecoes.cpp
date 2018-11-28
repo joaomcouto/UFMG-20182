@@ -13,3 +13,6 @@ const char* NULL_Pointer_Exception::what() const noexcept {
   return "You're trying to acess a NULL Pointer";
 }
 
+const char*  InvalidStringException::what() const noexcept {
+  return "You're trying to put invalid characteres!";
+}
