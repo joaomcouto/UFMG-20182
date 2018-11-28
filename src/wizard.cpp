@@ -92,8 +92,7 @@ void Wizard::printPlayerPotions() {
 	const int object_size = this-> _potionsVector.size();
 
     for (int i = 0; i < object_size; i++)
-		if (_potionsVector[i]->get_quant() > 0)
-	   		std::cout << "[" << i+1 << "] " <<  _potionsVector[i]->get_name() << " " << _potionsVector[i]->get_quant() << std::endl;
+		std::cout << "[" << i+1 << "] " <<  _potionsVector[i]->get_name() << " " << _potionsVector[i]->get_quant() << std::endl;
 
     std::cout <<std::endl;
 }
@@ -108,8 +107,10 @@ void Wizard::printPlayerArtifacts(){
 }
 
 void Wizard::setPotionsVector(std::vector<Potions *> potions){
-	std::vector<Potions *> new_potions = instantiate_potions(potions);
+	std::vector<Potions *> new_potions = this->instantiate_potions(potions);
 	this->_potionsVector = new_potions;
+	std::cout << _potionsVector[1]->get_quant() << std::endl;
+	std::cout << new_potions[1]->get_quant() << std::endl;
 }
 
 void Wizard::setArtifactsVector(std::vector<Artifacts *> artifacts){
@@ -119,6 +120,8 @@ void Wizard::setArtifactsVector(std::vector<Artifacts *> artifacts){
 
 void Wizard::set_quantPotions(int i, int quant){
 	this->_potionsVector[i]->set_quant(quant);
+	if (this->_potionsVector[i]->get_quant() == 0)
+		erase_Potion(i);
 }
 
 void Wizard::erase_Potion(int i){

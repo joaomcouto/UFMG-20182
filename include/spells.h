@@ -9,7 +9,7 @@ protected:
 	std::string _name;
 	Stats _damageStats ;
 	int _duration ; 
-	int _level;
+	//int _level;
 
 public:	
 	Spell(int duration , std::string name, int level, int hp, int mp, int strenght, int constituion, int dexterity);

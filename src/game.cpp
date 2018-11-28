@@ -76,8 +76,8 @@ std::vector<Potions *> instantiate_potions(){
 
 	Potions *Invigorate = new Potions(1, "Invigorating Potion", 1, 10, 0, 0, 0, 0, 3);
 	Potions *SpiderAntidote = new Potions(1, "Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
-	Potions *SerpentAntidote = new Potions(1, "Antidote to serpent poison", 2, 10, 0, 0, 0, 0, 1);
-	Potions *Strength = new Potions(1, "Strength Potion", 3, 0, 0, 10, 0, 0, 1);
+	Potions *SerpentAntidote = new Potions(1, "Antidote to serpent poison", 1, 10, 0, 0, 0, 0, 1);
+	Potions *Strength = new Potions(1, "Strength Potion", 2, 0, 0, 10, 0, 0, 1);
 	Potions *Restoration = new Potions (1, "Restoration Potion", 5, 10, 0, 0, 0, 0, 1);
 	Potions *Death = new Potions(1, "Death Potion", 7, 0, 0, 0, 0, 0, 1);
 
@@ -248,7 +248,7 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<
 	Enemy *Spider = new Enemy("Aragog", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
 	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 2, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
 	Enemy *Dementor = new Enemy ("Dementor", "wraith", attack[3], 3, 100, 0, 4, 4, 0, _spells, "FDP QUE QUER SUGAR SUA FELICIDADE");
-	Enemy *Basilisk = new Enemy ("Basilisk", "serpent", attack[1], 1, 100, 0, 4, 4, 0, _spells, "A CAMARA SECRETA ESTA ABERTA! INIMIGOS DO HERDEIRO, CUIDADO");
+	Enemy *Basilisk = new Enemy ("Basilisk", "serpent", attack[1], 2, 100, 0, 4, 4, 0, _spells, "A CAMARA SECRETA ESTA ABERTA! INIMIGOS DO HERDEIRO, CUIDADO");
 	
 	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
@@ -343,8 +343,11 @@ void initialize_game(){
             }
 		}
 		player->setSpellVector(spell);
+		artifact = instantiate_artifacts();
 		player->setArtifactsVector(artifact);
+		potion = instantiate_potions();
 		player->setPotionsVector(potion);
+		myPause();
     }
 }
 
