@@ -10,9 +10,6 @@ protected:
 	Stats _damageStats ;
 	int _duration ; 
 	int _level;
-//	int _hp ;
-//	int _mp ;
-	
 
 public:	
 	Spell(int duration , std::string name, int level, int hp, int mp, int strenght, int constituion, int dexterity);

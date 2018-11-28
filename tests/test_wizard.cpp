@@ -10,7 +10,7 @@ TEST_CASE("Testing Construtor"){
 
 
 TEST_CASE("Testing SkillPoint - Getters and Setters"){
-		std::vector<Spell *> _spells;
+	std::vector<Spell *> _spells;
     std::vector<Potions *> _potions;
     std::vector<Artifacts *> _artifacts;		
     Wizard *Harry = new Wizard("Harry Potter", 1, 0, 100, 1, 1, 1, "Gryffindor", "Holly wood and Phoenix feathers", "Deer", _spells, _potions, _artifacts);	

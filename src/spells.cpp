@@ -4,7 +4,7 @@
 Spell::Spell(int duration, std::string name, int level, int hp, int mp, int strenght, int constituion, int dexterity){
 	this->_duration = duration ;
 	this->_name = name;
-	this->_level = level;
+	this->_damageStats.level = level;
 	this->_damageStats.hp= hp;
 	this->_damageStats.mp = mp;
 	this->_damageStats.strenght = strenght;
@@ -25,7 +25,7 @@ Stats Spell::getDamageStats(){
 }
 
 int Spell::get_level(){
-	return this->_level;
+	return this->_damageStats.level;
 }
 
 std::string Spell::get_name(){
