@@ -6,9 +6,9 @@
 
 class Battle {
 protected:
-    int _round ; 
-    bool _ended ; 
-    bool _playerturn ; 
+    int _round ; //contador de rodadas
+    bool _ended ; //se acabou a batalha
+    bool _playerturn ; //se é vez do jogador
     Stats _originalStats ;
     Stats _originalStatsEnemy ;
     std::vector<Stats> _playerDebuffs ; //cada posicao i se refere a um round
