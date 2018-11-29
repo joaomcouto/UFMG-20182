@@ -16,8 +16,6 @@ bool StringValidation(std::string myString){
 	return true;
 }
 
-
-
 void myPause(){
 	do{
     	std::cout << "Press ENTER  to continue!" << std::endl;
@@ -378,16 +376,9 @@ void initialize_game(){
 			std::cout << "The game is over. You won." << std::endl;
 			break;
 		}
+			
     }
-	spell.clear() ;
-	potion.clear() ;
-	artifact.clear() ;
-	attack.clear();
-	enemies.clear() ;
-	delete player ;
-
 }
-
 
 
 

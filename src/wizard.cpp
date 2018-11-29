@@ -15,10 +15,7 @@ Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, i
 	this->_skillPoints = 3 ; 
 }
 
-Wizard::~Wizard(){
-	this->_potionsVector.clear();
-	this->_artifactsVector.clear();
-}
+Wizard::~Wizard(){}
 
 void Wizard::incrementSkillPoints(int points){
 	this->_skillPoints += points ;
