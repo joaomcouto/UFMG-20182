@@ -25,25 +25,22 @@ void myPause(){
 
 std::vector<Spell *> instantiate_spell(){
     std::vector<Spell *> spell;
-	//os numeros nao sao reais, somente os niveis mais ou menos
-	//duracao, nome, level, hp, mp , stg, cons, dex 
 	Spell *Expelliarmus = new Spell(2, "Expelliarmus", 1, -30, -40, -2, -1, 0);
-	Spell *ExpectroPatronum = new Spell(2, "Expectro Patronum", 4, -50, -20, -20, -30, -40);
+	Spell *ExpectroPatronum = new Spell(2, "Expectro Patronum", 3, -50, -20, -20, -30, -40);
 	Spell *Lumus = new Spell(2, "Lumus", 1, 0, 10, 0, -1, 0);
 	Spell *Nox = new Spell(2, "Nox", 1, 0, 10, 0, -1, 0);
-	Spell *Protego = new Spell(2, "Protego", 1, 0, 10, 0, -1, 0);
-	Spell *WingardiumLeviosa = new Spell(2, "Wingardium Leviosa", 1, 0, 10, 0, -1, 0);
-	Spell *Incendio = new Spell(2, "Incendio", 2, 0, 10, 0, -1, 0);
-	Spell *Rictusempra = new Spell(2, "Rictusempra", 2, 0, -10, 0, -1, 0);	
-	Spell *Imobbilius = new Spell(2, "Imobbilius", 3, 0, -10, 0, -1, 0);
-	Spell *Estupefaca = new Spell(2, "Estupefaca", 4, 0, -10, 0, -1, 0);
-	Spell *PetrificusTotalus = new Spell(2, "Petrificus Totalus", 4, 0, -10, 0, -1, 0);
-	Spell *Levicorpus = new Spell(2, "Levicorpus", 5, 0, -10, 0, -1, 0);
-	Spell *Sectusempra = new Spell(2, "Sectusempra", 6, 0, -10, 0, -1, 0);
-	Spell *Obscuro = new Spell(2, "Obscuro", 6, 0, -10, 0, -1, 0);
-	//vamos deixar a arte das trevas entrar?
-	Spell *Crucio = new Spell(2, "Crucio", 7, 0, -10, 0, -1, 0);
-	Spell *AvadaKedavra = new Spell(2, "Avada Kedavra", 7, 0, -10, 0, -1, 0);
+	Spell *Protego = new Spell(2, "Protego", 1, 0, 40, 0, -1, 0);
+	Spell *WingardiumLeviosa = new Spell(2, "Wingardium Leviosa", 1, 0, 20, 0, -1, 0);
+	Spell *Incendio = new Spell(2, "Incendio", 2, 0, -40, -20, -1, 0);
+	Spell *Rictusempra = new Spell(2, "Rictusempra", 2, -50, 0, 0, -1, 0);	
+	Spell *Imobbilius = new Spell(2, "Imobbilius", 4, -30, -50, 0, -1, 0);
+	Spell *Estupefaca = new Spell(2, "Estupefaca", 4, -50, -40, 0, -1, 0);
+	Spell *PetrificusTotalus = new Spell(2, "Petrificus Totalus", 4, 0, -50, -40, -1, 0);
+	Spell *Levicorpus = new Spell(2, "Levicorpus", 4, -50, -50, 0, -1, 0);
+	Spell *Sectusempra = new Spell(2, "Sectusempra", 4, -60, -60, 0, -1, 0);
+	Spell *Obscuro = new Spell(2, "Obscuro", 4, -30, -30, 0, -1, 0);
+	Spell *Crucio = new Spell(2, "Crucio", 5, -70, -70, 0, -1, 0);
+	Spell *AvadaKedavra = new Spell(2, "Avada Kedavra", 5, -100, -100, 0, -1, 0);
 
 
 	spell.push_back(Expelliarmus);
@@ -69,10 +66,10 @@ std::vector<Spell *> instantiate_spell(){
 std::vector<Artifacts *> instantiate_artifacts(){
 	std::vector<Artifacts *> object;
 
-	Artifacts *TimeTurner = new Artifacts(1, "Time-Turner", 1, 0, 0, 0, 0, 0, 1, true, "return");
+	Artifacts *TimeTurner = new Artifacts(1, "Time-Turner", 2, 0, 0, 0, 0, 0, 1, true, "return");
 	Artifacts *Cloak = new Artifacts(2, "Invisibility Cloak", 1, 0, 0, 0, 10, 0, 1, true ,"cloak");
-	Artifacts *ElderWand = new Artifacts(3, "Elder Wand", 1, 0, 0, 10, 0, 10, 2, true, "damage");
-	Artifacts *ResurrectionStone = new Artifacts(1, "Resurrection Stone", 1, 30, 10, 0, 0, 0, 1, 1, "life");
+	Artifacts *ElderWand = new Artifacts(3, "Elder Wand", 3, 0, 0, 10, 0, 10, 2, true, "damage");
+	Artifacts *ResurrectionStone = new Artifacts(1, "Resurrection Stone", 4, 30, 10, 0, 0, 0, 1, 1, "life");
 
 	object.push_back(TimeTurner);
 	object.push_back(Cloak);
@@ -89,8 +86,8 @@ std::vector<Potions *> instantiate_potions(){
 	Potions *SpiderAntidote = new Potions(1, "Antidote to spider poison", 1, 10, 0, 0, 0, 0, 1);
 	Potions *SerpentAntidote = new Potions(1, "Antidote to serpent poison", 1, 10, 0, 0, 0, 0, 1);
 	Potions *Strength = new Potions(1, "Strength Potion", 2, 0, 0, 10, 0, 0, 1);
-	Potions *Restoration = new Potions (1, "Restoration Potion", 5, 10, 0, 0, 0, 0, 1);
-	Potions *Death = new Potions(1, "Death Potion", 7, 0, 0, 0, 0, 0, 1);
+	Potions *Restoration = new Potions (1, "Restoration Potion", 4, 10, 0, 0, 0, 0, 1);
+	Potions *Death = new Potions(1, "Death Potion", 5, 0, 0, 0, 0, 0, 1);
 
 	object.push_back(Invigorate);
 	object.push_back(SpiderAntidote);
@@ -107,13 +104,15 @@ std::vector<specialAttack > instantiate_attack(){
 
 	specialAttack None = {"NONE", 0, 0, 0, 0, 0, 0};
 	specialAttack Sting = {"Sting", 1, -30, -40, -2, -1, 0};
-	specialAttack Veneno = {"Veneno", 0, 0, 0, 0, 0, 0};
-	specialAttack DementorsKiss = {"Dementors Kiss",1, -30, -40, -2, -1, 0};
+	specialAttack Poison = {"Poison", 1, -30, -40, -2, -1, 0};
+	specialAttack DementorsKiss = {"Dementors Kiss",1, -50, -40, -5, -1, 0};
+	specialAttack ViolentNature = {"Violent Nature", 1, -30, -40, -2, -1, 0 };
 
 	attack.push_back(None);
 	attack.push_back(Sting);
-	attack.push_back(Veneno);
+	attack.push_back(Poison);
 	attack.push_back(DementorsKiss);
+	attack.push_back(ViolentNature);
 
 	return attack;
 }
@@ -259,23 +258,32 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<
 	std::vector<Enemy *> enemies;
 	std::vector<Spell *> empty;
 
-	Enemy *Spider = new Enemy("Aragog", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "OLHA A ARANHA ZE, MATAAAA SAPORRA");
-	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 2, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
-	Enemy *Dementor = new Enemy ("Dementor", "wraith", attack[3], 3, 100, 0, 4, 4, 0, _spells, "FDP QUE QUER SUGAR SUA FELICIDADE");
-	Enemy *Basilisk = new Enemy ("Basilisk", "serpent", attack[1], 2, 100, 0, 4, 4, 0, _spells, "A CAMARA SECRETA ESTA ABERTA! INIMIGOS DO HERDEIRO, CUIDADO");
-	
+	Enemy *Spider = new Enemy("Aragog", "spider", attack[1], 1, 100, 0, 0, 0, 0, empty, "Giant spider who lives in the Forbidden Forest and is only loyal to Rubeus Hagrid");
+	Enemy *Bellatrix = new Enemy("Bellatrix Lestrange", "human", attack[0], 4, 100, 0, 4, 4, 0, _spells , "Notorious Azkaban fugitive and Death eater, the assassin of Sirius Black, the dark figure of Bellaxtrix Lestrange presents itself with the sole intention of murdering you, for your involvement with Dumbledore's Army");
+	Enemy *Dementor = new Enemy ("Dementor", "wraith", attack[3], 3, 100, 0, 4, 4, 0, empty, "Dementors are among the foulest creatures that walk this earth. They infest the darkest, filthiest places, they glory in decay and despair, they drain peace, hope, and happiness out of the air around them... Get too near a Dementor and every good feeling, every happy memory will be sucked out of you. The guards of Azkaban, they feed on human happiness and can extract souls with their Dementor's Kiss");
+	Enemy *Basilisk = new Enemy ("Basilisk", "serpent", attack[2], 2, 100, 0, 4, 4, 0, empty, "The Secret Chamber has been opened. Enemies of the heir, beware! The Basilisk is a giant serpent that can instantly kill anyone who looks into their eyes");
+	Enemy *Lucius = new Enemy("Lucius Malfoy", "human", attack[0], 4, 100, 0, 4, 4, 0, _spells, "Draco's father who serves Lord Voldemort as a Death Eater in both Wizarding Wars.");
+	Enemy *Draco = new Enemy("Draco Malfoy", "human", attack[0], 1, 100, 0, 1, 1, 1, _spells, "A pure-blood wizard, proud Slytherin and Harry Potter’s arch rival at Hogwarts");
+	Enemy *Peter = new Enemy("Peter Pettigrew","human", attack[0], 4, 100, 0, 4, 4, 0, _spells, "Loyal follower of Voldemort who betrayed Harry's parents");
+	Enemy *Giant = new Enemy("Giant", "giant", attack[4], 2, 100, 0, 2, 2, 0, empty, "Colossal creatures which can be extremely dangerous");
+	Enemy *MountainTrolls = new Enemy("Mountain Trolls", "trolls", attack[4], 1, 100, 0, 1, 1, 0, empty, "The largest and most vicious breed of troll - best avoided");
+	Enemy *Nagini = new Enemy("Nagini", "serpent", attack[2], 4, 100, 0, 4, 4, 0, empty, "Lord Voldemort's pet snake and loyal servant.");
+	Enemy *LordVoldemort = new Enemy("Lord Voldemort", "human", attack[0], 5, 100, 0, 7, 8, 0, _spells, "Formerly known as Tom Marvolo Riddle and commonly referred to as He-Who-Must-Not-Be-Named. The most powerful Dark wizard of all time.");
+
 	enemies.push_back(Spider);
 	enemies.push_back(Bellatrix);
 	enemies.push_back(Dementor);
 	enemies.push_back(Basilisk);
+	enemies.push_back(Lucius);
+	enemies.push_back(Draco);
+	enemies.push_back(Peter);
+	enemies.push_back(Giant);
+	enemies.push_back(MountainTrolls);
+	enemies.push_back(Nagini);
+	//enemies.push_back(LordVoldemort);
 	
 	return enemies;
 }
-
-void texts2(){
-	//textos sobre o inicio das batalhas/explicacao de jogo?
-}
-
 void printMainMenu(){
 	std::cout << "[1] Next battle" << std::endl << "[2] Distribute skillpoints" << std::endl << "[3] Display current character stats" << std::endl;
 }
@@ -361,7 +369,11 @@ void initialize_game(){
 		player->setArtifactsVector(artifact);
 		potion = instantiate_potions();
 		player->setPotionsVector(potion);
-		myPause();
+		if(player->getLevel() == 6){
+			std::cout << "The game is over. You won." << std::endl;
+			break;
+		}
+			
     }
 }
 

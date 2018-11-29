@@ -36,7 +36,7 @@ Battle::Battle(Wizard * player , Enemy * enemy){
         _StatsPlayer.push_back(filler);
     }
     this->_StatsPlayer[_round-1] = player->getBaseStats();
-    this->initializeBattle() ;
+    this->initializeBattle();
 }
 
 Battle::~Battle(){
@@ -65,7 +65,8 @@ void Battle::initializeBattle(){
     std::cout << "\033[2J\033[1;1H"; //This line clear the screen
     if (this->_enemy->getHP() <= 0){
         std::cout << "You have won this battle! " << std::endl;
-        _originalStats.level += 1 ;
+        if(_player->getLevel() < 6)
+            _originalStats.level += 1 ;
     } else 
         std::cout << "You lost this battle! " << std::endl;
     myBattlePause();
@@ -78,9 +79,13 @@ void Battle::spellMove(Spell* spell ){
     if (_playerturn == 1 ){
         std::cout << "\033[2J\033[1;1H"; //This line clear the screen
         std::cout << "Player has used the spell " << spell->get_name() << "!" << std::endl;
-        updateDebuffs(spell->getDuration() , spell->getDamageStats() , 0 ) ;
-        _enemy->setHP( spell->get_hp_dmg()*(1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentEnemyStats().constitution) ) ;
-        std::cout << "The enemy now has the following stats: " << std::endl ;
+        if ((_enemy->getName() == "Dementor")&&(spell->get_name() != "Expectro Patronum"))
+            std::cout << "Spell wasn't effective, your enemy is a Dementor!" << std::endl;
+        else{
+            updateDebuffs(spell->getDuration() , spell->getDamageStats() , 0 ) ;
+            _enemy->setHP( spell->get_hp_dmg()*(1 + 0.1*getCurrentPlayerStats().strenght)*(1 - 0.1*getCurrentEnemyStats().constitution) ) ;
+            std::cout << "The enemy now has the following stats: " << std::endl ;
+        }
         getCurrentEnemyStats().printStats() ;
         myBattlePause();
     } else {
