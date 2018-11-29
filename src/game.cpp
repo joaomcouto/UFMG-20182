@@ -36,7 +36,6 @@ std::vector<Spell *> instantiate_spell(){
 	Spell *Imobbilius = new Spell(2, "Imobbilius", 4, -30, -50, 0, -1, 0);
 	Spell *Estupefaca = new Spell(2, "Estupefaca", 4, -50, -40, 0, -1, 0);
 	Spell *PetrificusTotalus = new Spell(2, "Petrificus Totalus", 4, 0, -50, -40, -1, 0);
-	Spell *Levicorpus = new Spell(2, "Levicorpus", 4, -50, -50, 0, -1, 0);
 	Spell *Sectusempra = new Spell(2, "Sectusempra", 4, -60, -60, 0, -1, 0);
 	Spell *Obscuro = new Spell(2, "Obscuro", 4, -30, -30, 0, -1, 0);
 	Spell *Crucio = new Spell(2, "Crucio", 5, -70, -70, 0, -1, 0);
@@ -54,7 +53,6 @@ std::vector<Spell *> instantiate_spell(){
 	spell.push_back(Imobbilius);
 	spell.push_back(Estupefaca);
 	spell.push_back(PetrificusTotalus);
-	spell.push_back(Levicorpus);
 	spell.push_back(Sectusempra);
 	spell.push_back(Obscuro);
 	spell.push_back(Crucio);

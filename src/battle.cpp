@@ -241,9 +241,9 @@ int Battle::round(){
                         try {
                             std::cout << "[0] "<<  "Back to main menu" << std::endl ;
                             _player->printPlayerSpells();
-                            std::cin >> selectionIndex ;
+                            std::cin >> selectionIndex;
                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-                            for (unsigned int i = 1; i <= _player->getSpellVector().size(); i ++){
+                            for (unsigned int i = 0; i <= _player->getSpellVector().size(); i ++){
                                 if (selectionIndex == (char)(i+48)){
                                     spellMove(_player->getSpellVector()[i-1]) ;
                                     return aux;
@@ -286,9 +286,6 @@ int Battle::round(){
                                         if (potionIndex == (char)(i+48)){
                                             potionMove(_player->getPotionsVector()[i-1]);
                                             _player->set_quantPotions(i-1, -1);
-                                        //    if (_player->getPotionsVector()[i-1]->get_quant() == 0) {
-                                          //      this->_player->erase_Potion(i-1);
-                                            //}
                                             return 1;
                                         }
                                     }

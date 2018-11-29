@@ -5,6 +5,7 @@
 
 #define NUMBER_INCREMENT_HP_E_MP 10;
 #define NUMBER_INCREMENT_OTHERS 1;
+#define QUANT_SPELLS 9;
 
 Wizard::Wizard(std::string name, int level, int hp, int mp, int str, int cons, int dex, std::string house, std::string wand, std::string patronum, std::vector<Spell *> _spells, std::vector<Potions *> _potions, std::vector<Artifacts *> _artifacts) throw (InvalidCharacterException) :
 	Character(name, level, hp, mp, str, cons, dex), _house(house), _wand(wand), _patronum(patronum){
@@ -25,10 +26,11 @@ std::vector<Spell *> Wizard::instantiate_spells(std::vector<Spell *> _spells){
 
 	std::vector<Spell *> Spells;
 
-    for (int i = 0; i < spells_size; i++){
+	for (int i = 0; i < spells_size; i++){
 		if(_spells[i]->get_level() <= getLevel())
-			Spells.push_back(_spells[i]);
+		Spells.push_back(_spells[i]);
 	}
+		
 	return Spells;
 }
 
