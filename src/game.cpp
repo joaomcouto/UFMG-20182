@@ -283,7 +283,7 @@ std::vector<Enemy *> initialize_enemy(std::vector<Spell *> _spells, std::vector<
 	enemies.push_back(Giant);
 	enemies.push_back(MountainTrolls);
 	enemies.push_back(Nagini);
-	//enemies.push_back(LordVoldemort);
+	enemies.push_back(LordVoldemort);
 	
 	return enemies;
 }

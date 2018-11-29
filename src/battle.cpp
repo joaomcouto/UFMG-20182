@@ -9,6 +9,16 @@
 #define MAX_ROUNDS 20
 #define MAX_HP 100
 
+bool StringValidationIndex(std::string myString){
+	for(unsigned int i = 0; i < myString.size(); i++){
+		if(!isdigit(myString[i])){
+			throw std::invalid_argument("Invalid spell index, try again ");
+			return false;
+		}
+	}
+	return true;
+}
+
 void myBattlePause(){
 	do{
       std::cout << "Press ENTER  to continue!" << std::endl;
@@ -220,7 +230,7 @@ int Battle::round(){
     if (this->_playerturn == 1){
         char menuIndex;
         //int actionIndex; //essa variavel ainda nao foi usada, tire o comentario quando for usar
-        char selectionIndex ;
+        std::string selectionIndex ;
         while(1){ //Deemed necessary, player might return to menu selection menu
                 std::cout << "\033[2J\033[1;1H"; //This line clear the screen
                 while(1){
@@ -243,15 +253,17 @@ int Battle::round(){
                             _player->printPlayerSpells();
                             std::cin >> selectionIndex;
                             std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-                            for (unsigned int i = 0; i <= _player->getSpellVector().size(); i ++){
-                                if (selectionIndex == (char)(i+48)){
-                                    spellMove(_player->getSpellVector()[i-1]) ;
+                            if (StringValidationIndex(selectionIndex) == true){
+                                int number = atoi(selectionIndex.c_str());
+                                if ((number < 0 )||((unsigned int) number > _player->getSpellVector().size()))
+                                    throw std::invalid_argument("Invalid spell index, try again ");
+                                else if(number == 0) 
+                                    break ;
+                                else {
+                                    spellMove(_player->getSpellVector()[number-1]);
                                     return aux;
                                 }
                             }
-                            if (selectionIndex == '0') 
-                                break ;
-                            else throw std::invalid_argument("Invalid spell index, try again ") ;
                         } catch (std::invalid_argument &t){
                             std::cout << t.what() << std::endl;
                         }
