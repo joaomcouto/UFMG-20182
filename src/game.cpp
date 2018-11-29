@@ -7,7 +7,7 @@
 #include <cctype>
 
 bool StringValidation(std::string myString){
-	for(int i = 0; i < myString.size(); i++){
+	for(unsigned int i = 0; i < myString.size(); i++){
 		if(!isalpha(myString[i])){
 			throw InvalidStringException();
 			return false;
@@ -118,10 +118,15 @@ std::vector<specialAttack > instantiate_attack(){
 std::string texts1(){
 	std::string name ;
 	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
-	std::cout << "Please, enter your wizard/witch's name " << std::endl;
-	std::cin >> name;
-	if(!StringValidation(name)){
-		std::cout << "Please, enter a valid wizard/witch's name " << std::endl;
+	while (1){
+		try{
+			std::cout << "Please, enter your wizard/witch's name " << std::endl;
+			std::cin >> name;
+			if (StringValidation(name) == true)
+				break;
+		} catch (std::exception &t) {
+			std::cout << t.what() << std::endl;
+		}
 	}
 	std::cout << std::endl;
 	std::cout << "\033[2J\033[1;1H"; //This line clear the screen
