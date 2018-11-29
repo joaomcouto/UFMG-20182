@@ -1,7 +1,7 @@
-//Vamo pra batalha, guerreirinho!
 #include "doctest.h"
 #include "battle.h"
 #include "enemy.h"
+#include "wizard.h"
 
 /* ---------------------------------Não Consegui----------------------------
 TEST_CASE("Testing MyPause"){
@@ -39,6 +39,23 @@ TEST_CASE("Testing Constructor"){
 	
 	Enemy *Malfoy = new Enemy("Malfoy","Human", _attack, 1, 100, 20, 1, 1 ,1, _spells, "Sangue impuro!!");
 
-	CHECK_NOTHROW(Battle(Harry, Malfoy));
+	Battle *battle = new Battle(Harry, Malfoy);
 
+	CHECK_EQ(battle->getCurrentEnemyStats().hp, 100);
+	CHECK_EQ(battle->getCurrentEnemyStats().mp, 20);
+	CHECK_EQ(battle->getCurrentEnemyStats().level, 1);
+	CHECK_EQ(battle->getCurrentEnemyStats().dexterity, 1);
+	CHECK_EQ(battle->getCurrentEnemyStats().constitution, 1);
+	CHECK_EQ(battle->getCurrentEnemyStats().strenght, 1);
+
+	CHECK_EQ(battle->getCurrentPlayerStats().hp, 0);
+	CHECK_EQ(battle->getCurrentPlayerStats().mp, 100);
+	CHECK_EQ(battle->getCurrentPlayerStats().level, 1);
+	CHECK_EQ(battle->getCurrentPlayerStats().dexterity, 1);
+	CHECK_EQ(battle->getCurrentPlayerStats().constitution, 1);
+	CHECK_EQ(battle->getCurrentPlayerStats().strenght, 1);
+
+	CHECK_NOTHROW(Battle(Harry, Malfoy));
+	delete Harry;
+	delete Malfoy;
 }

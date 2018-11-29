@@ -195,9 +195,9 @@ Stats Battle::getCurrentEnemyStats(){
 
 
 void Battle::introduction(){
-		if(this->_enemy == nullptr){
-				throw NULL_Pointer_Exception();
-		}
+	if(this->_enemy == nullptr){
+		throw NULL_Pointer_Exception();
+	}
 		
     this->_enemy->printIntro() ;
     std::cout << " " << std::endl; 

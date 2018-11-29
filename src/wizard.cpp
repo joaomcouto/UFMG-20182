@@ -109,8 +109,6 @@ void Wizard::printPlayerArtifacts(){
 void Wizard::setPotionsVector(std::vector<Potions *> potions){
 	std::vector<Potions *> new_potions = this->instantiate_potions(potions);
 	this->_potionsVector = new_potions;
-	std::cout << _potionsVector[1]->get_quant() << std::endl;
-	std::cout << new_potions[1]->get_quant() << std::endl;
 }
 
 void Wizard::setArtifactsVector(std::vector<Artifacts *> artifacts){

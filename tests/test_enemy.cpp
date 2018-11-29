@@ -11,32 +11,32 @@ TEST_CASE("Testing Constructor"){
 
 TEST_CASE("Testing DecrementSkill"){
 	std::vector<Spell *> _spells;
-  specialAttack _attack;
+  	specialAttack _attack;
 	Enemy *Malfoy = new Enemy("Malfoy","Human", _attack, 1, 100, 20, 1, 1 ,1, _spells, "Sangue impuro!!");
 	
 	Malfoy->decrementSkill(1);
-		int new_hp = Malfoy->getHP();
-			CHECK(new_hp == 90);
+	int new_hp = Malfoy->getHP();
+	CHECK(new_hp == 90);
 
 	Malfoy->decrementSkill(2);
-		int new_mp = Malfoy->getMP();
-			CHECK(new_mp == 10);
+	int new_mp = Malfoy->getMP();
+	CHECK(new_mp == 10);
+	
 	delete Malfoy;
 }
 
-
 TEST_CASE("Testing Getters"){
 	std::vector<Spell *> _spells;
-  specialAttack _attack;
-  _attack._name = "Incendio";
-  _attack._damageStats.hp = -10;
-Enemy *Malfoy = new Enemy("Malfoy","Human", _attack, 1, 100, 20, 1, 1 ,1, _spells, "Sangue impuro!!");
+  	specialAttack _attack;
+  	_attack._name = "Incendio";
+  	_attack._damageStats.hp = -10;
+	Enemy *Malfoy = new Enemy("Malfoy","Human", _attack, 1, 100, 20, 1, 1 ,1, _spells, "Sangue impuro!!");
 	std::string _type = Malfoy->getType();
-		CHECK_EQ(_type, "Human");
+	CHECK_EQ(_type, "Human");
 	
-		specialAttack Attack = Malfoy->getSpecialAttack();
-		CHECK_EQ(Attack._name, "Incendio");
-		CHECK_EQ(Attack._damageStats.hp, -10);
+	specialAttack Attack = Malfoy->getSpecialAttack();
+	CHECK_EQ(Attack._name, "Incendio");
+	CHECK_EQ(Attack._damageStats.hp, -10);
 //	CHECK_EQ(Attack._damageStats.mp, 0);
 	delete Malfoy;
 }
