@@ -50,7 +50,11 @@ Battle::Battle(Wizard * player , Enemy * enemy){
 }
 
 Battle::~Battle(){
-    
+    this->_playerDebuffs.clear() ;
+    this->_enemyDebuffs.clear();
+    this->_StatsPlayer.clear() ;
+    delete this->_player ;
+    delete this->_enemy ;
 }
 
 void Battle::initializeBattle(){
