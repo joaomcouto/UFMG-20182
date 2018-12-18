@@ -162,12 +162,12 @@ int Battle::artifactsMove(Artifacts * artifact){
         if (artifact->getSpecialEffect() == "cloak"){
             i = 2;
             std::cout << std::endl;
-            std::cout << "Voce sumiu para o inimigo, escolha sua proxima jogada" << std::endl;
+            std::cout << "Thought to have belonged to the wisest of the Peverrel brothers, you've decided to use the invisibility cloak for your advantage and are now temporarily invisible to your enemy. Choose your next move" << std::endl;
         }
     }
     if (artifact->getSpecialEffect() == "damage"){
         std::cout << std::endl;
-        std::cout << "Voce esta usando a varinha das varinhas, escolha a proxima jogada:" << std::endl;
+        std::cout << "As it was once used by the greatest headmaster Hogwarts has ever seen, you're now using the using Elder Wand. Your strength has increased drastically. Choose your next move" << std::endl;
         i = 1;
     }
     myBattlePause();
