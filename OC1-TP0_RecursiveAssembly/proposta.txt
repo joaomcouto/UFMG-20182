@@ -1,0 +1,19 @@
+Caros,
+
+Para vocês aprenderem a programar em Assembly, gostaria que vocês entregassem, via minha UFMG, o seguinte programa:
+
+Faça um programa para imprimir uma sequência de quadrados dos números pares de 2 até N, e em seguida imprimir a soma dos quadrados: ou seja:
+
+Linha 1: 4, 16, 36, ... n2.
+
+Linha 2: soma
+
+Por exemplo, se N for 8, seu programa deverá imprimir:
+
+4, 16, 36, 64
+
+120
+
+Vocês devem entregar dois programas, um recursivo (arquivo recursivo.asm) e outro não (arquivo iterativo.asm), e ambos codificados em assembly do MIPS. Em ambos os programas, você deve ler o índice da sequência (o N) do teclado. O MARS tem instruções especiais para ler do teclado e escrever na tela.
+
+Usem o programa MARS para escrever o código (http://courses.missouristate.edu/KenVollmar/mars/), e submetam os dois códigos em um arquivo .zip. A data de entrega é até o dia 27 de Agosto. A atividade vai valer 4 pontos extras (dois pontos para cada programa).
