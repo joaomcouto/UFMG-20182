@@ -1,0 +1,46 @@
+#! /usr/bin/vvp
+:ivl_version "10.1 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7fffee553f70 .scope module, "testbench_twos_complement" "testbench_twos_complement" 2 1;
+ .timescale 0 0;
+v0x7fffee5744d0_0 .var "a", 7 0;
+v0x7fffee5745c0_0 .net "neg_a", 7 0, L_0x7fffee5746c0;  1 drivers
+S_0x7fffee5540f0 .scope module, "tc" "twos_complement" 2 5, 3 1 0, S_0x7fffee553f70;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "a"
+    .port_info 1 /OUTPUT 8 "b"
+L_0x7f243a4f0018 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x7fffee554270_0 .net *"_s0", 7 0, L_0x7f243a4f0018;  1 drivers
+v0x7fffee5742d0_0 .net "a", 7 0, v0x7fffee5744d0_0;  1 drivers
+v0x7fffee5743b0_0 .net "b", 7 0, L_0x7fffee5746c0;  alias, 1 drivers
+L_0x7fffee5746c0 .arith/sub 8, L_0x7f243a4f0018, v0x7fffee5744d0_0;
+    .scope S_0x7fffee553f70;
+T_0 ;
+    %vpi_call 2 9 "$monitor", "[%0t] a=%b neg_a=%b", $time, v0x7fffee5744d0_0, v0x7fffee5745c0_0 {0 0 0};
+    %delay 0, 0;
+    %vpi_func 2 12 "$random" 32 {0 0 0};
+    %pad/s 8;
+    %assign/vec4 v0x7fffee5744d0_0, 0;
+    %delay 5, 0;
+    %vpi_func 2 13 "$random" 32 {0 0 0};
+    %pad/s 8;
+    %assign/vec4 v0x7fffee5744d0_0, 0;
+    %delay 5, 0;
+    %vpi_func 2 14 "$random" 32 {0 0 0};
+    %pad/s 8;
+    %assign/vec4 v0x7fffee5744d0_0, 0;
+    %delay 5, 0;
+    %vpi_call 2 17 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "test_twos_complement.v";
+    "twos_complements.v";
