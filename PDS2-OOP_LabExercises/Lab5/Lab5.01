@@ -1,0 +1,33 @@
+Introdução
+
+Neste laboratório vamos praticar os conceitos de TDD. Para tal, o ambiente moodle foi adaptado de forma que seja possível executar diversos comandos make. Clique no ícone de "Executar", um foguete. Após clicar em tal ícone, deve aparecer na tela um console (terminal). Neste é possível rodar os seguintes comandos:
+
+make -- compila o código
+make tests -- roda os testes de unidade
+make coverage -- verifica a cobertura. execute após o make tests
+make clean -- limpa tudo
+make run -- roda o main
+Problema
+
+Utilizando a metodologia TDD, escreva testes de unidade para um método que determina se um triângulo é Equilátero, Isósceles, Escaleno. O método pertence a uma classe Triangulo possui a seguinte assinatura:
+
+Tipo determinar_tipo()
+O retorno é um Enum representando os casos: Equilátero (0), Isósceles (1), Escaleno (2).
+
+A classe deve possuir um construtor que recebe 3 parâmetros do tipo double (representando os lados). O construtor deve tratar casos excepcionais (i.e., triângulos inválidos), por exemplo, lados negativos ou zero e desigualdade triangular não atendida. Em todos esses possíveis casos de excepcionais, deve ser lançada uma exceção chamada "TrianguloInvalidoError", que deve ser subclasse de 'exception'.
+
+
+Ciclo TDD
+
+Lembre que o ciclo TDD consiste de:
+(1) Escrever teste
+(2) Ver o teste falhar
+(3) Fazer o teste passar
+(4) O código tem odores (code smells)? Se sim, passe para o passo (5). Se não, break.
+(5) Refatorar
+(6) Volte para o passo (1)
+Neste problema em particular não será necessário passar pela Refatoração. De qualquer forma, tente criar os testes antes e depois implementar os métodos.
+
+Avaliação
+
+Sua classe deve ter pelo menos 04 casos de testes (TEST_CASES). Além do mais, esperamos uma cobertura de 100% na classe Triangulo.

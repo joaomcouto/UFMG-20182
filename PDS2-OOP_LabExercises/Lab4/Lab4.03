@@ -1,0 +1,11 @@
+Esse programa é um simulador ultra-simplificado de uma fazenda com somente dois tipos de animais: vacas e cachorros, você deve consertar eventuais erros presentes no código. Nele possuímos quatro módulos:
+
+Animal: super-classe da qual todas as outras classes de animais herdam. Cada animal possui um id único (_id) e uma cor (_cor). A variável next_id deve ser compartilhada entre TODAS as instâncias de Animal, ela é usada para definir o próximo id no método get_new_id() (que, novamente, deve ser compartilhada e usada por todas instâncias). Os métodos: reproduz, faz_barulho e get_id devem ser definidos pelas classes que herdam de animal (somente estes).
+
+Vaca: herda de animal, possui um atributo extra producao_leite.
+
+Cachorro: herda de animal, deve definir somente os métodos virtuais da superclasse.
+
+No arquivo Animal.cpp, existe uma função popula() que recebe um vector de ponteiros para Animal* e o popula. Ele faz isso através da função reproduz, escolhendo um animal da fazenda aleatório para se reproduzir, essa operação deve ser repetida até que a população desejada seja atingida (max_populacao).
+
+Adicione (ou remova) novos métodos se achar necessário.

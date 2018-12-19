@@ -1,0 +1,51 @@
+Introdução
+
+Neste laboratório vamos praticar os conceitos de TDD. Para tal, o ambiente moodle foi adaptado de forma que seja possível executar diversos comandos make. Clique no ícone de "Executar", um foguete. Após clicar em tal ícone, deve aparecer na tela um console (terminal). Neste é possível rodar os seguintes comandos:
+
+make -- compila o código
+make tests -- roda os testes de unidade
+make coverage -- verifica a cobertura. execute após o make tests
+make clean -- limpa tudo
+make run -- roda o main
+Ciclo TDD
+
+Lembre que o ciclo TDD consiste de:
+(1) Escrever teste
+(2) Ver o teste falhar
+(3) Fazer o teste passar
+(4) O código tem odores (code smells)? Se sim, passe para o passo (5). Se não, break.
+(5) Refatorar
+(6) Volte para o passo (1)
+
+Portanto, tente seguir o ciclo acima. Neste trabalho, consigo ver uns três momentos refatoração. Um deve consistir da extração de métodos comuns entre as peças para uma super-classe ou uma classe de validação que será usada por todas as peças. Um segundo momento de refatoramento será quando você considerar que o Peao tem um movimento especial na primeira jogada. Para evitar código duplicado, métodos protected que verificam jogadas em cada um dos quatro eixos (- | \ /) podem ajudar. Por fim, ao criar a classe Tabuleiro pois a mesma deve conter um mapa que guarda uma Posicao (note que a assinatura das peças devem mudar).
+
+Problema
+
+Considere um jogo de xadrez composto das seguintes peças:
+
+1 ♔ Rei
+1 ♛ Rainha
+2 ♝ Bispos
+2 ♞ Cavalos
+2 ♜ Torres
+8 ♟ Peões.
+Para cara tipo de peça acima, crie uma classe para a peça. Tal classe, deve conter métodos que permitem:
+
+Pegar a posição da peça no eixo x (entre [0, 7])
+Pegar a posição da peça no eixo y (entre [0, 7])
+Retornar o nome da peça ou ícone se possível (string) -- (♔, ♛, ♝,♞,♜,♟)
+Um método pode_mover(int x, int y) que indica se um movimento do local atual para x, y é válido.
+Um método move(int x, int y) que realiza o movimento. O mesmo deve invocar pode_mover e lançar uma exceção quando o movimento for inválido.
+Use a metodologia TDD para criar 6 arquivos testes de unidade. Cada arquivo deve cobrir uma das peças do jogo. Portanto, oito classes devem ser criadas também (uma para cada peça). Organize o código nas pastas que indicamos.
+
+Após construir as classes acima, crie uma classe Tabuleiro que guarda para cada peça um std::map<Posicao, Peca *>. O construtor da mesma deve iniciar as peças na posição correta. Por fim, o Tabuleiro deve conter um método: move(Posicao, Posicao) que muda uma peça de uma dada posição para outra. Tal método deve lançar dois tipos de exceções: (1) MovimentoInvalidoException; (2) PosicaoSemPecaException.
+
+Para usar uma classe Posicao como chave do mapa, veja o exemplo (Slide 21): https://docs.google.com/presentation/d/1VuzsmsKkgtQiFidEZw-sKHz0Me4Bo0a5SRJy5KgdO24/edit
+
+Avaliação
+
+Para avaliar o seu TP, vamos verificar se o mesmo é composto de:
+* Pelo menos 8 classes (6 pecas + 1 Tabuleiro + algumas exceções)
+* Pelo menos 7 testes de unidade (um por classe)
+* Pelo menos 4 casos de teste por classe (exemplo: construtor + getters, pode_mover, posição atual e nome)
+* Cobertura de 100% nas classes que você criou.

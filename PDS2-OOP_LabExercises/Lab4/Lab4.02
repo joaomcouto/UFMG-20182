@@ -1,0 +1,6 @@
+Este sistema realiza o controle de uma frota de aviões. Estes aviões, divididos em caças (aviões de combate) e jatos (aviões comerciais), possuem diversos atributos, tais como tamanho, velocidade máxima, capacidade, etc.  Este fato é representado por uma hierarquia, a qual tem a classe Aeroplane como superclasse; e as classes JetPlane e FighterAircraft como subclasses.
+
+O sistema funcionava bem até certo momento. No entanto, um estagiário, ao saber de sua iminente demissão, resolveu inserir bugs propositalmente, os quais vão desde memory leaks e erros lógicos, até erros que inviabilizam a compilação e funcionamento do sistema, tais como falhas de segmentação, violação de visibilidade, erros de sobrescrita, etc. Portanto, cabe a você corrigi-los para que se tenha novamente o funcionamento correto da frota. Ao fim, o sistema deve imprimir com sucesso características dos aviões cadastrados (elementos não inicializados corretamente podem ser descartados).
+
+Os diferentes arquivos que compõem o sistema podem ser vistos da seguinte forma:
+
